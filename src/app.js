@@ -13,6 +13,12 @@ $(document).ready(function (e) {
 
 permsHandler();
 
+var sudo = require('sudo-prompt');
+var options = {
+  name: 'Electron',
+  icns: '/Applications/Electron.app/Contents/Resources/Electron.icns', // (optional)
+};
+
 pickr.on('save', (color, instance) => {
 	//change color of the keyboard
 	try {
@@ -73,3 +79,21 @@ const changeFanMode = (selector, backgroundColor, gradient, mode) => {
 	$(`${selector}-title`).css('color', 'white');
 	shell.exec(`echo "${mode}" > ${paths.fanModeTTP}`);
 };
+
+var rangeslider = document.getElementById("batterymanager-input");
+var output = document.getElementById("charge");
+output.innerHTML = shell.exec('cat /sys/class/power_supply/BAT1/charge_control_end_threshold');
+
+rangeslider.oninput = function() {
+  output.innerHTML = this.value
+ 
+}
+
+$('#applylimit').click(() => {
+	sudo.exec('bash ' + __dirname + `/shell/battery-manager.sh ${rangeslider.value}`, options,
+  function(error, stdout, stderr) {
+    if (error) throw error;
+    console.log('stdout: ' + stdout);
+  }
+);
+});
