@@ -16,7 +16,7 @@
 				<h3>Fan Mode</h3>
 				<div class="card-deck">
 					<!-- <div class="btn"> -->
-					<div class="card btn btn-fix" id="normal" style="width: 18rem; height: 8rem;">
+					<div class="card btn btn-fix" id="normal" style="width: 10rem; height: 8rem;">
 						<div class="card-body">
 							<h5 class="card-title" id="normal-title">NORMAL</h5>
 						</div>
@@ -34,10 +34,37 @@
 					</div>
 				</div>
 			</div>
+			<div class="battery-manager" >
+				<h3>Battery Manager</h3>
+				<div class="row" style="justify-content: space-between;">
+					<div class="row">
+						<h4>Set battery charge limit :&nbsp;</h4>
+						<h4 id="charge"></h4>
+					</div>
+					<div>
+						<div class="card btn btn-fix" id="applylimit" style="width: 5rem; height: 2rem;">
+							<div class="btn-card-body">
+								<h5 class="btn-title" id="normal-title">Apply</h5>
+							</div>
+						</div>
+		
+					</div>
+				</div>
+					<input id="batterymanager-input" class="sliderRange"
+					type="range"
+					min="10"                    // default 0
+					max="100"                  // default 100
+					step="5"                   // default 1
+					value="60"                 // default min + (max-min)/2
+					style="width:100%;margin-left: 5px;margin-right: 5px;"
+				>	   <output></output>			
+		
+			</div>
 			<div class="rgb-settings">
 				<h3>Keyboard Setting</h3>
 				<div class="row">
-					<div class="col">
+					<div class="col"			
+					>
 						<h4>Adjust Brightness</h4>
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
 							<label class="btn btn-secondary active">
@@ -102,6 +129,13 @@
 				window.module = module;
 				module = undefined;
 			}
+		</script>
+
+		<script src="jquery.min.js"></script>
+		<script src="rangeslider.min.js"></script>
+		<script>
+			$('input[type="range"]').rangeslider();
+			$('input[type="range"]').rangeslider('update', true);
 		</script>
 
 		<script type="text/javascript" src="./assets/jquery-3.5.1.min.js"></script>
