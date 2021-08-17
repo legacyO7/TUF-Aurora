@@ -4,7 +4,7 @@
   "description": "TUF Keyboard And Fan Mode Controller Based On Faustus Mod",
   "main": "main.js",
   "scripts": {
-    "start": "electron6 .",
+    "start": "electron .",
     "build": "electron-packager . tufcontrol-electron --platform linux --arch x64 --out dist/"
   },
   "keywords": [],
@@ -16,9 +16,11 @@
     "electron-packager": "^14.2.0",
     "electron-prompt": "^1.5.0",
     "electron-reload": "^1.5.0",
+    "electron-sudo": "^4.0.12",
+    "rangeslider.js": "^2.3.3",
     "shelljs": "^0.8.3",
     "sudo-js": "^1.0.2",
-    "sudo-prompt": "^9.1.1"
+    "sudo-prompt": "^9.2.1"
   },
   "devDependencies": {
     "electron": "^9.4.0"
