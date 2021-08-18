@@ -11,7 +11,7 @@ StartLimitBurst=0
 [Service]
 Type=oneshot
 Restart=on-failure
-ExecStart=sudo /bin/bash -c 'echo $1 > /sys/class/power_supply/BAT1/charge_control_end_threshold'
+ExecStart=sudo /bin/bash -c 'insmod /usr/bin/faustus.ko let_it_burn=1 && echo $1 > /sys/class/power_supply/BAT1/charge_control_end_threshold'
 
 [Install]
 WantedBy=multi-user.target" > battery-manager.service
