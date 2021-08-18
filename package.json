@@ -1,11 +1,12 @@
 {
   "name": "tufcontrol-electron",
+  "displayName": "TUF-Control",
   "version": "1.0.0",
-  "description": "TUF Keyboard And Fan Mode Controller Based On Faustus Mod",
+  "description": "TUF Keyboard, Battery Manager And Fan Mode Controller Based On Faustus Mod",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . tufcontrol-electron --platform linux --arch x64 --out dist/"
+    "build": "electron-packager . tufcontrol-electron --platform linux --arch x64 --overwrite --out dist/"
   },
   "keywords": [],
   "author": "iCodeLife <mithunsmenon@gmail.com>",

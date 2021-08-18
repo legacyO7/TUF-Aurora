@@ -59,14 +59,7 @@ cd ..
 npm install
 sudo npm install electron-packager -g
 npm run-script build
-npm install -g electron-installer-debian
+sudo npm install -g electron-installer-debian
 electron-installer-debian --src dist/tufcontrol-electron-linux-x64/ --dest dist/installers/ --arch amd64
-cd dist/installers/
-sudo dpkg -i tufcontrol-electron_1.0.0_amd64.deb
+sudo dpkg -i dist/installers/tufcontrol-electron_1.0.0_amd64.deb
 tufcontrol-electron
-
-
-
-
-
-
