@@ -1,11 +1,19 @@
 # TUF-Control
 A Keyboard Lighting, Battery Manager And Fan Mode Controller 🎛 GUI App For <a href="https://github.com/hackbnw/faustus">hackbnw/faustus</a> Driver Module For ASUS TUF Gaming Series Laptops💻
 
+## Automated installation
+<ol>
+  <li><code>git clone https://github.com/legacyO7/TUF-Controll-FA706.git</code></li>
+  <li><code>cd TUF-Controll-FA706/</code></li>
+  <li><code>chmod +x setup.sh</code></li>
+  <li><code>./setup.sh</code></li>
+</ol>
+
 ## How to compile .deb package
 <ol>
   <li><code>sudo apt-get install nodejs npm</code></li>
-  <li><code>git clone https://github.com/icodelifee/TUF-Control.git</code></li>
-  <li><code>cd TUF-Control/</code></li>
+  <li><code>git clone https://github.com/legacyO7/TUF-Controll-FA706.git</code></li>
+  <li><code>cd TUF-Controll-FA706/</code></li>
   <li><code>npm install</code></li>
   <li><code>sudo npm install electron-packager -g</code></li>
   <li><code>npm run-script build</code></li>
