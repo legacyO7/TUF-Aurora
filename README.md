@@ -17,7 +17,7 @@ A Keyboard Lighting, Battery Manager And Fan Mode Controller 🎛 GUI App For <a
   <li><code>npm install</code></li>
   <li><code>sudo npm install electron-packager -g</code></li>
   <li><code>npm run-script build</code></li>
-  <li><code>npm install -g electron-installer-debian</code></li>
+  <li><code>sudo npm install -g electron-installer-debian</code></li>
   <li><code>electron-installer-debian --src dist/tufcontrol-electron-linux-x64/ --dest dist/installers/ --arch amd64</code></li>
   <li><code>cd dist/installers/</code></li>
   <li><code>sudo dpkg -i tufcontrol-electron_1.0.0_amd64.deb</code></li>

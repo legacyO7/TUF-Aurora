@@ -10,6 +10,7 @@ function createWindow() {
 			nodeIntegration: true,
 		},
 		resizable: false,
+		title:"TUF-Control"
 	});
 
 	// and load the index.html of the app.
