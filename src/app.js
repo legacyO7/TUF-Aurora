@@ -15,8 +15,7 @@ permsHandler();
 
 var sudo = require('sudo-prompt');
 var options = {
-  name: 'TUF-Control',
-  icns: '/Applications/Electron.app/Contents/Resources/Electron.icns', // (optional)
+  name: 'TUFController',
 };
 
 pickr.on('save', (color, instance) => {
