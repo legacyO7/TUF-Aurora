@@ -81,7 +81,7 @@ const changeFanMode = (selector, backgroundColor, gradient, mode) => {
 
 var rangeslider = document.getElementById("batterymanager-input");
 var output = document.getElementById("charge");
-output.innerHTML = shell.exec('cat /sys/class/power_supply/BAT1/charge_control_end_threshold');
+output.innerHTML = shell.exec(`cat ${paths.batterymanager}`);
 
 rangeslider.oninput = function() {
   output.innerHTML = this.value
