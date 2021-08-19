@@ -2,7 +2,7 @@
 
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 
-sudo apt install dkms openssl install nodejs npm -y
+sudo apt install dkms openssl nodejs npm -y
 
 git clone https://github.com/hackbnw/faustus.git
 
@@ -32,7 +32,7 @@ sudo mv signing_key.pem $signingfileloc
 
 fi
 
-echo "blacklist asus_wmi
+sudo echo "blacklist asus_wmi
       blacklist asus_nb_wmi" > /etc/modprobe.d/faustus.conf
 
 sudo rmmod asus_nb_wmi
@@ -45,13 +45,14 @@ sudo modprobe wmi
 sudo modprobe video
 sudo insmod ./src/faustus.ko let_it_burn=1
 
-make dkms
+sudo make dkms
 sudo modprobe faustus
 
 sudo make onboot
 sudo ./set_rgb.sh
 
 sudo mv ./src/faustus.ko /usr/bin/
+
 make clean
 
 cd ..
@@ -62,4 +63,10 @@ npm run-script build
 sudo npm install -g electron-installer-debian
 electron-installer-debian --src dist/tufcontrol-electron-linux-x64/ --dest dist/installers/ --arch amd64
 sudo dpkg -i dist/installers/tufcontrol-electron_1.0.0_amd64.deb
-tufcontrol-electron
+if [ -d "/sys/devices/platform/faustus/" ]; then
+   echo Success
+   tufcontrol-electron
+else
+    echo Naah bruh. Things didnt go as planned. Please proceed manually
+fi
+
