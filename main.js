@@ -5,12 +5,12 @@ function createWindow() {
 	// Create the browser window.
 	let win = new BrowserWindow({
 		width: 995,
-		height: 800,
+		height: 650,
 		webPreferences: {
 			nodeIntegration: true,
 		},
 		resizable: false,
-		title:"TUF-Control"
+		title:"TUF-Control FA706"
 	});
 
 	// and load the index.html of the app.

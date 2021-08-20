@@ -5,5 +5,8 @@ module.exports = {
 	brightness: '/sys/devices/platform/faustus/leds/asus::kbd_backlight/brightness',
     rgb: '/sys/devices/platform/faustus/kbbl/*',
     kblMode: '/sys/devices/platform/faustus/kbbl/kbbl_mode',
-    batterymanager:'/sys/class/power_supply/BAT1/charge_control_end_threshold'
+    batterymanager:'/sys/class/power_supply/BAT1/charge_control_end_threshold',
+    path_red:'/sys/devices/platform/faustus/kbbl/kbbl_red',
+    path_green:'/sys/devices/platform/faustus/kbbl/kbbl_green',
+    path_blue:'/sys/devices/platform/faustus/kbbl/kbbl_blue',
 };
