@@ -7,39 +7,19 @@
 		<link rel="stylesheet" type="text/css" href="app.css" />
 		<link rel="stylesheet" type="text/css" href="assets/nano.min.css" />
 
-		<title>TUF Control</title>
+		<title>TUF Control FA706</title>
 	</head>
 	<body>
+		<h4 id="debugger"></h4>
 		<h1 class="appHeader">TUF Control</h1>
 		<div class="container">
-			<div class="fan-settings">
-				<h3>Fan Mode</h3>
-				<div class="card-deck">
-					<!-- <div class="btn"> -->
-					<div class="card btn btn-fix" id="normal" style="width: 10rem; height: 8rem;">
-						<div class="card-body">
-							<h5 class="card-title" id="normal-title">NORMAL</h5>
-						</div>
-					</div>
-					<!-- </div> -->
-					<div class="card btn btn-fix" id="boost" style="width: 18rem; height: 8rem;">
-						<div class="card-body">
-							<h5 class="card-title" id="boost-title">BOOST</h5>
-						</div>
-					</div>
-					<div class="card btn btn-fix" id="silent" style="width: 18rem; height: 8rem;">
-						<div class="card-body">
-							<h5 class="card-title" id="silent-title">SILENT</h5>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="battery-manager" >
 				<h3>Battery Manager</h3>
 				<div class="row" style="justify-content: space-between;">
 					<div class="row">
 						<h4>Set battery charge limit :&nbsp;</h4>
 						<h4 id="charge"></h4>
+						<h4>%</h4>
 					</div>
 					<div>
 						<div class="card btn btn-fix" id="applylimit" style="width: 5rem; height: 2rem;">
@@ -52,10 +32,10 @@
 				</div>
 					<input id="batterymanager-input" class="sliderRange"
 					type="range"
-					min="10"                    // default 0
-					max="100"                  // default 100
-					step="5"                   // default 1
-					value="60"                 // default min + (max-min)/2
+					min="10"                 
+					max="100"              
+					step="5"                 
+					value="60"           
 					style="width:100%;margin-left: 5px;margin-right: 5px;"
 				>	   <output></output>			
 		
