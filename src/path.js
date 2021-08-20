@@ -9,4 +9,5 @@ module.exports = {
     path_red:'/sys/devices/platform/faustus/kbbl/kbbl_red',
     path_green:'/sys/devices/platform/faustus/kbbl/kbbl_green',
     path_blue:'/sys/devices/platform/faustus/kbbl/kbbl_blue',
+    speed:'/sys/devices/platform/faustus/kbbl/kbbl_speed'
 };
