@@ -1,10 +1,10 @@
 const shell = require('shelljs');
 const paths = require('./path');
 const permsHandler = require('./utils/permshandler');
+const init = require('./utils/init');
 const pickr = require('./components/picker');
+var fs = require('fs');
 shell.config.execPath = shell.which('node').toString();
-
-
 
 var debug = document.getElementById("debugger");
 
@@ -15,20 +15,19 @@ $(document).ready(function (e) {
 });
 
 permsHandler();
+init();
+
+
+var rangeslider = document.getElementById("batterymanager-input");
+var output = document.getElementById("charge");
+output.innerHTML = shell.exec(`cat ${paths.batterymanager}`);
 
 var sudo = require('sudo-prompt');
 var options = {
   name: 'TUFController',
 };
 
-
-document.getElementById(parseInt(shell.exec(`cat ${paths.brightness}`)),10).checked=true
-document.getElementById(4+parseInt(shell.exec(`cat ${paths.speed}`)),10).checked=true
-document.getElementById(7+parseInt(shell.exec(`cat ${paths.kblMode}`)),10).checked=true
-
-
 $('input:radio').on('click', function (e) {
-
 
 	if (e.target.name === 'brightness'){
 		// check if the button is of keyboard brightness
@@ -72,11 +71,6 @@ const disableOther = () => {
 	$('#normal-title,#boost-title,#silent-title').css('color', 'black');
 };
 
-
-
-var rangeslider = document.getElementById("batterymanager-input");
-var output = document.getElementById("charge");
-output.innerHTML = shell.exec(`cat ${paths.batterymanager}`);
 
 rangeslider.oninput = function() {
   output.innerHTML = this.value
