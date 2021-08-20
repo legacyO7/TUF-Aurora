@@ -1,12 +1,10 @@
 const fs = require('fs');
 const paths = require('../path');
-const sudoPrompt = require('./sudoprompt');
 
-// check for read or write perms in module directory and 
-// request for sudo perms if it doesnt have perms
+// check for faustus modules and load the configs on startup
 
 const initialize = () => {
-	if(!fs.existsSync(`${paths.kModule}`)){
+	if(fs.existsSync(`${paths.kModule}`)){
         document.getElementById('content').style.display = 'block'
         document.getElementById('blockuser').style.display = 'none'
     }
