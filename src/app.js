@@ -6,9 +6,9 @@ shell.config.execPath = shell.which('node').toString();
 
 
 
+var debug = document.getElementById("debugger");
 
 // TODO
-// Read and update the current config on startup
 // Handle two type of fan
 $(document).ready(function (e) {
 	$('#btn-speed').prop('disabled', true);
@@ -22,22 +22,34 @@ var options = {
 };
 
 
+document.getElementById(parseInt(shell.exec(`cat ${paths.brightness}`)),10).checked=true
+document.getElementById(4+parseInt(shell.exec(`cat ${paths.speed}`)),10).checked=true
+document.getElementById(7+parseInt(shell.exec(`cat ${paths.kblMode}`)),10).checked=true
+
 
 $('input:radio').on('click', function (e) {
-	if (e.target.name === 'mode') {
-		// If the button clicked is of keyboard mode
 
-		// if button clicked is static or strobing then disable speed
-		// because it doesnt support speed
-		if (e.currentTarget.id === '1' || e.currentTarget.id === '2') $('#btn-speed').prop('disabled', false);
-		else $('#btn-speed').prop('disabled', true);
-		shell.exec('bash ' + __dirname + '/shell/mode.sh ' + e.currentTarget.id);
-	} else if (e.target.name === 'speed' && $('btn-speed').attr('disabled') === false)
-		// check if clicked button is of keyboard speed
-		shell.exec('bash ' + __dirname + '/shell/speed.sh ' + e.currentTarget.id);
-	else if (e.target.name === 'brightness')
+
+	if (e.target.name === 'brightness'){
 		// check if the button is of keyboard brightness
 		shell.exec(`echo "${e.currentTarget.id}" > ${paths.brightness}`);
+		changeFanMode('#silent', '#a4508b', 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)', '2');
+	}
+
+	else if (e.target.name === 'speed' ){
+		// check if clicked button is of keyboard speed		
+		$('#btn-speed').prop('disabled', false);
+		shell.exec('bash ' + __dirname + '/shell/speed.sh ' + (e.currentTarget.id-4));
+	}
+
+	else if (e.target.name === 'mode') {
+		if (e.currentTarget.id === '8' || e.currentTarget.id === '9') 
+		$('#btn-speed').prop('disabled', false);
+		else 
+		$('#btn-speed').prop('disabled', true);
+		shell.exec('bash ' + __dirname + '/shell/mode.sh ' + (e.currentTarget.id-7));
+	} 
+	 
 });
 
 $('#normal').click(() => {
@@ -60,19 +72,7 @@ const disableOther = () => {
 	$('#normal-title,#boost-title,#silent-title').css('color', 'black');
 };
 
-const changeFanMode = (selector, backgroundColor, gradient, mode) => {
-	const bodyCSS = {
-		'background-color': backgroundColor,
-		background: gradient,
-		'background-repeat': 'no-repeat',
-		'background-attachment': 'fixed',
-		transition: 'color 2s',
-	};
-	$('body').css(bodyCSS);
-	$(selector).css('background-color', 'black');
-	$(`${selector}-title`).css('color', 'white');
-	shell.exec(`echo "${mode}" > ${paths.fanModeTTP}`);
-};
+
 
 var rangeslider = document.getElementById("batterymanager-input");
 var output = document.getElementById("charge");

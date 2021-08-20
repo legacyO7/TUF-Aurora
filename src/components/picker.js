@@ -3,7 +3,6 @@ const paths = require('../path');
 const shell = require('shelljs');
 shell.config.execPath = shell.which('node').toString();
 
-var debug = document.getElementById("debugger");
 var colorcode="#123456"
 async function getColor(path){
 	
@@ -19,6 +18,7 @@ async function getColor(path){
 }
  async function setPicker(){
 	  colorcode=('#'+await getColor(paths.path_red)+ await getColor(paths.path_green)+await getColor(paths.path_blue)).replace(/\s+/g, '')
+	//  changebackgroudColor(colorcode)
 	 const picker= pickr.create({
 		el: '.color-picker',
 		theme: 'nano', 
@@ -47,6 +47,7 @@ async function getColor(path){
 	
 		try {
 			const splitHex = `${color.toHEXA()[0]} ${color.toHEXA()[1]} ${color.toHEXA()[2]}`;
+			//changebackgroudColor(color)
 			shell.exec('bash ' + __dirname + `/../shell/color.sh ${splitHex}`);
 		
 		} catch (e) {
@@ -55,6 +56,5 @@ async function getColor(path){
 	});	
 	
 }
-
 
 module.exports =setPicker();
