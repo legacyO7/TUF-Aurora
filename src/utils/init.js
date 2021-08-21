@@ -12,8 +12,7 @@ const initialize = () => {
     {
         document.getElementById('content').style.display = 'none'
         document.getElementById('blockuser').style.display = 'block'
-    }
-    
+    }  
     
     
     document.getElementById(parseInt(shell.exec(`cat ${paths.brightness}`)),10).checked=true
