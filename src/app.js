@@ -1,12 +1,13 @@
+
 const shell = require('shelljs');
 const paths = require('./path');
 const permsHandler = require('./utils/permshandler');
 const init = require('./utils/init');
-const pickr = require('./components/picker');
+const setPicker = require('./components/picker');
+const batterymanager = require('./components/batterymanager');
 var fs = require('fs');
-shell.config.execPath = shell.which('node').toString();
+shell.config.execPath = shell.which('node').toString()
 
-var debug = document.getElementById("debugger");
 
 // TODO
 // Handle two type of fan
@@ -16,16 +17,8 @@ $(document).ready(function (e) {
 
 permsHandler();
 init();
-
-
-var rangeslider = document.getElementById("batterymanager-input");
-var output = document.getElementById("charge");
-output.innerHTML = shell.exec(`cat ${paths.batterymanager}`);
-
-var sudo = require('sudo-prompt');
-var options = {
-  name: 'TUFController',
-};
+setPicker();
+batterymanager();
 
 $('input:radio').on('click', function (e) {
 
@@ -70,18 +63,3 @@ const disableOther = () => {
 	$('#normal,#boost,#silent').css('background-color', 'white');
 	$('#normal-title,#boost-title,#silent-title').css('color', 'black');
 };
-
-
-rangeslider.oninput = function() {
-  output.innerHTML = this.value
- 
-}
-
-$('#applylimit').click(() => {
-	sudo.exec('bash ' + __dirname + `/shell/battery-manager.sh ${rangeslider.value}`, options,
-  function(error, stdout, stderr) {
-    if (error) throw error;
-    console.log('stdout: ' + stdout);
-  }
-);
-});
