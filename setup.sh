@@ -4,7 +4,7 @@ signingfileloc="/lib/modules/$(uname -r)/build/certs"
 
 sudo apt install dkms openssl nodejs npm -y
 
-git clone https://github.com/hackbnw/faustus.git
+git clone https://github.com/legacyO7/faustus.git
 
 cd faustus
 
@@ -40,18 +40,14 @@ sudo rmmod asus_wmi
 sudo rmmod faustus
 
 make
-sudo modprobe sparse-keymap
-sudo modprobe wmi
-sudo modprobe video
-sudo insmod ./src/faustus.ko let_it_burn=1
+sudo modprobe sparse-keymap wmi video
+sudo insmod src/faustus.ko
 
 sudo make dkms
 sudo modprobe faustus
 
 sudo make onboot
 sudo ./set_rgb.sh
-
-sudo mv ./src/faustus.ko /usr/bin/
 
 make clean
 
@@ -63,6 +59,7 @@ npm run-script build
 sudo npm install -g electron-installer-debian
 electron-installer-debian --src dist/tufcontrol-electron-linux-x64/ --dest dist/installers/ --arch amd64
 sudo dpkg -i dist/installers/tufcontrol-electron_1.0.0_amd64.deb
+
 if [ -d "/sys/devices/platform/faustus/" ]; then
    echo Success
    tufcontrol-electron
