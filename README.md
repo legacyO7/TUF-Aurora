@@ -5,6 +5,8 @@ This is a fork of the discontinued project [TUF-Control](https://github.com/icod
 
 <img src="https://github.com/legacyO7/TUF-Aurora/raw/master/src/images/ss.png"/> 
 
+<img src="https://github.com/legacyO7/TUF-Controll-FA706/raw/master/images/ss.png"/> 
+
 ## Automated installation
 <ol>
   <li><code>git clone https://github.com/legacyO7/TUF-Aurora.git</code></li>
