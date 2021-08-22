@@ -25,7 +25,6 @@ $('input:radio').on('click', function(e) {
     if (e.target.name === 'brightness') {
         // check if the button is of keyboard brightness
         shell.exec(`echo "${e.currentTarget.id}" > ${paths.brightness}`);
-        changeFanMode('#silent', '#a4508b', 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)', '2');
     } else if (e.target.name === 'speed') {
         // check if clicked button is of keyboard speed		
         $('#btn-speed').prop('disabled', false);
@@ -39,23 +38,3 @@ $('input:radio').on('click', function(e) {
     }
 
 });
-
-$('#normal').click(() => {
-    disableOther();
-    changeFanMode('#normal', '#11998e', 'linear-gradient(to right, #11998e, #38ef7d)', '0');
-});
-
-$('#boost').click(() => {
-    disableOther();
-    changeFanMode('#boost', 'white', 'linear-gradient(45deg, #a73737, #7a2828)', '1');
-});
-
-$('#silent').click(() => {
-    disableOther();
-    changeFanMode('#silent', '#a4508b', 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)', '2');
-});
-
-const disableOther = () => {
-    $('#normal,#boost,#silent').css('background-color', 'white');
-    $('#normal-title,#boost-title,#silent-title').css('color', 'black');
-};
