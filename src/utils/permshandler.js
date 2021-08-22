@@ -7,14 +7,15 @@ const sudoPrompt = require('./sudoprompt');
 
 const permsHandler = async() => {
 
-    if (await getPermission(paths.kModule))
-        sudoPrompt();
+    await getPermission(paths.kModule);
 
 };
 
 const getPermission = async(path) => {
     return new Promise(function(resolve, reject) {
         fs.access(path, fs.constants.R_OK | fs.constants.W_OK, (err) => {
+            if (err != null)
+                sudoPrompt(path)
             resolve(err != null)
 
         });
