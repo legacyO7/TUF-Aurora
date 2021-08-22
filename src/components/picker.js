@@ -8,7 +8,7 @@ var debug = document.getElementById("debugger");
 var colorcode = "#123456"
 
 const setPicker = async() => {
-    colorcode = ('#' + await getdefvalue(paths.path_red) + await getdefvalue(paths.path_green) + await getdefvalue(paths.path_blue)).replace(/\s+/g, '')
+    colorcode = ('#' + await getdefvalue(paths.path_red) + await getdefvalue(paths.path_green) + await getdefvalue(paths.path_blue))
         //  changebackgroudColor(colorcode)
     const picker = pickr.create({
         el: '.color-picker',
