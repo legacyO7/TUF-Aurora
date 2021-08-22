@@ -1,6 +1,8 @@
 # TUF-Control
 A Keyboard Lighting, Battery Manager And Fan Mode Controller 🎛 GUI App For <a href="https://github.com/hackbnw/faustus">hackbnw/faustus</a> Driver Module For ASUS TUF Gaming Series Laptops💻
 
+<img src="https://github.com/legacyO7/TUF-Controll-FA706/raw/master/images/ss.png"/> 
+
 ## Automated installation
 <ol>
   <li><code>git clone https://github.com/legacyO7/TUF-Controll-FA706.git</code></li>

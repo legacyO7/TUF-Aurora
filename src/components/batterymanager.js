@@ -28,7 +28,6 @@ const batterymanager = async() => {
 
         sudo.exec('bash ' + __dirname + `/../shell/battery-manager.sh ${rangeslider.value}`, options,
             function(error, stdout, stderr) {
-                document.getElementById("debugger").innerText = "error"
                 if (error) throw error;
                 console.log('stdout: ' + stdout);
             }
