@@ -13,9 +13,9 @@ const initialize = () => {
     }
 
 
-    document.getElementById(parseInt(shell.exec(`cat ${paths.brightness}`)), 10).checked = true
-    document.getElementById(4 + parseInt(shell.exec(`cat ${paths.speed}`)), 10).checked = true
-    document.getElementById(7 + parseInt(shell.exec(`cat ${paths.kblMode}`)), 10).checked = true
+    document.getElementById(parseInt(shell.exec(`cat ${paths.brightness}`)), 0).checked = true
+    document.getElementById(4 + parseInt(shell.exec(`cat ${paths.speed}`)), 0).checked = true
+    document.getElementById(7 + parseInt(shell.exec(`cat ${paths.kblMode}`)), 0).checked = true
 
 };
 
