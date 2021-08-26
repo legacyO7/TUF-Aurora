@@ -1,159 +1,242 @@
 @font-face {
-	font-family: 'Montserrat';
-	src: url(./assets/fonts/Montserrat-Regular.ttf) format('truetype');
-	font-weight: 400;
+    font-family: 'Montserrat';
+    src: url(./assets/fonts/Montserrat-Regular.ttf) format('truetype');
+    font-weight: 400;
 }
 
 @font-face {
-	font-family: 'Montserrat';
-	src: url(./assets/fonts/Montserrat-SemiBold.ttf) format('truetype');
-	font-weight: 600;
+    font-family: 'Montserrat';
+    src: url(./assets/fonts/Montserrat-SemiBold.ttf) format('truetype');
+    font-weight: 600;
 }
 
 @font-face {
-	font-family: 'Montserrat';
-	src: url(./assets/fonts/Montserrat-Bold.ttf) format('truetype');
-	font-weight: 700;
+    font-family: 'Montserrat';
+    src: url(./assets/fonts/Montserrat-Bold.ttf) format('truetype');
+    font-weight: 700;
 }
 
 * {
-	font-family: 'Montserrat', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
 }
+
 *:focus {
-	outline: 0 !important;
+    outline: 0 !important;
 }
+
+@keyframes fly {
+    100% {
+        transform: rotate(1turn) translate(100px) rotate(-1turn);
+    }
+}
+
+@keyframes flyPlus {
+    100% {
+        transform: rotate(-1turn) translate(100px) rotate(1turn);
+    }
+}
+
 body {
-	background: linear-gradient(45deg, #11998e, #38ef7d);
-	/* background-repeat: none; */
-	color: white;
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	transition: background 2s;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+    background-image: radial-gradient(at top left, #266EF6, transparent), radial-gradient(at top right, #266EF6, transparent), radial-gradient(at bottom left, #AF3C43, transparent), radial-gradient(at bottom right, #266EF6, transparent);
+    /* background-repeat: none; */
+    color: white;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    transition: background 2s;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
 }
+
+.wrapper {
+    width: 400px;
+    height: 400px;
+    background: #FFD300;
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.base {
+    position: absolute;
+    opacity: 0.7;
+    filter: blur(60px);
+}
+
+.one {
+    border-radius: 100%;
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    left: 300px;
+    opacity: 0.6;
+    top: -300px;
+    z-index: 3;
+    animation: fly 12s linear infinite;
+    transform: rotate(0) translate(80px) rotate(0);
+}
+
+.two {
+    border-radius: 80%;
+    width: 400px;
+    height: 400px;
+    background-color: #BF00FF;
+    bottom: 30px;
+    left: -80px;
+    z-index: -1;
+    animation: fly 6s linear infinite;
+    transform: rotate() translate(10px) rotate(0);
+}
+
+.three {
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    bottom: 80px;
+    right: 100px;
+    background-color: #BF00FF;
+    animation: flyPlus 8s linear infinite;
+    transform: rotate(0) translate(100px) rotate(0);
+}
+
 .appHeader {
-	font-weight: 700;
-	font-size: 50px;
-	padding-left: 19px;
-	padding-top: 10px;
-	cursor: pointer;
+    font-weight: 700;
+    font-size: 50px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.smallHeader {
+    width: 70px;
+    height: 50px;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container {
-	padding-left: 0px;
-	margin: 20px;
+    padding-left: 0px;
+    margin: 20px;
 }
-.fan-settings > h3 {
-	padding-bottom: 10px;
-	font-weight: 600;
+
+.fan-settings>h3 {
+    padding-bottom: 10px;
+    font-weight: 600;
 }
+
 .card {
-	transition: transform 0.2s;
+    transition: transform 0.2s;
 }
 
 .card:hover {
-	transform: scale(1.1);
+    transform: scale(1.1);
 }
+
 .card-title {
-	padding-top: 15px;
+    padding-top: 15px;
 }
 
 .sliderRange {
-	-webkit-appearance: none;
-	width: 100%;
-	height: 25px;
-	background: #d3d3d3;
-	outline:#04AA6D;
-	opacity: 0.7;
-	-webkit-transition: .2s;
-	transition: opacity .2s;
-  }
-  
-  .sliderRange:hover {
-	opacity: 1;
-  }
-  
-  .sliderRange::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	width: 25px;
-	height: 25px;
-	background: #04AA6D;
-	cursor: pointer;
-  }
-  
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: #04AA6D;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.sliderRange:hover {
+    opacity: 1;
+}
+
+.sliderRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
 
 .btn-fix {
-	padding: 0;
-	border: none;
-	outline: none;
-	white-space: normal;
-	color: black;
-	text-align: left;
+    padding: 0;
+    border: none;
+    outline: none;
+    white-space: normal;
+    color: black;
+    text-align: left;
 }
 
 .btn-title {
-	padding-top: 4px;
-	padding-left: 5px;
-	font-weight: 600;
-	
+    padding-top: 4px;
+    padding-left: 5px;
+    font-weight: 600;
 }
 
 .card-title {
-	color: black;
-	font-weight: 600;
-	text-align: center;
-	font-size: 50px;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+    font-size: 50px;
 }
 
-.rgb-settings > h3 {
-	padding-top: 20px;
-	font-weight: 600;
-}
-.rgb-settings > h4 {
-	font-size: 20px;
-	padding-left: 9px;
-	padding-top: 20px;
-}
-.battery-manager > h3{
-	padding-top: 20px;
-	font-weight: 600;	
-}
-.battery-manager > .row{
-	font-size: 20px;
-	padding-left: 40px;
-	padding-right: 20px;
-	padding-bottom: 20px;
-	padding-top: 20px;
+.rgb-settings>h3 {
+    padding-top: 20px;
+    font-weight: 600;
 }
 
-.battery-manager > h4{
-	font-size: 20px;
+.rgb-settings>h4 {
+    font-size: 20px;
+    padding-left: 9px;
+    padding-top: 20px;
 }
-.col > h4 {
-	font-size: 20px;
-	padding-top: 20px;
-	padding-left: 10px;
+
+.battery-manager>h3 {
+    padding-top: 20px;
+    font-weight: 600;
+}
+
+.battery-manager>.row {
+    font-size: 20px;
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.battery-manager>h4 {
+    font-size: 20px;
+}
+
+.col>h4 {
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 10px;
 }
 
 .brightness {
-	padding-left: 15px;
-	padding-top: 5px;
+    padding-left: 15px;
+    padding-top: 5px;
 }
+
 #ex1Slider .slider-selection {
-	background: #bababa;
+    background: #bababa;
 }
 
 .btn-group {
-	padding-top: 15px;
-	padding-left: 10px;
+    padding-top: 15px;
+    padding-left: 10px;
 }
-.cp > h4 {
-	font-size: 20px;
-	padding-top: -10px;
+
+.cp>h4 {
+    font-size: 20px;
+    padding-top: -10px;
 }
+
 .cp {
-	padding-left: 10px;
-	padding-top: 13px;
+    padding-left: 10px;
+    padding-top: 13px;
 }
