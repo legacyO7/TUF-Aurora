@@ -1,29 +1,41 @@
 {
-  "name": "tufcontrol-electron",
-  "displayName": "TUF-Control",
-  "version": "1.0.0",
-  "description": "TUF Keyboard, Battery Manager And Fan Mode Controller Based On Faustus Mod",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "build": "electron-packager . tufcontrol-electron --platform linux --arch x64 --overwrite --out dist/"
-  },
-  "keywords": [],
-  "author": "iCodeLife <mithunsmenon@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@simonwep/pickr": "^1.5.0",
-    "bootstrap-slider": "^10.6.2",
-    "electron-packager": "^14.2.0",
-    "electron-prompt": "^1.5.0",
-    "electron-reload": "^1.5.0",
-    "electron-sudo": "^4.0.12",
-    "rangeslider.js": "^2.3.3",
-    "shelljs": "^0.8.3",
-    "sudo-js": "^1.0.2",
-    "sudo-prompt": "^9.2.1"
-  },
-  "devDependencies": {
-    "electron": "^9.4.0"
-  }
+    "name": "tuf-aurora",
+    "displayName": "TUF Aurora",
+    "version": "1.0.0",
+    "description": "TUF Keyboard & Battery Manager Based On Faustus Mod",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-packager . tuf-aurora --platform linux --arch x64 --overwrite --out dist/",
+        "deb64": "electron-installer-debian --src dist/tuf-aurora-linux-x64/ --dest dist/installers/ --arch amd64"
+    },
+    "keywords": [],
+    "author": "legacy07 anitsebastian802@gmail.com",
+    "license": "MIT",
+    "dependencies": {
+        "@simonwep/pickr": "^1.5.0",
+        "bootstrap-slider": "^10.6.2",
+        "electron-packager": "^14.2.0",
+        "electron-prompt": "^1.5.0",
+        "electron-reload": "^1.5.0",
+        "electron-sudo": "^4.0.12",
+        "rangeslider.js": "^2.3.3",
+        "shelljs": "^0.8.3",
+        "sudo-js": "^1.0.2",
+        "sudo-prompt": "^9.2.1"
+    },
+    "devDependencies": {
+        "electron": "^9.4.0"
+    },
+    "dest": "dist/installers/",
+    "icon": "./images/appicon.ico",
+    "categories": [
+        "Utility"
+    ],
+    "lintianOverrides": [
+        "changelog-file-missing-in-native-package"
+    ],
+    "appId": "com.legacy07.tuf-aurora",
+    "productName": "TUF Aurora",
+    "copyright": "Copyright © 2021 legacy07"
 }

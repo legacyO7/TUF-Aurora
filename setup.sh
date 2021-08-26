@@ -63,12 +63,12 @@ npm install
 sudo npm install electron-packager -g
 npm run-script build
 sudo npm install -g electron-installer-debian
-electron-installer-debian --src dist/tufcontrol-electron-linux-x64/ --dest dist/installers/ --arch amd64
-sudo dpkg -i dist/installers/tufcontrol-electron_1.0.0_amd64.deb
+npm run-script deb64
+sudo dpkg -i dist/installers/tuf-aurora_1.0.0_amd64.deb
 
 if [ -d "$faustusDir" ]; then
    echo Success
-   tufcontrol-electron
+   tuf-aurora
 else
     echo Naah bruh. Things didnt go as planned. Install faustus module manually
 fi
