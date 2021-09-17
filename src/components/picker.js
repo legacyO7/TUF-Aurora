@@ -4,7 +4,6 @@ const shell = require('shelljs');
 shell.config.execPath = shell.which('node').toString();
 const getdefvalue = require('../utils/getdefaults')
 
-var debug = document.getElementById("debugger");
 var colorcode = "#123456"
 
 const setPicker = async() => {
