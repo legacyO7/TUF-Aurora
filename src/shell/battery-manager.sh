@@ -12,7 +12,7 @@ StartLimitBurst=0
 [Service]
 Type=oneshot
 Restart=on-failure
-ExecStart=sudo /bin/bash -c 'echo $1 > /sys/class/power_supply/BAT1/charge_control_end_threshold'
+ExecStart= /bin/bash -c 'echo $1 > /sys/class/power_supply/BAT1/charge_control_end_threshold'
 
 [Install]
 WantedBy=multi-user.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target" > tuf-controller.service
