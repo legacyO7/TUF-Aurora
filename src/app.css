@@ -77,18 +77,6 @@ body {
     transform: rotate(0) translate(80px) rotate(0);
 }
 
-.two {
-    border-radius: 80%;
-    width: 400px;
-    height: 400px;
-    background-color: #BF00FF;
-    bottom: 30px;
-    left: -80px;
-    z-index: -1;
-    animation: fly 6s linear infinite;
-    transform: rotate() translate(10px) rotate(0);
-}
-
 .three {
     border-radius: 100%;
     width: 150px;

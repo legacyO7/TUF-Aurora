@@ -9,7 +9,6 @@ var colorcode = "#123456"
 
 const setPicker = async() => {
     colorcode = ('#' + await getdefvalue(paths.path_red) + await getdefvalue(paths.path_green) + await getdefvalue(paths.path_blue))
-        //  changebackgroudColor(colorcode)
     const picker = pickr.create({
         el: '.color-picker',
         theme: 'nano',
@@ -38,7 +37,6 @@ const setPicker = async() => {
 
         try {
             const splitHex = `${color.toHEXA()[0]} ${color.toHEXA()[1]} ${color.toHEXA()[2]}`;
-            //changebackgroudColor(color)
             shell.exec('bash ' + __dirname + `/../shell/color.sh ${splitHex}`);
 
         } catch (e) {
