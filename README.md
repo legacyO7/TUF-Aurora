@@ -18,10 +18,9 @@ This is a fork of the discontinued project [TUF-Control](https://github.com/icod
   <li><code>git clone https://github.com/legacyO7/TUF-Aurora.git</code></li>
   <li><code>cd TUF-Aurora/</code></li>
   <li><code>npm install</code></li>
-  <li><code>sudo npm install electron-packager -g</code></li>
+  <li><code>sudo npm install electron-packager electron-installer-debian -g</code></li>
+  <li><code>npm run clean-build</code></li>
   <li><code>npm run-script build</code></li>
-  <li><code>sudo npm install -g electron-installer-debian</code></li>
-  <li><code>electron-installer-debian --src dist/tuf-aurora-linux-x64/ --dest dist/installers/ --arch amd64</code></li>
-  <li><code>cd dist/installers/</code></li>
-  <li><code>sudo dpkg -i tuf-aurora_1.0.0_amd64.deb</code></li>
+  <li><code>npm run-script deb64</code></li>
+  <li><code>sudo dpkg -i dist/installers/tuf-aurora_*.deb</code></li>
 </ol>
