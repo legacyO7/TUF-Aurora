@@ -106,7 +106,6 @@ body {
 
 .container {
     padding-left: 0px;
-    margin: 20px;
 }
 
 .fan-settings>h3 {
@@ -127,12 +126,10 @@ body {
 }
 
 .sliderRange {
+    --SliderColor: hsla(73, 100%, 50%, 0.856);
     -webkit-appearance: none;
     width: 100%;
     height: 25px;
-    background: #d3d3d3;
-    outline: #04AA6D;
-    opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
@@ -145,7 +142,7 @@ body {
     -webkit-appearance: none;
     width: 25px;
     height: 25px;
-    background: #04AA6D;
+    background-color: rebeccapurple;
     cursor: pointer;
 }
 
@@ -183,7 +180,6 @@ body {
 }
 
 .battery-manager>h3 {
-    padding-top: 20px;
     font-weight: 600;
 }
 
@@ -221,10 +217,72 @@ body {
 
 .cp>h4 {
     font-size: 20px;
-    padding-top: -10px;
+    padding: 10px;
+    width: 75%;
+    text-align: center;
+}
+
+.row {
+    justify-content: space-between;
 }
 
 .cp {
-    padding-left: 10px;
-    padding-top: 13px;
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+.col {
+    align-items: flex-end;
+    align-self: flex-end;
+    align-content: flex-end;
+}
+
+.reinvented-color-wheel {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    align-content: center;
+    border-radius: 50%
+}
+
+.reinvented-color-wheel--hue-wheel {
+    border-radius: 50%
+}
+
+.reinvented-color-wheel--sv-space {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto
+}
+
+.reinvented-color-wheel--hue-handle,
+.reinvented-color-wheel--sv-handle {
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #000 inset
+}
+
+.reinvented-color-wheel--hue-handle {
+    pointer-events: none
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
