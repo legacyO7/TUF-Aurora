@@ -8,6 +8,9 @@ const sudoPrompt = require('./sudoprompt');
 async function permsHandler() {
 
     await getPermission(paths.kModule);
+    await getPermission(paths.path_blue);
+    await getPermission(paths.path_green);
+    await getPermission(paths.path_red);
 
 }
 
