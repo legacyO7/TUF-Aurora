@@ -1,22 +1,13 @@
 const shell = require('shelljs');
 const paths = require('./path');
 const permsHandler = require('./utils/permshandler');
-const init = require('./utils/init');
-const setPicker = require('./components/picker');
+const { initialize, setkeyboardsettings } = require('./utils/init');
+const { setPicker } = require('./components/picker');
 const batterymanager = require('./components/batterymanager');
-var fs = require('fs');
-shell.config.execPath = shell.which('node').toString()
-
-
-// TODO
-// Handle two type of fan
-$(document).ready(function(e) {
-    $('#btn-speed').prop('disabled', true);
-});
-
+var fs = ('fs');
 
 permsHandler();
-init();
+initialize();
 setPicker();
 batterymanager();
 
@@ -25,6 +16,9 @@ $('input:radio').on('click', function(e) {
     if (e.target.name === 'brightness') {
         // check if the button is of keyboard brightness
         shell.exec(`echo "${e.currentTarget.id}" > ${paths.brightness}`);
+
+        setkeyboardsettings(e.currentTarget.id)
+
     } else if (e.target.name === 'speed') {
         // check if clicked button is of keyboard speed		
         $('#btn-speed').prop('disabled', false);
