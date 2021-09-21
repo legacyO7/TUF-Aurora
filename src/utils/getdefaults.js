@@ -1,9 +1,9 @@
-const shell = require('shelljs');
-shell.config.execPath = shell.which('node').toString();
+const { config, which, exec } = require('shelljs');
+config.execPath = which('node').toString();
 
 const getdefvalue = async(path) => {
     return await new Promise((resolve, reject) => {
-        shell.exec(`cat ${path}`, function(
+        exec(`cat ${path}`, function(
             error,
             stdout,
             stderr

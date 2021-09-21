@@ -1,48 +1,38 @@
-const pickr = require('@simonwep/pickr');
 const paths = require('../path');
 const shell = require('shelljs');
 shell.config.execPath = shell.which('node').toString();
 const getdefvalue = require('../utils/getdefaults')
+const ReinventedColorWheel = require("reinvented-color-wheel");
 
 var colorcode = "#123456"
 
 const setPicker = async() => {
     colorcode = ('#' + await getdefvalue(paths.path_red) + await getdefvalue(paths.path_green) + await getdefvalue(paths.path_blue))
-    const picker = pickr.create({
-        el: '.color-picker',
-        theme: 'nano',
-        padding: 8,
-        default: colorcode,
-        swatches: [
-            '#ED1000',
-            '#FF0057',
-            '#2BFF01',
-            '#FF00E5',
-            '#005CFF',
-        ],
-        components: {
-            hue: true,
-            preview: true,
-            interaction: {
-                hex: true,
-                input: true,
-                clear: true,
-                save: true,
-            },
+
+    const colorPicker = new ReinventedColorWheel({
+        hex: colorcode,
+        appendTo: document.getElementById('picker'),
+        wheelDiameter: 200,
+        wheelThickness: 20,
+        handleDiameter: 16,
+        wheelReflectsSaturation: true,
+        onChange: function(color) {
+            saveColor(color)
         },
-    })
 
-    picker.on('save', (color, instance) => {
+    });
 
+    const saveColor = (color) => {
         try {
-            const splitHex = `${color.toHEXA()[0]} ${color.toHEXA()[1]} ${color.toHEXA()[2]}`;
+            const splitHex = `${color.hex.substr(1,2)} ${color.hex.substr(3,2)} ${color.hex.substr(5,2)}`;
+            colorcode = color.hex
             shell.exec('bash ' + __dirname + `/../shell/color.sh ${splitHex}`);
 
         } catch (e) {
             console.log('Error:', e.stack);
         }
-    });
+    }
 
 }
 
-module.exports = setPicker;
+module.exports = { setPicker, colorcode };
