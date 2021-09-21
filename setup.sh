@@ -60,11 +60,11 @@ else
 fi
 
 npm install
-sudo npm install electron-packager -g
+sudo npm install electron-packager electron-installer-debian -g
+npm run clean-build
 npm run-script build
-sudo npm install -g electron-installer-debian
 npm run-script deb64
-sudo dpkg -i dist/installers/tuf-aurora_1.0.0_amd64.deb
+sudo dpkg -i dist/installers/tuf-aurora_*.deb
 
 if [ -d "$faustusDir" ]; then
    echo Success

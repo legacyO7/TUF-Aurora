@@ -1,10 +1,12 @@
-const fs = require('fs');
-const paths = require('../path');
+const { existsSync } = require('fs');
+const { kModule, brightness, speed, kblMode } = require('../path');
+const shell = require('shelljs');
+const { ipcRenderer } = require('electron')
 
 // check for faustus modules and load the configs on startup
 
 const initialize = () => {
-    if (fs.existsSync(`${paths.kModule}`)) {
+    if (existsSync(`${kModule}`)) {
         document.getElementById('content').style.display = 'block'
         document.getElementById('blockuser').style.display = 'none'
     } else {
@@ -13,10 +15,26 @@ const initialize = () => {
     }
 
 
-    document.getElementById(parseInt(shell.exec(`cat ${paths.brightness}`)), 0).checked = true
-    document.getElementById(4 + parseInt(shell.exec(`cat ${paths.speed}`)), 0).checked = true
-    document.getElementById(7 + parseInt(shell.exec(`cat ${paths.kblMode}`)), 0).checked = true
+    document.getElementById(parseInt(shell.exec(`cat ${brightness}`)), 0).checked = true
+    document.getElementById(4 + parseInt(shell.exec(`cat ${speed}`)), 0).checked = true
+    document.getElementById(7 + parseInt(shell.exec(`cat ${kblMode}`)), 0).checked = true
+
+    setkeyboardsettings(parseInt(shell.exec(`cat ${brightness}`)))
+
 
 };
 
-module.exports = initialize;
+const setkeyboardsettings = (input) => {
+    if (input == 0)
+        state = 'none'
+    else
+        state = 'block'
+
+    document.getElementById('speed').style.display = state
+    document.getElementById('effects').style.display = state
+    document.getElementById('colorpicker').style.display = state
+
+    ipcRenderer.send('resize', [995, state == 'block' ? 700 : 500])
+}
+
+module.exports = { initialize, setkeyboardsettings };
