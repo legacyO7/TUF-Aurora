@@ -3,7 +3,7 @@
 
 This is a fork of the discontinued project [TUF-Control](https://github.com/icodelifee/TUF-Control.git) focused on Battery Manager and Keyboard Lighting <a href="https://github.com/hackbnw/faustus">hackbnw/faustus</a> Driver Module For ASUS TUF Gaming Series Laptops
 
-<img src="https://github.com/legacyO7/TUF-Aurora/raw/master/images/ss.png"/> 
+<img src="https://github.com/legacyO7/TUF-Aurora/raw/master/src/images/ss.png"/> 
 
 ## Automated installation
 <ol>
