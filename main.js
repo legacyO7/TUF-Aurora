@@ -1,11 +1,12 @@
 const {
     app,
     BrowserWindow,
+    dialog,
     ipcMain
 } = require("electron");
 require('electron-reload')(__dirname);
 const path = require('path');
-const iconPath = path.join(__dirname, "images", "appicon.png");
+const iconPath = path.join(__dirname, "src", "images", "appicon.png");
 require('@electron/remote/main').initialize()
 
 
@@ -30,11 +31,25 @@ function createWindow() {
     // and load the index.html of the app.
     win.loadFile('./src/index.html');
 
+    console.log(app.getVersion())
+
     ipcMain.on('resize', (event, arg) => {
         win.setResizable(true);
         win.setSize(arg[0], arg[1])
         win.setResizable(false);
     })
+
+    ipcMain.on('appversion', function(event, arg) {
+        event.sender.send('appversion-response', [app.getVersion()]);
+    });
+
+    ipcMain.on('showdialog', async function(event, arg) {
+        event.sender.send('dialog-response', [await dialog.showMessageBox(null, arg[0], (response, checkboxChecked) => {
+
+        }), ]);
+
+    });
+
 }
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 

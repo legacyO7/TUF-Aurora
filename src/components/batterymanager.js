@@ -3,7 +3,7 @@ const paths = require('../path');
 var sudo = require('sudo-prompt');
 
 var options = {
-    name: 'TUFController',
+    name: 'Aurora',
 };
 
 var rangeslider = document.getElementById("batterymanager-input");
