@@ -23,6 +23,7 @@
         "electron-prompt": "^1.7.0",
         "electron-reload": "^2.0.0-alpha.1",
         "electron-sudo": "^4.0.12",
+        "open-term": "^2.0.4",
         "rangeslider.js": "^2.3.3",
         "reinvented-color-wheel": "^0.4.0",
         "sudo-js": "^1.0.2",
