@@ -320,6 +320,7 @@ body {
     color: blueviolet;
     padding-top: 4px;
     padding-right: 3px;
+    padding-left: 3px;
     font-size: 16px;
     cursor: pointer;
 }

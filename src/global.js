@@ -6,7 +6,9 @@ var options = {
 
 var branch = "beta"
 
-const showdialog = async(name, options) => {
+var loc_aurora = "~/.tuf-aurora"
+
+const ipcaction = async(name, options) => {
     //  console.log(name)
     ipcRenderer.send(name, options);
     return await new Promise((resolve, reject) => {
@@ -17,4 +19,4 @@ const showdialog = async(name, options) => {
 }
 
 
-module.exports = { options, showdialog, branch }
+module.exports = { options, ipcaction, branch, loc_aurora }

@@ -1,0 +1,510 @@
+1.1.1
+(node:15219) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[15258:0923/215703.322147:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[15219:0923/215703.393113:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+[1:0100/000000.824298:ERROR:zygote_main_linux.cc(212)] Failed sending zygote boot message: Broken pipe (32)
+1.1.1
+(node:22398) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[22438:0923/221207.645035:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[22398:0923/221207.706220:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:22663) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[22831:0923/221208.756965:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[22663:0923/221208.835342:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1.1.1
+(node:22882) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+00
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[23048:0923/221209.341092:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+1
+[22882:0923/221209.421882:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+00
+60
+00
+00
+1
+1.1.1
+(node:23099) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[23341:0923/221210.025406:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+00
+60
+00
+[23060:0923/221210.066257:ERROR:simple_index_file_posix.cc(61)] Could not get file info for /home/legacy07/.config/TUF Aurora/Cache/todelete_4de04c6bb6e80284_0_1
+00
+[23099:0923/221210.100529:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1.1.1
+(node:23369) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[23564:0923/221210.598539:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[23369:0923/221210.680885:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+00
+60
+00
+00
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:23828) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[23999:0923/221212.169526:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[23828:0923/221212.250305:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1.1.1
+(node:24077) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+00
+[24271:0923/221212.697481:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[24077:0923/221212.746120:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+1
+00
+60
+00
+00
+00
+1.1.1
+(node:24355) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+00
+60
+[24579:0923/221213.511954:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+00
+00
+[24355:0923/221213.645827:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:24928) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[25014:0923/221215.776445:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[24928:0923/221215.870931:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+1.1.1
+(node:25069) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+00
+1
+00
+60
+00
+00
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[25286:0923/221216.782308:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[25069:0923/221216.929610:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+1.1.1
+(node:25417) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[25637:0923/221217.689314:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+00
+60
+00
+00
+[25417:0923/221217.803608:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:26056) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[26112:0923/221220.973125:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[26056:0923/221221.008711:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+[1:0100/000000.936637:ERROR:zygote_main_linux.cc(212)] Failed sending zygote boot message: Broken pipe (32)
+1.1.1
+(node:26700) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[26742:0923/221255.572862:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[26700:0923/221255.631627:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:26972) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[27111:0923/221256.863547:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[26972:0923/221256.911909:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1.1.1
+(node:27149) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[27357:0923/221257.467832:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+00
+60
+[27149:0923/221257.550789:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+00
+00
+1.1.1
+(node:27407) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+00
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[27609:0923/221258.069583:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[27407:0923/221258.123854:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+60
+00
+00
+1
+00
+1.1.1
+(node:27698) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+00
+60
+[27943:0923/221258.847617:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+00
+00
+[27698:0923/221258.935547:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+1.1.1
+(node:28030) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+00
+[28226:0923/221259.625949:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+60
+00
+00
+[28030:0923/221259.681775:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:28576) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[28669:0923/221301.687735:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[28576:0923/221301.732540:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+1.1.1
+(node:28725) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[28942:0923/221302.484855:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[28725:0923/221302.521799:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1.1.1
+(node:29028) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+60
+00
+00
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[29158:0923/221303.247854:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[29028:0923/221303.285025:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:29685) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[29725:0923/221325.452134:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[29685:0923/221325.493418:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+00
+00
+1
+00
+60
+00
+00
+1.1.1
+(node:30079) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[30191:0923/221327.396171:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[30079:0923/221327.437380:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1.1.1
+(node:30210) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[30374:0923/221328.026754:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[30210:0923/221328.090484:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+00
+60
+00
+00
+1
+00
+00
+1.1.1
+(node:30500) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+1
+00
+60
+00
+00
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[30749:0923/221328.958613:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[30500:0923/221329.017331:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+1
+1.1.1
+(node:30805) electron: The default of nativeWindowOpen is deprecated and will be changing from false to true in Electron 15.  See https://github.com/electron/electron/issues/28511 for more information.
+(Use `tuf-aurora --trace-warnings ...` to show where the warning was created)
+00
+00
+1
+mesa: for the --simplifycfg-sink-common option: may only occur zero or one times!
+mesa: for the --global-isel-abort option: may only occur zero or one times!
+mesa: for the --amdgpu-atomic-optimizations option: may only occur zero or one times!
+mesa: for the --structurizecfg-skip-uniform-regions option: may only occur zero or one times!
+[31023:0923/221329.671909:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
+[30805:0923/221329.772463:INFO:CONSOLE(895)] "Uncaught Error: Cannot find module '../utils/getdefaults'
+Require stack:
+- /usr/lib/tuf-aurora/resources/app/src/index.html", source: internal/modules/cjs/loader.js (895)
+00
+60
+00
+00
+1
+00
+00
+1
+00
+60
+00
