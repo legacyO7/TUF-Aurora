@@ -4,6 +4,8 @@ var options = {
     name: 'Aurora',
 };
 
+var branch = "beta"
+
 const showdialog = async(name, options) => {
     //  console.log(name)
     ipcRenderer.send(name, options);
@@ -15,4 +17,4 @@ const showdialog = async(name, options) => {
 }
 
 
-module.exports = { options, showdialog }
+module.exports = { options, showdialog, branch }
