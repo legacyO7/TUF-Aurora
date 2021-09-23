@@ -68,7 +68,10 @@ sudo dpkg -i dist/installers/tuf-aurora_*.deb
 
 if [ -d "$faustusDir" ]; then
    echo Success
-   tuf-aurora &disown &exit
+   nohup tuf-aurora &  disown 
+   echo launched aurora
+   ps aux | grep sleep
+   exit 
 else
     echo Naah bruh. Things didnt go as planned. Install faustus module manually
 fi
