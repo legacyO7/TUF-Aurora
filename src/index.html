@@ -14,9 +14,17 @@
 </head>
 
 <body>
-    <h4 id="debugger"></h4>
     <img class="smallHeader" src="../src/images/appicon.png"></img>
-    <h1 class="appHeader">Aurora</h1>
+    <div class="row" style="justify-content: center;align-items: baseline;">
+        <h1 class="appHeader" id=appheader>Aurora</h1>
+        <p id="uptext"></p>
+    </div>
+
+
+    <ul class="progress" style="position: relative; visibility: hidden;" id="upbar">
+        <div class="progress-bar progress-bar-striped indeterminate"></div>
+    </ul>
+
     <div class="container" id="blockuser" style="display:none">
         <h3>Naah Bruh!</h3>
         <h4>Install Faustus Modules to continue</h4>
@@ -43,7 +51,7 @@
 
         </div>
         <div class="rgb-settings">
-            <h3>Keyboard Setting</h3>
+            <h3>Keyboard Settings</h3>
             <div class="row">
                 <div class="maincol">
                     <div class="col">
@@ -110,15 +118,18 @@
                 <div class="modal-content">
                     <h4 class="modaltext">Update Available</h4>
                     <p class="modaltext" id="update-text"></p>
+                    <div style="overflow-y: scroll; overflow-x: hidden;max-height:300px;">
+                        <p class="modaltext" id="changelog"></p>
+                    </div>
                     <div class="row" style="justify-content:space-around;">
                         <div class="card btn btn-fix modal-btn" id="btn-update">
                             <div class="btn-card-body">
-                                <h5 class="btn-title" id="normal-title">Yes, Please</h5>
+                                <h6 class="btn-title" id="normal-title">Yes, Please</h6>
                             </div>
                         </div>
                         <div class="card btn btn-fix modal-btn" id="btn-close">
                             <div class="btn-card-body">
-                                <h5 class="btn-title" id="normal-title">God! NO</h5>
+                                <h6 class="btn-title" id="normal-title">God! NO</h6>
                             </div>
                         </div>
                     </div>
