@@ -44,7 +44,7 @@ function createWindow() {
     });
 
     ipcMain.on('showdialog', async function(event, arg) {
-        event.sender.send('dialog-response', [await dialog.showMessageBox(null, arg[0], (response, checkboxChecked) => {
+        event.sender.send('showdialog-response', [await dialog.showMessageBox(null, arg[0], (response, checkboxChecked) => {
 
         }), ]);
 

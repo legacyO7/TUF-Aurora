@@ -34,7 +34,7 @@ const setkeyboardsettings = (input) => {
     document.getElementById('effects').style.display = state
     document.getElementById('colorpicker').style.display = state
 
-    ipcRenderer.send('resize', [995, state == 'block' ? 700 : 500])
+    ipcRenderer.send('resize', [995, state == 'block' ? 710 : 500])
 }
 
 module.exports = { initialize, setkeyboardsettings };
