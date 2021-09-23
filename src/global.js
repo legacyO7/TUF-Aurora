@@ -18,5 +18,11 @@ const ipcaction = async(name, options) => {
     });
 }
 
+function getchangelog() {
+    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then(async(r) => {
+        document.getElementById('changelog').innerText = await r.text()
+    })
+}
 
-module.exports = { options, ipcaction, branch, loc_aurora }
+
+module.exports = { options, ipcaction, branch, loc_aurora, getchangelog }

@@ -29,9 +29,7 @@
         "shelljs": "^0.8.4",
         "sudo-js": "^1.0.2",
         "sudo-prompt": "^9.2.1",
-        "terminal-tab": "^0.0.8",
-        "untildify": "^4.0.0",
-        "z-terminal": "^1.0.4"
+        "untildify": "^4.0.0"
     },
     "keywords": [
         "aurora",
@@ -46,15 +44,13 @@
     "devDependencies": {
         "electron": "^14.0.1"
     },
-    "extraResources": [
-        {
-            "from": "./images/",
-            "to": "images",
-            "filter": [
-                "**/*"
-            ]
-        }
-    ],
+    "extraResources": [{
+        "from": "./images/",
+        "to": "images",
+        "filter": [
+            "**/*"
+        ]
+    }],
     "build": {
         "appId": "com.legacy07.aurora",
         "files": [
