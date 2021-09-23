@@ -1,14 +1,12 @@
 const { ipcRenderer, dialog } = require('electron')
 const { VTexec } = require('open-term')
-const { branch, ipcaction, loc_aurora } = require('../global')
+const { branch, ipcaction, loc_aurora, getchangelog } = require('../global')
 const shell = require('async-shelljs');
 
 async function getlatestvesrion(url) {
     let response = await fetch(url);
     let data = await response.json();
-    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then(async(r) => {
-        document.getElementById('changelog').innerText = await r.text()
-    })
+    getchangelog();
     return data.version;
 }
 

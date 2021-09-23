@@ -2,7 +2,7 @@ const { existsSync } = require('fs');
 const { kModule, brightness, speed, kblMode } = require('../path');
 const shell = require('shelljs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, branch } = require('../global')
+const { loc_aurora, ipcaction, branch, getchangelog } = require('../global')
 const untildify = require('untildify');
 const { VTexec } = require('open-term')
 
@@ -29,9 +29,7 @@ const initialize = async() => {
             modal.style.display = "block";
             document.getElementById('modal-header').innerText = `Updated to v${args[0]}`
             document.getElementById('update-text').innerText = "What's new"
-            fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then(async(r) => {
-                document.getElementById('changelog').innerText = await r.text()
-            })
+            getchangelog();
             button.innerText = " okay "
             button.onclick = function() {
                 modal.style.display = "none";
