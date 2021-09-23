@@ -1,10 +1,7 @@
 const getdefvalue = require('../utils/getdefaults');
 const paths = require('../path');
 var sudo = require('sudo-prompt');
-
-var options = {
-    name: 'TUFController',
-};
+const { options } = require('../global');
 
 var rangeslider = document.getElementById("batterymanager-input");
 

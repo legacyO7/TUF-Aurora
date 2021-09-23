@@ -1,0 +1,18 @@
+ChangeLog : 
+~~~~~~~~~
+
+v1.1.1
+minor bug fixes
+update checker
+
+v1.1.0
+Bump to electron 14.0.1
+Updated modules
+Refactor code
+Color wheel picker
+
+
+v1.0.0
+Bring up TUF-Aurora
+FA706IH compatibilty
+Redesigned UI
