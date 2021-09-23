@@ -4,7 +4,7 @@ var options = {
     name: 'Aurora',
 };
 
-var branch = "beta"
+var branch = "master"
 
 var loc_aurora = "~/.tuf-aurora"
 
