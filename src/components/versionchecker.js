@@ -1,6 +1,4 @@
 const { ipcRenderer, dialog } = require('electron')
-var sudo = require('sudo-prompt');
-var { exec } = require('child_process');
 const { VTexec } = require('open-term')
 const { branch, showdialog: ipcaction } = require('../global')
 const shell = require('async-shelljs');
@@ -10,10 +8,8 @@ var loc_aurora = "~/.tuf-aurora"
 async function getlatestvesrion(url) {
     let response = await fetch(url);
     let data = await response.json();
-    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then((r) => {
-        r.text().then((d) => {
-            document.getElementById('changelog').innerText = d
-        })
+    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then(async(r) => {
+        document.getElementById('changelog').innerText = await r.text()
     })
     return data.version;
 }
@@ -34,7 +30,7 @@ const updatechecker = async() => {
         latestvesrion = await getlatestvesrion("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/package.json")
 
 
-        if (currentversion == latestvesrion)
+        if (currentversion != latestvesrion)
             console.log("everything up to date")
         else {
             modal.style.display = "block";
@@ -56,7 +52,7 @@ const updatechecker = async() => {
 
         function doUpdate() {
 
-            shell.asyncExec('mkdir -p ~/.tuf-aurora && cd ~/.tuf-aurora && rm -rf temp && mkdir temp && cd temp && git clone --depth=1 https://github.com/legacyO7/TUF-Aurora.git').then(val => {
+            shell.asyncExec(`mkdir -p ${loc_aurora} && cd ${loc_aurora} && rm -rf temp && mkdir temp && cd temp && git clone --depth=1 https://github.com/legacyO7/TUF-Aurora.git`).then(val => {
 
                 const dialogoptions = {
                     type: 'question',
@@ -70,7 +66,7 @@ const updatechecker = async() => {
 
                 ipcaction('showdialog', [dialogoptions]).then((args) => {
                     if (args[0].response == 0) {
-                        VTexec('~/.tuf-aurora/temp/TUF-Aurora/setup.sh')
+                        VTexec(`${loc_aurora}/temp/TUF-Aurora/setup.sh`)
                         window.close()
                     } else {
                         document.getElementById('appheader').style.marginLeft = "30px"
