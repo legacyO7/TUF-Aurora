@@ -4,11 +4,11 @@ const permsHandler = require('./utils/permshandler');
 const { initialize, setkeyboardsettings } = require('./utils/init');
 const { setPicker } = require('./components/picker');
 const batterymanager = require('./components/batterymanager');
-const updatechecker = require('./components/versionchecker')
+const { updatechecker } = require('./components/versionchecker')
 var fs = ('fs');
 
 permsHandler();
-initialize();
+await initialize();
 updatechecker();
 setPicker();
 batterymanager();
