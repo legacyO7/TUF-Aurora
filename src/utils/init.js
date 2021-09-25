@@ -2,9 +2,9 @@ const { existsSync } = require('fs');
 const { kModule, brightness, speed, kblMode } = require('../path');
 const shell = require('shelljs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, branch, getchangelog } = require('../global')
-const untildify = require('untildify');
+const { loc_aurora, ipcaction, branch, getchangelog, changeDefauts } = require('../global')
 const { VTexec } = require('open-term')
+const { fetchData } = require('../components/versionchecker')
 
 // check for faustus modules and load the configs on startup
 
@@ -18,7 +18,7 @@ const initialize = async() => {
     }
 
     await ipcaction('appversion').then(async(args) => {
-        if (existsSync(`${untildify(loc_aurora)}/v${args[0]}`)) {
+        if (existsSync(`${loc_aurora}/v${args[0]}`)) {
 
 
         } else {
@@ -38,8 +38,7 @@ const initialize = async() => {
         }
     })
 
-
-    if (existsSync(`${untildify(loc_aurora)}/.update`)) {
+    if (existsSync(`${loc_aurora}/.update`)) {
 
         const dialogoptions = {
             type: 'question',
@@ -65,7 +64,6 @@ const initialize = async() => {
     document.getElementById(7 + parseInt(shell.exec(`cat ${kblMode}`)), 0).checked = true
 
     setkeyboardsettings(parseInt(shell.exec(`cat ${brightness}`)))
-
 
 };
 

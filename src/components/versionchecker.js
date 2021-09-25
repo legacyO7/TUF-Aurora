@@ -1,17 +1,11 @@
 const { ipcRenderer, dialog } = require('electron')
 const { VTexec } = require('open-term')
-const { branch, ipcaction, loc_aurora, getchangelog } = require('../global')
+const { branch, loc_aurora, getchangelog, ipcaction, fetchData } = require('../global')
 const shell = require('async-shelljs');
 
-async function getlatestvesrion(url) {
-    let response = await fetch(url);
-    let data = await response.json();
-    getchangelog();
-    return data.version;
-}
 
 const updatechecker = async() => {
-    var currentversion, latestvesrion
+    var currentversion, latestversion
 
     await ipcaction('appversion').then((args) => {
         currentversion = args[0]
@@ -23,13 +17,13 @@ const updatechecker = async() => {
 
         var modal = document.getElementById("update-modal");
 
-        latestvesrion = await getlatestvesrion("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/package.json")
+        latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/package.json", true)).version
 
-        if (currentversion == latestvesrion)
+        if (currentversion == latestversion)
             console.log("everything up to date")
         else {
             modal.style.display = "block";
-            document.getElementById('update-text').innerText = `v${latestvesrion}`
+            document.getElementById('update-text').innerText = `v${latestversion}`
         }
 
         document.getElementById("btn-close").onclick = function() {
@@ -80,4 +74,4 @@ const updatechecker = async() => {
 }
 
 
-module.exports = updatechecker
+module.exports = { updatechecker }
