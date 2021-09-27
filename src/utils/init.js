@@ -9,9 +9,15 @@ const paths = require('../path');
 // check for faustus modules and load the configs on startup
 
 const initialize = async() => {
+    var boot_status = document.getElementById('boot_status');
+    boot_status.innerText = shell.exec('mokutil --sb-state')
+    if (boot_status.innerText.includes('enabled'))
+        boot_status.style.color = 'greenyellow'
+
     if (existsSync(`${kModule}`)) {
         document.getElementById('content').style.display = 'block'
         document.getElementById('blockuser').style.display = 'none'
+
 
         if (!existsSync(`${loc_aurora}/config`)) {
             await saveDef()
