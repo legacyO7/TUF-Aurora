@@ -7,7 +7,7 @@ var options = {
     name: 'Aurora',
 };
 
-var branch = "beta"
+var branch = "master"
 
 var loc_aurora = untildify("~/.tuf-aurora");
 
@@ -66,5 +66,5 @@ const setkeyboardsettings = (input) => {
     ipcRenderer.send('resize', [995, state == 'block' ? 710 : 500])
 }
 
-
 module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings }
+
