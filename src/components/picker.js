@@ -8,7 +8,7 @@ const { saveDef, loc_aurora, fetchData } = require('../global');
 const setPicker = async() => {
 
     const colorPicker = new ReinventedColorWheel({
-        hex: (await fetchData(`${loc_aurora}/settings`, false)).color,
+        hex: (await fetchData(`${loc_aurora}/config`, false)).color,
         appendTo: document.getElementById('picker'),
         wheelDiameter: 200,
         wheelThickness: 20,
