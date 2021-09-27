@@ -36,14 +36,35 @@ function getchangelog() {
 
 async function saveDef(key, value) {
     var defaults
-    if (existsSync(`${loc_aurora}/settings`)) {
-        defaults = await fetchData(`${loc_aurora}/settings`, false)
+    if (existsSync(`${loc_aurora}/config`)) {
+        defaults = await fetchData(`${loc_aurora}/config`, false)
     } else
-        defaults = { color: "#000000", k_effects: "0", k_speed: "0", k_brightness: "0" }
+        defaults = { color: "#000000", mode: "7", speed: "4", brightness: "0" }
 
-    defaults[key] = value;
-    shell.exec("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/settings")
+    if (key != undefined)
+        defaults[key] = value.toString();
+    else
+        console.log("initing config")
+
+    shell.exec("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
+}
+
+function iprint(val) {
+    console.log(val)
+}
+
+const setkeyboardsettings = (input) => {
+    if (input == '0')
+        state = 'none'
+    else
+        state = 'block'
+
+    document.getElementById('speed').style.display = state
+    document.getElementById('effects').style.display = state
+    document.getElementById('colorpicker').style.display = state
+
+    ipcRenderer.send('resize', [995, state == 'block' ? 710 : 500])
 }
 
 
-module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData }
+module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings }
