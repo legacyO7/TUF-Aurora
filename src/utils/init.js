@@ -12,9 +12,27 @@ const initialize = async() => {
     if (existsSync(`${kModule}`)) {
         document.getElementById('content').style.display = 'block'
         document.getElementById('blockuser').style.display = 'none'
+
+        if (!existsSync(`${loc_aurora}/config`)) {
+            await saveDef()
+        }
+
+        await fetchData(`${loc_aurora}/config`, false).then((value) => {
+            document.getElementById(`k_${value.brightness}`).checked = true
+            document.getElementById(`k_${value.speed}`).checked = true
+            document.getElementById(`k_${value.mode}`).checked = true
+
+            setkeyboardsettings(value.brightness)
+
+            shell.exec(`echo "${value.brightness}" > ${paths.brightness}`);
+            shell.exec('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
+            shell.exec('bash ' + __dirname + '/../shell/mode.sh ' + (parseInt(value.mode) - 7));
+        })
+
     } else {
         document.getElementById('content').style.display = 'none'
         document.getElementById('blockuser').style.display = 'block'
+        ipcRenderer.send('resize', [720, 260])
     }
 
     await ipcaction('appversion').then(async(args) => {
@@ -27,7 +45,7 @@ const initialize = async() => {
             var modal = document.getElementById("update-modal");
             var button = document.getElementById("btn-close");
             modal.style.display = "block";
-            document.getElementById('modal-header').innerText = `Updated to v${args[0]}`
+            document.getElementById('modal-header').innerText = `v${args[0]}`
             document.getElementById('update-text').innerText = "What's new"
             getchangelog();
             button.innerText = " okay "
@@ -58,25 +76,6 @@ const initialize = async() => {
             }
         })
     }
-
-
-    if (!existsSync(`${loc_aurora}/config`)) {
-        await saveDef()
-    }
-
-    //iprint(`k_${(await fetchData(`${loc_aurora}/config`, false)).speed}`)
-
-    await fetchData(`${loc_aurora}/config`, false).then((value) => {
-        document.getElementById(`k_${value.brightness}`).checked = true
-        document.getElementById(`k_${value.speed}`).checked = true
-        document.getElementById(`k_${value.mode}`).checked = true
-
-        setkeyboardsettings(value.brightness)
-
-        shell.exec(`echo "${value.brightness}" > ${paths.brightness}`);
-        shell.exec('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
-        shell.exec('bash ' + __dirname + '/../shell/mode.sh ' + (parseInt(value.mode) - 7));
-    })
 
 };
 
