@@ -3,7 +3,7 @@
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
 
-sudo apt install dkms openssl nodejs npm -y
+sudo apt install dkms openssl nodejs npm mokutil -y
 
 if [ -d "$faustusDir" ]; then
    echo faustus module found
