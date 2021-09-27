@@ -2,9 +2,9 @@ const { existsSync } = require('fs');
 const { kModule, brightness, speed, kblMode } = require('../path');
 const shell = require('shelljs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, branch, getchangelog, changeDefauts } = require('../global')
-const { VTexec } = require('open-term')
-const { fetchData } = require('../components/versionchecker')
+const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings } = require('../global')
+const { VTexec } = require('open-term');
+const paths = require('../path');
 
 // check for faustus modules and load the configs on startup
 
@@ -59,25 +59,25 @@ const initialize = async() => {
         })
     }
 
-    document.getElementById(parseInt(shell.exec(`cat ${brightness}`)), 0).checked = true
-    document.getElementById(4 + parseInt(shell.exec(`cat ${speed}`)), 0).checked = true
-    document.getElementById(7 + parseInt(shell.exec(`cat ${kblMode}`)), 0).checked = true
 
-    setkeyboardsettings(parseInt(shell.exec(`cat ${brightness}`)))
+    if (!existsSync(`${loc_aurora}/config`)) {
+        await saveDef()
+    }
+
+    //iprint(`k_${(await fetchData(`${loc_aurora}/config`, false)).speed}`)
+
+    await fetchData(`${loc_aurora}/config`, false).then((value) => {
+        document.getElementById(`k_${value.brightness}`).checked = true
+        document.getElementById(`k_${value.speed}`).checked = true
+        document.getElementById(`k_${value.mode}`).checked = true
+
+        setkeyboardsettings(value.brightness)
+
+        shell.exec(`echo "${value.brightness}" > ${paths.brightness}`);
+        shell.exec('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
+        shell.exec('bash ' + __dirname + '/../shell/mode.sh ' + (parseInt(value.mode) - 7));
+    })
 
 };
 
-const setkeyboardsettings = (input) => {
-    if (input == 0)
-        state = 'none'
-    else
-        state = 'block'
-
-    document.getElementById('speed').style.display = state
-    document.getElementById('effects').style.display = state
-    document.getElementById('colorpicker').style.display = state
-
-    ipcRenderer.send('resize', [995, state == 'block' ? 710 : 500])
-}
-
-module.exports = { initialize, setkeyboardsettings };
+module.exports = { initialize };
