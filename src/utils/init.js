@@ -3,8 +3,8 @@ const { kModule, brightness, speed, kblMode } = require('../path');
 const shell = require('shelljs');
 const { ipcRenderer } = require('electron')
 const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings } = require('../global')
-const { VTexec } = require('open-term');
 const paths = require('../path');
+const { finalizeUpdate } = require('../components/updatecentre');
 
 // check for faustus modules and load the configs on startup
 
@@ -76,9 +76,7 @@ const initialize = async() => {
 
         ipcaction('showdialog', [dialogoptions]).then((args) => {
             if (args[0].response == 0) {
-                VTexec(`${loc_aurora}/temp/TUF-Aurora/setup.sh`)
-                shell.exec(`rm ${loc_aurora}/.update`)
-                window.close()
+                finalizeUpdate()
             }
         })
     }
