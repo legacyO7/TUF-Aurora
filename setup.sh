@@ -3,7 +3,7 @@
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
 
-sudo apt install dkms openssl nodejs npm mokutil xterm-y
+sudo apt install dkms openssl nodejs npm mokutil xterm -y
 
 if [ -d "$faustusDir" ]; then
    echo faustus module found
@@ -73,6 +73,6 @@ if [ -d "$faustusDir" ]; then
    ps aux | grep sleep
    exit 
 else
-    echo Naah bruh. Things didnt go as planned. Install faustus module manually
+    echo Nah bruh. Things didnt go as planned. Install faustus module manually
 fi
 
