@@ -1,18 +1,24 @@
 const { existsSync } = require('fs');
-const { kModule, brightness, speed, kblMode } = require('../path');
-const shell = require('shelljs');
+const { kModule } = require('../path');
+const shell = require('async-shelljs');
 const { ipcRenderer } = require('electron')
 const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings } = require('../global')
 const paths = require('../path');
 const { finalizeUpdate } = require('../components/updatecentre');
+const { getPermission } = require('./permshandler');
 
 // check for faustus modules and load the configs on startup
 
 async function initialize() {
+
     var boot_status = document.getElementById('boot_status');
-    boot_status.innerText = shell.exec('mokutil --sb-state');
-    if (boot_status.innerText.includes('enabled'))
+    boot_status.innerText = "SecureBoot disabled";
+    if (shell.exec('mokutil --sb-state').includes('enabled')) {
         boot_status.style.color = 'greenyellow';
+        boot_status.innerText = " SecureBoot enabled"
+    }
+
+
 
     if (existsSync(`${kModule}`)) {
         document.getElementById('content').style.display = 'block';
@@ -23,10 +29,16 @@ async function initialize() {
             await saveDef();
         }
 
-        await fetchData(`${loc_aurora}/config`, false).then((value) => {
-            document.getElementById(`k_${value.brightness}`).checked = true;
-            document.getElementById(`k_${value.speed}`).checked = true;
-            document.getElementById(`k_${value.mode}`).checked = true;
+
+        await getPermission(paths.path_blue);
+        await getPermission(paths.path_green);
+        await getPermission(paths.path_red);
+
+        await fetchData(`${loc_aurora}/config`, false).then(async(value) => {
+
+            document.getElementById(`k_${value.brightness}`).click();
+            document.getElementById(`k_${value.speed}`).click();
+            document.getElementById(`k_${value.mode}`).click();
 
             setkeyboardsettings(value.brightness);
 

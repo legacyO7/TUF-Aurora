@@ -7,7 +7,6 @@ const {
 require('electron-reload')(__dirname);
 const path = require('path');
 const iconPath = path.join(__dirname, "src", "images", "appicon.png");
-require('@electron/remote/main').initialize()
 
 
 function createWindow() {
