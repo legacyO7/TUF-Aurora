@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron');
-const shell = require('shelljs');
+const shell = require('async-shelljs');
 const { existsSync } = require('fs');
 const untildify = require('untildify');
 
@@ -43,8 +43,6 @@ async function saveDef(key, value) {
 
     if (key != undefined)
         defaults[key] = value.toString();
-    else
-        console.log("initing config")
 
     shell.exec("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
 }
@@ -67,4 +65,3 @@ const setkeyboardsettings = (input) => {
 }
 
 module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings }
-
