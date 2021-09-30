@@ -3,7 +3,7 @@
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
 packages_to_install="dkms openssl nodejs npm mokutil xterm"
-dest_file_location="dist/installers/tuf-aurora_*.deb"
+dest_file_location="dist/installers/tuf-aurora_*."
 pkgExt="unknown"
 distro="unknown"
 pm="unknown"
@@ -98,7 +98,7 @@ else
     npm run clean-build
     npm run-script build
     npm run-script ${pkgExt}64
-    sudo $opm -i $dest_file_location
+    sudo $opm -i $dest_file_location$pkgExt
 
     if [ -d "$faustusDir" ]; then
     echo Success
