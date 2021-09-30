@@ -1,4 +1,4 @@
-const shell = require('shelljs');
+const shell = require('async-shelljs');
 const { saveDef, setkeyboardsettings } = require('../global');
 const paths = require('../path');
 var fs = ('fs');
