@@ -1,6 +1,12 @@
 ChangeLog : 
 ~~~~~~~~~
 
+v1.1.2
+rpm support
+Fixed startup settings
+Cleaned up code
+
+
 v1.1.1
 Fixed incorrect settings layout on startup 
 Update center
