@@ -2,7 +2,7 @@ const { existsSync } = require('fs');
 const { kModule } = require('../path');
 const shell = require('async-shelljs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings } = require('../global')
+const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings, branch } = require('../global')
 const paths = require('../path');
 const { finalizeUpdate } = require('../components/updatecentre');
 const { getPermission } = require('./permshandler');
@@ -17,8 +17,6 @@ async function initialize() {
         boot_status.style.color = 'greenyellow';
         boot_status.innerText = " SecureBoot enabled"
     }
-
-
 
     if (existsSync(`${kModule}`)) {
         document.getElementById('content').style.display = 'block';
