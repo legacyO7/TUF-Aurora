@@ -7,7 +7,9 @@ var options = {
     name: 'Aurora',
 };
 
-var branch = "master"
+function branch() {
+    return shell.exec("git rev-parse --abbrev-ref HEAD").toString().trim()
+}
 
 var loc_aurora = untildify("~/.tuf-aurora");
 
