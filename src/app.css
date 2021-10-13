@@ -38,12 +38,12 @@
 
 body {
     background-image: radial-gradient(at top left, #266EF6, transparent), radial-gradient(at top right, #266EF6, transparent), radial-gradient(at bottom left, #AF3C43, transparent), radial-gradient(at bottom right, #266EF6, transparent);
-    /* background-repeat: none; */
+    background-repeat: none;
     color: white;
     height: 100%;
     width: 100%;
     margin: 0;
-    transition: background 2s;
+    transition: transform .2s;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
@@ -335,16 +335,16 @@ body {
 }
 
 input[type="range"] {
-    /* To remove default styles appplied by webkit browsers */
     -webkit-appearance: none;
     width: 2em;
     --SliderColor: hsl(50, 100%, 50%);
+    --SliderHeight: -.5em;
+    --SliderSpread: 10px;
     background: transparent;
     position: relative;
 }
 
 input[type="range"]:focus {
-    /* To remove default (mostly blue) outline appplied by browsers on :focus */
     outline: 0;
 }
 
@@ -356,7 +356,6 @@ input[type="range"]::-webkit-slider-thumb {
     background: var(--SliderColor);
     border-radius: 100%;
     box-shadow: inset .8em .8em 5px -8px rgba(255, 255, 255, .4), inset -.4em -.4em 10px -3px rgba(0, 0, 0, .2), 0.7em 0.5em 7px -0.5em rgba(0, 0, 0, .4);
-    ;
     cursor: pointer;
 }
 
@@ -366,5 +365,5 @@ input[type="range"]::-webkit-slider-runnable-track {
     height: 2.5em;
     padding: 0px 13px 0px 2px;
     border-radius: 0.7em;
-    box-shadow: inset .6em 1em 10px rgba(25, 140, 216, 0.15), inset -.6em -.5em 10px var(--SliderColor);
+    box-shadow: inset -.6em var(--SliderHeight) var(--SliderSpread) var(--SliderColor);
 }
