@@ -1,4 +1,4 @@
-const { config, which, exec } = require('shelljs');
+const { config, which, exec } = require('async-shelljs');;
 config.execPath = which('node').toString();
 
 const getdefvalue = async(path) => {

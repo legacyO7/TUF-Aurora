@@ -1,5 +1,5 @@
 const paths = require('../path');
-const shell = require('shelljs');
+const shell = require('async-shelljs');
 shell.config.execPath = shell.which('node').toString();
 const ReinventedColorWheel = require("reinvented-color-wheel");
 const { saveDef, loc_aurora, fetchData } = require('../global');

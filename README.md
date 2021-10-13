@@ -24,3 +24,16 @@ This is a fork of the discontinued project [TUF-Control](https://github.com/icod
   <li><code>npm run-script deb64</code></li>
   <li><code>sudo dpkg -i dist/installers/tuf-aurora_*.deb</code></li>
 </ol>
+
+## How to compile .rpm package
+<ol>
+  <li><code>sudo yum install nodejs npm</code></li>
+  <li><code>git clone https://github.com/legacyO7/TUF-Aurora.git</code></li>
+  <li><code>cd TUF-Aurora/</code></li>
+  <li><code>npm install</code></li>
+  <li><code>sudo npm install electron-packager electron-installer-redhat -g</code></li>
+  <li><code>npm run clean-build</code></li>
+  <li><code>npm run-script build</code></li>
+  <li><code>npm run-script deb64</code></li>
+  <li><code>sudo rpm -i dist/installers/tuf-aurora_*.rpm</code></li>
+</ol>

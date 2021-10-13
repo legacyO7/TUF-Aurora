@@ -47,6 +47,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
+    user-select: none;
 }
 
 .wrapper {
@@ -126,15 +127,6 @@ body {
     padding-top: 15px;
 }
 
-.sliderRange {
-    --SliderColor: hsla(73, 100%, 50%, 0.856);
-    -webkit-appearance: none;
-    width: 100%;
-    height: 25px;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
 .sliderRange:hover {
     opacity: 1;
 }
@@ -171,14 +163,14 @@ body {
 }
 
 .rgb-settings>h3 {
-    padding-top: 20px;
+    padding-top: 10px;
     font-weight: 600;
 }
 
 .rgb-settings>h4 {
     font-size: 20px;
     padding-left: 9px;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .battery-manager>h3 {
@@ -206,10 +198,6 @@ body {
 .brightness {
     padding-left: 15px;
     padding-top: 5px;
-}
-
-#ex1Slider .slider-selection {
-    background: #bababa;
 }
 
 .btn-group {
@@ -344,4 +332,39 @@ body {
         left: 100%;
         width: 25%;
     }
+}
+
+input[type="range"] {
+    /* To remove default styles appplied by webkit browsers */
+    -webkit-appearance: none;
+    width: 2em;
+    --SliderColor: hsl(50, 100%, 50%);
+    background: transparent;
+    position: relative;
+}
+
+input[type="range"]:focus {
+    /* To remove default (mostly blue) outline appplied by browsers on :focus */
+    outline: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 2em;
+    height: 2em;
+    margin: 5px;
+    background: var(--SliderColor);
+    border-radius: 100%;
+    box-shadow: inset .8em .8em 5px -8px rgba(255, 255, 255, .4), inset -.4em -.4em 10px -3px rgba(0, 0, 0, .2), 0.7em 0.5em 7px -0.5em rgba(0, 0, 0, .4);
+    ;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: transparent;
+    width: 100%;
+    height: 2.5em;
+    padding: 0px 13px 0px 2px;
+    border-radius: 0.7em;
+    box-shadow: inset .6em 1em 10px rgba(25, 140, 216, 0.15), inset -.6em -.5em 10px var(--SliderColor);
 }

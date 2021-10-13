@@ -14,7 +14,13 @@
 </head>
 
 <body>
+    <header style="position: absolute;margin-left: 20px;">
+        <p id="boot_status" style="color:red; font-weight: bolder;font-size: medium;"></p>
+    </header>
+
     <img class="smallHeader" src="../src/images/appicon.png"></img>
+
+
     <div class="row" style="justify-content: center;align-items: baseline;">
         <h1 class="appHeader" id=appheader>Aurora</h1>
         <p id="uptext"></p>
@@ -40,7 +46,7 @@
                     <h4>%</h4>
                 </div>
                 <div>
-                    <div class="card btn btn-fix" id="applylimit" style="width: 5rem; height: 2rem;">
+                    <div class="card btn btn-fix" id="applylimit" style="width: 4.5rem; height: 2rem;">
                         <div class="btn-card-body">
                             <h5 class="btn-title" id="normal-title">Apply</h5>
                         </div>
@@ -48,7 +54,7 @@
 
                 </div>
             </div>
-            <input id="batterymanager-input" class="sliderRange" type="range" min="10" max="100" step="5" value="20" style="width:100%;margin-left: 5px;margin-right: 5px;"> <output></output>
+            <input id="batterymanager-input" class="sliderRange" type="range" min="53" max="100" step="1" value="20" style="width:100%;margin-left: 5px;margin-right: 5px;"> <output></output>
 
         </div>
         <div class="rgb-settings">
@@ -152,7 +158,6 @@
         <script type="text/javascript" src="./assets/bootstrap/js/popper.min.js"></script>
         <script type="text/javascript" src="./assets/pickr.min.js"></script>
         <script type="text/javascript" src="./assets/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./components/batterymanager.js"></script>
         <!-- Insert this line after script imports -->
         <script>
             if (window.module) module = window.module;

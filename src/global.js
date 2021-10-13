@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron');
-const shell = require('shelljs');
+const shell = require('async-shelljs');
 const { existsSync } = require('fs');
 const untildify = require('untildify');
 
@@ -7,7 +7,9 @@ var options = {
     name: 'Aurora',
 };
 
-var branch = "master"
+function branch() {
+    return shell.exec("git rev-parse --abbrev-ref HEAD").toString().trim()
+}
 
 var loc_aurora = untildify("~/.tuf-aurora");
 
@@ -43,8 +45,6 @@ async function saveDef(key, value) {
 
     if (key != undefined)
         defaults[key] = value.toString();
-    else
-        console.log("initing config")
 
     shell.exec("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
 }
@@ -67,4 +67,3 @@ const setkeyboardsettings = (input) => {
 }
 
 module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings }
-
