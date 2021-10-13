@@ -47,6 +47,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
+    user-select: none;
 }
 
 .wrapper {
