@@ -40,8 +40,10 @@ async function saveDef(key, value) {
     var defaults
     if (existsSync(`${loc_aurora}/config`)) {
         defaults = await fetchData(`${loc_aurora}/config`, false)
-    } else
+    } else {
+        shell.exec("mkdir -p " + loc_aurora)
         defaults = { color: "#000000", mode: "7", speed: "4", brightness: "0" }
+    }
 
     if (key != undefined)
         defaults[key] = value.toString();
@@ -66,4 +68,12 @@ const setkeyboardsettings = (input) => {
     ipcRenderer.send('resize', [995, state == 'block' ? 710 : 500])
 }
 
-module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings }
+const disableSpeed = (id) => {
+    let speed = document.getElementById("speed").style
+    if (id === '7' || id === '10')
+        speed.display = "none"
+    else
+        speed.display = "block"
+}
+
+module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings, disableSpeed }
