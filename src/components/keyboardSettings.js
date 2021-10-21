@@ -1,5 +1,5 @@
 const shell = require('async-shelljs');
-const { saveDef, setkeyboardsettings } = require('../global');
+const { saveDef, setkeyboardsettings, disableSpeed } = require('../global');
 const paths = require('../path');
 var fs = ('fs');
 
@@ -19,12 +19,7 @@ function keyboardSettings() {
 }
 
 function writeKeyboardConfig(name, id, offset) {
-    let speed = document.getElementById("speed").style
-    if (id === '7' || id === '10')
-        speed.display = "none"
-    else
-        speed.display = "block"
-
+    disableSpeed(id)
     if (offset == undefined) {
         shell.exec(`echo "${id}" > ${paths.brightness}`);
         setkeyboardsettings(id)
