@@ -7,20 +7,22 @@ const shell = require('async-shelljs');
 async function updateCentre() {
     var currentversion, latestversion;
 
+    let currentbranch = branch()
+
     await ipcaction('appversion').then((args) => {
         currentversion = args[0];
     });
 
     var uptext = document.getElementById("uptext");
     uptext.innerText = "v" + currentversion;
-    if (branch() == "beta")
-        uptext.innerText += '' + branch()
+    if (currentbranch == "beta")
+        uptext.innerText += '' + currentbranch
 
     if (window.navigator.onLine) {
 
         var modal = document.getElementById("update-modal");
 
-        latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch() + "/package.json", true)).version;
+        latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + currentbranch + "/package.json", true)).version;
 
         if (currentversion != latestversion) {
             modal.style.display = "block";
@@ -42,7 +44,7 @@ async function updateCentre() {
 
         function doUpdate() {
 
-            shell.asyncExec(`mkdir -p ${loc_aurora} && cd ${loc_aurora} && rm -rf temp && mkdir temp && cd temp && git clone --depth=1 https://github.com/legacyO7/TUF-Aurora.git -b ${branch()} `).then(val => {
+            shell.asyncExec(`mkdir -p ${loc_aurora} && cd ${loc_aurora} && rm -rf temp && mkdir temp && cd temp && git clone --depth=1 https://github.com/legacyO7/TUF-Aurora.git -b ${currentbranch} `).then(val => {
 
                 const dialogoptions = {
                     type: 'question',
