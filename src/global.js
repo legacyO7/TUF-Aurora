@@ -68,4 +68,12 @@ const setkeyboardsettings = (input) => {
     ipcRenderer.send('resize', [995, state == 'block' ? 710 : 500])
 }
 
-module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings }
+const disableSpeed = (id) => {
+    let speed = document.getElementById("speed").style
+    if (id === '7' || id === '10')
+        speed.display = "none"
+    else
+        speed.display = "block"
+}
+
+module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings, disableSpeed }
