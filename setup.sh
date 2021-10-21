@@ -4,10 +4,12 @@ signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
 packages_to_install="dkms openssl nodejs npm mokutil xterm"
 dest_file_location="dist/installers/tuf-aurora_*."
+filename_key="signing_key"
 pkgExt="unknown"
 distro="unknown"
 pm="unknown"
 opm="unknown"
+require_reboot=false
 
 declare -A osInfo;
 osInfo[/etc/redhat-release]="rmp"
@@ -44,33 +46,32 @@ else
             else
             echo installing faustus module
 
-                git clone https://github.com/legacyO7/faustus.git
+                git clone --depth=1 https://github.com/legacyO7/faustus.git
 
                 cd faustus
 
-                if [ -f "$signingfileloc/signing_key.pem" ]; then
-                    echo found sigining key
-                else
+                    if mokutil --sb-state | grep -q 'enabled'; then
 
-                    echo "[ req ]
-                    default_bits = 4096
-                    distinguished_name = req_distinguished_name
-                    prompt = no
-                    x509_extensions = myexts
+                        require_reboot=true              
+                        
+                            echo "[ req ]
+                            default_bits = 4096
+                            distinguished_name = req_distinguished_name
+                            prompt = no
+                            x509_extensions = myexts
 
-                    [ req_distinguished_name ]
-                    CN = Modules
+                            [ req_distinguished_name ]
+                            CN = Modules
 
-                    [ myexts ]
-                    basicConstraints=critical,CA:FALSE
-                    keyUsage=digitalSignature
-                    subjectKeyIdentifier=hash
-                    authorityKeyIdentifier=keyid" >  x509.genkey
+                            [ myexts ]
+                            basicConstraints=critical,CA:FALSE
+                            keyUsage=digitalSignature
+                            subjectKeyIdentifier=hash
+                            authorityKeyIdentifier=keyid" >  x509.genkey
 
-                    openssl req -new -nodes -utf8 -sha512 -days 36500 -batch -x509 -config x509.genkey -outform DER -out signing_key.x509 -keyout signing_key.pem
-                    sudo mv signing_key.pem $signingfileloc
-
-                fi
+                            openssl req -new -nodes -utf8 -sha512 -days 36500 -batch -x509 -config x509.genkey -outform DER -out ${filename_key}.x509 -keyout ${filename_key}.pem -subj "/CN=Aurora/"
+                                                    
+                    fi    
 
                 sudo echo "blacklist asus_wmi
                     blacklist asus_nb_wmi" > /etc/modprobe.d/faustus.conf
@@ -80,6 +81,15 @@ else
 
                 make
                 sudo modprobe sparse-keymap wmi video
+
+                if [ "$require_reboot" = true ] 
+                then
+                    sudo /usr/src/linux-headers-`uname -r`/scripts/sign-file sha256 ./${filename_key}.pem ./${filename_key}.x509 src/faustus.ko
+                    echo "=== MOK ENROLLMENT PASSWORD ==="
+                    sudo mokutil --import ${filename_key}.x509  
+                    sudo mv ${filename_key}.pem $signingfileloc
+                fi
+
                 sudo insmod src/faustus.ko
 
                 sudo make dkms
@@ -101,11 +111,15 @@ else
     sudo $opm -i $dest_file_location$pkgExt
 
     if [ -d "$faustusDir" ]; then
-    echo Success
-    nohup tuf-aurora &  disown 
-    echo launched aurora
-    ps aux | grep sleep
-    exit 
+        echo Success
+        nohup tuf-aurora &  disown 
+        echo launched aurora
+        ps aux | grep sleep
+        rm nohup.out
+        exit 
+    elif [ "$require_reboot" = true ] 
+    then
+        echo Please reboot to enroll MOK
     else
         echo Nah bruh. Things didnt go as planned. Install faustus module manually
     fi
