@@ -2,7 +2,7 @@ const { existsSync } = require('fs');
 const { kModule } = require('../path');
 const shell = require('async-shelljs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings, branch } = require('../global')
+const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings, branch, disableSpeed } = require('../global')
 const paths = require('../path');
 const { finalizeUpdate } = require('../components/updatecentre');
 const { getPermission } = require('./permshandler');
@@ -39,6 +39,7 @@ async function initialize() {
             document.getElementById(`k_${value.mode}`).click();
 
             setkeyboardsettings(value.brightness);
+            disableSpeed(value.mode)
 
             shell.exec(`echo "${value.brightness}" > ${paths.brightness}`);
             shell.exec('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
