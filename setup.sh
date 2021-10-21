@@ -3,8 +3,10 @@
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
 packages_to_install="dkms openssl nodejs npm mokutil xterm"
-dest_file_location="dist/installers/tuf-aurora_*."
+pkg="tuf-aurora"
+dest_file_location="dist/installers/$pkg*."
 filename_key="signing_key"
+checkparam=""
 pkgExt="unknown"
 distro="unknown"
 pm="unknown"
@@ -29,14 +31,16 @@ else
 
         if [ $pkgExt == "rpm" ] 
         then
-        pm="yum"
-        opm="rpm"
-        distro="redhat"
+            pm="yum"
+            opm="rpm"
+            distro="redhat"
+            checkparam="qa"
         elif [ $pkgExt == "deb" ] 
-        then
-        pm="apt"
-        opm="dpkg"
-        distro="debian"        
+            then
+            pm="apt"
+            opm="dpkg"
+            distro="debian"        
+            checkparam="l"
         fi
 
         sudo $pm install $packages_to_install -y
@@ -109,11 +113,16 @@ else
     npm run clean-build
     npm run-script build
     npm run-script ${pkgExt}64
-    sudo $opm -i $dest_file_location$pkgExt
 
+    if $opm -$checkparam | grep $pkg
+    then
+        sudo $pm remove $pkg -y
+    fi
+    sudo $opm -i $dest_file_location$pkgExt
+    
     if [ -d "$faustusDir" ]; then
         echo Success
-        nohup tuf-aurora &  disown 
+        nohup $pkg &  disown 
         echo launched aurora
         ps aux | grep sleep
         rm nohup.out
