@@ -101,6 +101,7 @@ else
                 make clean
 
             cd ..
+            rm -rf faustus
             fi
 
     npm install
