@@ -1,20 +1,47 @@
 const getdefvalue = require('../utils/getdefaults');
 const paths = require('../path');
-var sudo = require('sudo-prompt');
+const shell = require('async-shelljs');
 const Sudoer = require('@nathanielks/electron-sudo').default;
 const { options } = require('../global');
-
+const { existsSync } = require('fs');
 
 
 const setup = () => {
+
+    document.getElementById("fi").style.display = "block"
 
     $('#pi').on('click', () => {
         execShell('pi')
     })
 
     $('#fi').on('click', () => {
-        execShell('fi')
+        extermExec("fi")
     })
+}
+
+const extermExec = (val) => {
+    shell.asyncExec(`xterm  -e "${__dirname}/../../setup_minimal.sh ${val}"`).then((resp => {
+
+        let button = document.getElementById(val);
+        let buttontext = document.getElementById(val + '-title')
+        let butonstatus = document.getElementById(val + '-status')
+        butonstatus.style.display = "block"
+
+        if (existsSync(`${paths.kModule}`)) {
+            document.getElementById("load").style.display = "block"
+            button.style.backgroundColor = "#63f700"
+            buttontext.style.color = "white"
+            butonstatus.innerHTML = "&#10003;"
+            setTimeout(function() {
+                window.location.href = './home.html';
+            }, 3000);
+
+        } else {
+            button.style.backgroundColor = "red"
+            buttontext.style.color = "white"
+            butonstatus.innerHTML = "&#10005;"
+        }
+    }))
 }
 
 
@@ -55,16 +82,6 @@ const execShell = async(val) => {
             modal.style.display = "none";
             if (val == "pi")
                 document.getElementById("fi").style.display = "block"
-            else {
-
-                document.getElementById("load").style.display = "block"
-                if (process) {
-                    setTimeout(function() {
-                        window.location.href = './home.html';
-                    }, 3000);
-                }
-
-            }
 
         } else {
             let btnclose = document.getElementById("log-close")
@@ -78,10 +95,6 @@ const execShell = async(val) => {
         }
 
     });
-
-
-
 }
-
 
 setup()
