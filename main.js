@@ -29,7 +29,6 @@ function createWindow() {
 
     // and load the index.html of the app.
     win.loadFile('./src/index.html');
-
     console.log(app.getVersion())
 
     ipcMain.on('resize', (event, arg) => {
