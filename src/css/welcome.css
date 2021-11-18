@@ -1,0 +1,133 @@
+/* -----MAIN STYLING------ */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #263238;
+}
+
+
+/* -----WELCOME PAGE STYLING ------ */
+
+.welcome-gradient {
+    position: fixed;
+    z-index: 0;
+    height: 100vh;
+    width: 100vw;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dcdfe2+0,1e88e5+100 */
+    background: rgb(220, 223, 226);
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(220, 223, 226, 1) 0%, rgba(30, 136, 229, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(220, 223, 226, 1) 0%, rgba(30, 136, 229, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(220, 223, 226, 1) 0%, rgba(30, 136, 229, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#dcdfe2', endColorstr='#1e88e5', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}
+
+.welcome-container {
+    position: fixed;
+    z-index: 10;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.welcome-container h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.welcome-container h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+.app-title {
+    text-transform: uppercase;
+}
+
+.app-subtitle {
+    text-transform: capitalize;
+}
+
+
+/* 	-----LOADER ON WELCOME PAGE STYLING-------
+	inspired by a codepen from Manoz https://codepen.io/Manoz/  */
+
+.loader {
+    margin-top: 20px;
+}
+
+.spinner {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.bubble-1,
+.bubble-2 {
+    position: absolute;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #448AFF;
+}
+
+.bubble-2 {
+    top: auto;
+    bottom: 0;
+}
+
+
+/* 	-----LOADER ON WELCOME PAGE ANIMATION-------
+	inspired by a codepen from Manoz https://codepen.io/Manoz/  */
+
+.loader .spinner {
+    animation: loading1 2s linear infinite;
+}
+
+.loader .bubble-1,
+.loader .bubble-2 {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.loader .bubble-2 {
+    animation-delay: -1.0s;
+}
+
+@keyframes loading1 {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: scale(0.0);
+    }
+    50% {
+        transform: scale(1.0);
+    }
+}
+
+
+/* -----WELCOME PAGE APPEAR-DISAPPEAR ------ */
+
+.welcome-away {
+    display: none;
+}
+
+
+/* -----REST OF PAGE ------ */
+
+.rest-of-page {
+    display: none;
+}

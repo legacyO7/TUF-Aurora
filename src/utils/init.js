@@ -1,5 +1,4 @@
 const { existsSync } = require('fs');
-const { kModule } = require('../path');
 const shell = require('async-shelljs');
 const { ipcRenderer } = require('electron')
 const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings, branch, disableSpeed } = require('../global')
@@ -18,7 +17,7 @@ async function initialize() {
         boot_status.innerText = " SecureBoot enabled"
     }
 
-    if (existsSync(`${kModule}`)) {
+    if (existsSync(`${paths.kModule}`)) {
         document.getElementById('content').style.display = 'block';
         document.getElementById('blockuser').style.display = 'none';
 
