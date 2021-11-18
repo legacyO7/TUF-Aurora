@@ -2,7 +2,7 @@
     "name": "tuf-aurora",
     "displayName": "TUF Aurora",
     "productName": "TUF Aurora",
-    "version": "1.1.3",
+    "version": "2.0.0",
     "description": "TUF Keyboard & Battery Manager Based On Faustus Mod",
     "main": "main.js",
     "scripts": {
@@ -18,13 +18,14 @@
         "url": "git+https://github.com/legacyO7/TUF-Aurora.git"
     },
     "dependencies": {
+        "@nathanielks/electron-sudo": "^4.0.15",
         "async-shelljs": "^0.1.4",
         "electron-packager": "^15.4.0",
         "electron-prompt": "^1.7.0",
         "electron-reload": "^2.0.0-alpha.1",
-        "electron-sudo": "^4.0.12",
         "rangeslider.js": "^2.3.3",
         "reinvented-color-wheel": "^0.4.0",
+        "sudo": "^1.0.3",
         "sudo-js": "^1.0.2",
         "sudo-prompt": "^9.2.1",
         "untildify": "^4.0.0"
@@ -40,7 +41,7 @@
     },
     "homepage": "https://github.com/legacyO7/TUF-Aurora#readme",
     "devDependencies": {
-        "electron": "^14.0.1"
+        "electron": "^16.0.0"
     },
     "extraResources": [{
         "from": "./images/",

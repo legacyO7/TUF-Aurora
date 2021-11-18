@@ -2,8 +2,8 @@ const fs = require('fs');
 const paths = require('../path');
 const sudoPrompt = require('./sudoprompt');
 
-// check for read or write perms in module directory and 
-// request for sudo perms if it doesnt have perms
+// check for read or write permissions in module directory and 
+// request for sudo permission if it doesnt have permission
 
 async function permsHandler() {
 
