@@ -5,3 +5,46 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+h1 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    color: floralwhite;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: azure;
+}
+
+.appHeader {
+    font-weight: 700;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.smallHeader {
+    width: 70px;
+    height: 50px;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-image: radial-gradient(at top left, #266EF6, transparent), radial-gradient(at top right, #266EF6, transparent), radial-gradient(at bottom left, #AF3C43, transparent), radial-gradient(at bottom right, #266EF6, transparent);
+    background-repeat: none;
+    color: white;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    transition: transform .2s;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    user-select: none;
+}
