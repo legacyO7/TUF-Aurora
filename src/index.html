@@ -10,21 +10,26 @@
 </head>
 
 <body>
+    <canvas width="2" height="2"></canvas>
     <div class="welcome-gradient">
         <div class="welcome-container">
-            <h1 class="app-title">Welcome</h1>
-            <h2 class="app-subtitle">Aurora Nitrile</h2>
-            <A HREF="pages/setup.html">Lets Go</A>
-            <div class="loader">
+            <h2 class="app-subtitle">Welcome</h2>
+            <h1 class="app-title">AURORA Nitrile</h1>
+            <div class="loader" id="loader">
                 <div class="spinner">
                     <div class="bubble-1"></div>
                     <div class="bubble-2"></div>
                 </div>
             </div>
+            <div id="go" style="display: none;">
+                <A style="color: whitesmoke; font-size: 18px;" HREF="pages/setup.html">Lets Go</A>
+            </div>
+
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/design.js"></script>
+    <script src="pages/welcome.js"></script>
 </body>
 
 </html>
