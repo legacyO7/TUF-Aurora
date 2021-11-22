@@ -33,9 +33,13 @@ async function initialize() {
 
         await fetchData(`${loc_aurora}/config`, false).then(async(value) => {
 
-            document.getElementById(`k_${value.brightness}`).click();
+            document.getElementById(`k_${value.brightness}`).click();;
             document.getElementById(`k_${value.speed}`).click();
             document.getElementById(`k_${value.mode}`).click();
+
+            document.getElementById(`l_${value.brightness}`).classList.add("card")
+            document.getElementById(`l_${value.speed}`).classList.add("card")
+            document.getElementById(`l_${value.mode}`).classList.add("card")
 
             setkeyboardsettings(value.brightness);
             disableSpeed(value.mode)

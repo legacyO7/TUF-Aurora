@@ -12,17 +12,17 @@ const batterymanager = async() => {
     getdefvalue(paths.batterymanager).then((value) => {
         output.innerText = value
         sliderVal.value = value.replace(/\s+/g, '')
-        rangeslider.style.setProperty('--SliderColor', `hsl(${sliderVal.value-(100-sliderVal.value)}, 100%, 50%)`)
+        rangeslider.style.setProperty('--SliderColor', `hsl(${(120-sliderVal.value)}, 100%, 50%)`)
         rangeslider.style.setProperty('--SliderHeight', `-.${sliderVal.value-1}em`)
-        rangeslider.style.setProperty('--SliderSpread', `${sliderVal.value-53}px`)
+        rangeslider.style.setProperty('--SliderSpread', `${sliderVal.value-43}px`)
     })
 
 
     rangeslider.oninput = function() {
         output.innerHTML = this.value
-        rangeslider.style.setProperty('--SliderColor', `hsl(${sliderVal.value-(100-sliderVal.value)}, 100%, 50%)`)
+        rangeslider.style.setProperty('--SliderColor', `hsl(${(120-sliderVal.value)}, 100%, 50%)`)
         rangeslider.style.setProperty('--SliderHeight', `-.${sliderVal.value-1}em`)
-        rangeslider.style.setProperty('--SliderSpread', `${sliderVal.value-53}px`)
+        rangeslider.style.setProperty('--SliderSpread', `${sliderVal.value-43}px`)
     }
 
 
