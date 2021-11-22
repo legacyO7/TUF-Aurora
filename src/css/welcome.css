@@ -7,25 +7,22 @@
     color: #263238;
 }
 
+html,
+body {
+    height: 100%;
+}
 
-/* -----WELCOME PAGE STYLING ------ */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
 
-.welcome-gradient {
-    position: fixed;
-    z-index: 0;
-    height: 100vh;
-    width: 100vw;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dcdfe2+0,1e88e5+100 */
-    background: rgb(220, 223, 226);
-    /* Old browsers */
-    background: -moz-linear-gradient(45deg, rgba(220, 223, 226, 1) 0%, rgba(30, 136, 229, 1) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, rgba(220, 223, 226, 1) 0%, rgba(30, 136, 229, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, rgba(220, 223, 226, 1) 0%, rgba(30, 136, 229, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#dcdfe2', endColorstr='#1e88e5', GradientType=1);
-    /* IE6-9 fallback on horizontal gradient */
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scale(2);
 }
 
 .welcome-container {
@@ -38,26 +35,21 @@
 }
 
 .welcome-container h1 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    color: floralwhite;
 }
 
 .welcome-container h2 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 100;
-}
-
-.app-title {
-    text-transform: uppercase;
+    font-weight: 500;
+    color: azure;
 }
 
 .app-subtitle {
     text-transform: capitalize;
 }
-
-
-/* 	-----LOADER ON WELCOME PAGE STYLING-------
-	inspired by a codepen from Manoz https://codepen.io/Manoz/  */
 
 .loader {
     margin-top: 20px;

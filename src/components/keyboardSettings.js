@@ -5,10 +5,10 @@ var fs = ('fs');
 
 
 function keyboardSettings() {
-    $('input:radio').on('click', function(e) {
 
+    $('input:radio').on('click', function(e) {
         if (e.target.name === 'brightness') {
-            writeKeyboardConfig(e.target.name, (e.currentTarget.id).split('_')[1])
+            writeKeyboardConfig(e.target.name, (e.currentTarget.id).split('_')[1], 0)
         } else if (e.target.name === 'speed') {
             writeKeyboardConfig(e.target.name, (e.currentTarget.id).split('_')[1], 4)
         } else if (e.target.name === 'mode') {
@@ -19,8 +19,13 @@ function keyboardSettings() {
 }
 
 function writeKeyboardConfig(name, id, offset) {
+    for (i = 0; i < 11; i++)
+        if (!document.getElementById(`k_${i}`).checked)
+            document.getElementById(`l_${i}`).classList.remove("card")
+
+    document.getElementById(`l_${id}`).classList.add("card")
     disableSpeed(id)
-    if (offset == undefined) {
+    if (offset == 0) {
         shell.exec(`echo "${id}" > ${paths.brightness}`);
         setkeyboardsettings(id)
     } else
