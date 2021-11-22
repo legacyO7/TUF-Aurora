@@ -22,23 +22,20 @@ const setup = () => {
 const extermExec = (val) => {
     shell.asyncExec(`xterm  -e "${__dirname}/../../setup_minimal.sh ${val}"`).then((resp => {
 
-        let button = document.getElementById(val);
         let buttontext = document.getElementById(val + '-title')
         let butonstatus = document.getElementById(val + '-status')
         butonstatus.style.display = "block"
 
         if (existsSync(`${paths.kModule}`)) {
             document.getElementById("load").style.display = "block"
-            button.style.backgroundColor = "#63f700"
-            buttontext.style.color = "white"
+            buttontext.style.color = "#266EF6"
             butonstatus.innerHTML = "&#10003;"
             setTimeout(function() {
                 window.location.href = './home.html';
             }, 3000);
 
         } else {
-            button.style.backgroundColor = "red"
-            buttontext.style.color = "white"
+            buttontext.style.color = "red"
             butonstatus.innerHTML = "&#10005;"
         }
     }))
@@ -56,7 +53,6 @@ const execShell = async(val) => {
 
     let modal = document.getElementById("log");
     let logcat = document.getElementById('log-text');
-    let button = document.getElementById(val);
     let buttontext = document.getElementById(val + '-title')
     let butonstatus = document.getElementById(val + '-status')
     modal.style.display = "block";
@@ -76,8 +72,7 @@ const execShell = async(val) => {
     cp.on('close', () => {
         butonstatus.style.display = "block"
         if (process) {
-            button.style.backgroundColor = "#63f700"
-            buttontext.style.color = "white"
+            buttontext.style.color = "#266EF6"
             butonstatus.innerHTML = "&#10003;"
             modal.style.display = "none";
             if (val == "pi")
@@ -85,8 +80,7 @@ const execShell = async(val) => {
 
         } else {
             let btnclose = document.getElementById("log-close")
-            button.style.backgroundColor = "red"
-            buttontext.style.color = "white"
+            buttontext.style.color = "red"
             butonstatus.innerHTML = "&#10005;"
             btnclose.style.display = "block"
             btnclose.onclick = function() {
