@@ -48,8 +48,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: v${{ steps.extract_version.outputs.version }}  
-        release_name: aurora v${{ steps.package-version.outputs.current-version}}
+        tag_name: ver${{ steps.extract_version.outputs.version }}  
+        release_name: aurora ver${{ steps.extract_version.outputs.version }}
         body: |
           Changes in this Release
           - First Change
