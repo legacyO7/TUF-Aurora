@@ -32,6 +32,7 @@ jobs:
     - run: npm run deb64
     
     - name: Get current package version
+      id: package-version
       uses: martinbeentjes/npm-get-version-action@v1.1.0  
     
     - name: Create Release
@@ -40,8 +41,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: ${{ steps.package-version.outputs.current-version}}
-        release_name: aurora ${{ steps.package-version.outputs.current-version}}
+        tag_name: v${{ steps.package-version.outputs.current-version}}
+        release_name: aurora v${{ steps.package-version.outputs.current-version}}
         body: |
           Changes in this Release
           - First Change
