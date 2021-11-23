@@ -30,17 +30,33 @@ jobs:
     - run: npm i electron-installer-debian
     - run: npm run build --if-present
     - run: npm run deb64
+    
+    - name: Get current package version
+      uses: martinbeentjes/npm-get-version-action@v1.1.0  
+    
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: ${{ steps.package-version.outputs.current-version}}
+        release_name: aurora ${{ steps.package-version.outputs.current-version}}
         body: |
           Changes in this Release
           - First Change
           - Second Change
         draft: false
         prerelease: false
+  
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./dist/installers/tuf-aurora.deb
+        asset_name: tuf-aurora.deb
+        asset_content_type: application/vnd.debian.binary-package
+        
