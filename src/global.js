@@ -20,7 +20,7 @@ const ipcaction = async(name, options) => {
     });
 }
 
-async function fetchData(url, changelog) {
+async function fetchData(url, changelog = false) {
     let response = await fetch(url);
     let data = await response.json();
     if (changelog)
