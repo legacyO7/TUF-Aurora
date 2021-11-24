@@ -37,6 +37,11 @@ function createWindow() {
         win.setResizable(false);
     })
 
+    ipcMain.on('restart', (event, arg) => {
+        app.relaunch()
+        app.exit()
+    })
+
     ipcMain.on('appversion', function(event, arg) {
         event.sender.send('appversion-response', [app.getVersion()]);
     });

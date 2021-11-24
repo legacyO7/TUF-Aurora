@@ -1,0 +1,50 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Aurora CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm i electron-installer-debian
+    - run: npm i electron-installer-redhat
+    - run: npm run build --if-present
+    - run: npm run deb64
+    - run: npm run rpm64
+    - run: ls dist/installers/
+      
+    - name: Get package version
+      id: extract_version
+      uses: Saionaro/extract-package-version@v1.0.6
+      
+    - name: Print version
+      run: echo ${{ steps.extract_version.outputs.version }}   
+        
+    - name: Create Release 
+      uses: softprops/action-gh-release@v1
+      with:      
+       tag_name: ${{ steps.extract_version.outputs.version }}  
+       body_path: ./changelog.txt
+       files: |
+            ./dist/installers/tuf-aurora_${{ steps.extract_version.outputs.version }}_amd64.deb
+            ./dist/installers/tuf-aurora-${{ steps.extract_version.outputs.version }}-1.amd64.rpm
+              
+        
