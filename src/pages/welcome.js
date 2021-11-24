@@ -50,8 +50,6 @@ function navigate() {
 
         }
     }, 3000);
-
-
 }
 
 animate();

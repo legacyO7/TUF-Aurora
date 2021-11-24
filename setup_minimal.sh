@@ -2,10 +2,11 @@
 
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
-packages_to_install="dkms openssl mokutil xterm"
+packages_to_install="dkms openssl mokutil xterm wget"
 filename_key="signing_key"
 pkgExt="unknown"
 pm="unknown"
+opm="unknown"
 require_reboot=false
 
 
@@ -21,17 +22,20 @@ do
 done
 
 
+if [ $pkgExt == "rpm" ] 
+    then
+    pm="yum"
+    opm="rpm"
+elif [ $pkgExt == "deb" ] 
+    then
+    pm="apt-get"
+    opm="dpkg"
+fi
+
+
 install_packages ()
 {
     echo "Installing packages"
-
-            if [ $pkgExt == "rpm" ] 
-            then
-                pm="yum"
-            elif [ $pkgExt == "deb" ] 
-                then
-                pm="apt-get"
-            fi
 
         sudo $pm install $packages_to_install -y
     
@@ -107,6 +111,26 @@ install_faustus()
 
 }
 
+download_release(){
+    echo downloading update...
+
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/legacyO7/TUF-Aurora/releases/latest)
+    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+
+        if [ $pkgExt == "deb" ] 
+            then
+                ARTIFACT_URL="https://github.com/legacyO7/TUF-Aurora/releases/download/$LATEST_VERSION/tuf-aurora_${LATEST_VERSION}_amd64.$pkgExt"
+        elif [ $pkgExt == "rpm" ] 
+            then
+                ARTIFACT_URL="https://github.com/legacyO7/TUF-Aurora/releases/download/$LATEST_VERSION/tuf-aurora-${LATEST_VERSION}-1.amd64.$pkgExt"
+        fi
+
+#    wget $ARTIFACT_URL -O /tmp/update.$pkgExt
+
+    sudo $opm -i /tmp/update.$pkgExt 
+    #tuf-aurora
+}
+
 if [ $# -eq 0 ]
   then
     ./setup.sh
@@ -126,7 +150,11 @@ else
 
                 elif [ $1 == "fi" ]
                 then
-                install_faustus                
+                install_faustus       
+
+                elif [ $1 == "update" ]
+                then
+                download_release           
             fi
     fi
 

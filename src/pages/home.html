@@ -123,14 +123,14 @@
         </div>
 
         <div id="update-modal" class="modal">
-
-
             <div class="modal-content">
                 <h4 class="modaltext" id="modal-header">Update Available</h4>
                 <p class="modaltext" id="update-text"></p>
-                <div style="overflow-y: scroll; overflow-x: hidden;max-height:300px; margin-bottom: 10px;">
-                    <p class="modaltext" id="changelog"></p>
+                <div class="modaltext" id="modal-scroll" style="overflow-y: scroll; overflow-x: hidden;max-height:300px; margin-bottom: 10px; display: flex;  flex-direction: column-reverse;">
+                    <p id="changelog"></p>
                 </div>
+
+
                 <div class="row" style="justify-content:space-around;">
                     <div class="card btn btn-fix modal-btn" id="btn-update">
                         <div class="btn-card-body">
@@ -144,8 +144,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
+
     </div>
 
     <script type="module" src="../app.js"></script>

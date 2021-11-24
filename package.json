@@ -21,18 +21,17 @@
         "@nathanielks/electron-sudo": "^4.0.15",
         "async-shelljs": "^0.1.4",
         "electron-packager": "^15.4.0",
-        "electron-prompt": "^1.7.0",
         "electron-reload": "^2.0.0-alpha.1",
         "rangeslider.js": "^2.3.3",
         "reinvented-color-wheel": "^0.4.0",
-        "sudo": "^1.0.3",
-        "sudo-js": "^1.0.2",
         "sudo-prompt": "^9.2.1",
         "untildify": "^4.0.0"
     },
     "keywords": [
         "aurora",
-        "tuf"
+        "tuf",
+        "battery manager",
+        "rgb lighting control"
     ],
     "author": "legacyO7 <legacy07.theia@gmail.com>",
     "license": "MIT",
