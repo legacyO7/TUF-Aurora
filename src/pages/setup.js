@@ -1,14 +1,11 @@
-const getdefvalue = require('../utils/getdefaults');
 const paths = require('../path');
 const shell = require('async-shelljs');
 const Sudoer = require('@nathanielks/electron-sudo').default;
-const { options } = require('../global');
+const { options, ipcaction } = require('../global');
 const { existsSync } = require('fs');
 
 
 const setup = () => {
-
-    document.getElementById("fi").style.display = "block"
 
     $('#pi').on('click', () => {
         execShell('pi')
@@ -42,53 +39,74 @@ const extermExec = (val) => {
 }
 
 
-const execShell = async(val) => {
+async function execShell(val) {
 
     var sudoer = new Sudoer(options);
     let process = true;
 
+    let modal, logcat, butonstatus, buttontext, btnclose;
+
     let cp = await sudoer.spawn(
-        __dirname + '/../../setup_minimal.sh ' + val,
+        __dirname + '/../../setup_minimal.sh ' + val
     );
 
-    let modal = document.getElementById("log");
-    let logcat = document.getElementById('log-text');
-    let buttontext = document.getElementById(val + '-title')
-    let butonstatus = document.getElementById(val + '-status')
-    modal.style.display = "block";
+    if (val == "update") {
+        modal = document.getElementById("update-modal");
+        logcat = document.getElementById('changelog');
+        btnclose = document.getElementById("btn-close");
+        btnclose.innerText = "Close";
+    } else {
+        modal = document.getElementById("log");
+        logcat = document.getElementById('log-text');
+        buttontext = document.getElementById(val + '-title');
+        butonstatus = document.getElementById(val + '-status');
+        btnclose = document.getElementById("log-close");
+        modal.style.display = "block";
+    }
 
-    logcat.innerText = ""
+    logcat.innerText = "";
 
     cp.stdout.on('data', function(data) {
         logcat.innerText += data.toString();
+
     });
 
     cp.stderr.on('data', function(data) {
-        logcat.style.color = "red"
-        process = false
+        logcat.style.color = "red";
+        process = false;
         logcat.innerText += data.toString();
     });
 
     cp.on('close', () => {
-        butonstatus.style.display = "block"
-        if (process) {
-            buttontext.style.color = "#266EF6"
-            butonstatus.innerHTML = "&#10003;"
-            modal.style.display = "none";
-            if (val == "pi")
-                document.getElementById("fi").style.display = "block"
-
+        btnclose.style.display = "block";
+        if (val == "update") {
+            if (process) {
+                ipcaction("restart");
+            } else {
+                btnclose.onclick = function() {
+                    modal.style.display = "none";
+                };
+            }
         } else {
-            let btnclose = document.getElementById("log-close")
-            buttontext.style.color = "red"
-            butonstatus.innerHTML = "&#10005;"
-            btnclose.style.display = "block"
-            btnclose.onclick = function() {
+            butonstatus.style.display = "block";
+            if (process) {
+                buttontext.style.color = "#266EF6";
+                butonstatus.innerHTML = "&#10003;";
                 modal.style.display = "none";
-            };
+                document.getElementById("fi").style.display = "block";
+
+            } else {
+                buttontext.style.color = "red";
+                butonstatus.innerHTML = "&#10005;";
+                btnclose.onclick = function() {
+                    modal.style.display = "none";
+                };
+            }
         }
 
     });
 }
 
 setup()
+
+module.exports = { execShell }

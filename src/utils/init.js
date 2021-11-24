@@ -11,10 +11,9 @@ const { getPermission } = require('./permshandler');
 async function initialize() {
 
     var boot_status = document.getElementById('boot_status');
-    boot_status.innerText = "SecureBoot disabled";
-    if (shell.exec('mokutil --sb-state').includes('enabled')) {
-        boot_status.style.color = 'greenyellow';
-        boot_status.innerText = " SecureBoot enabled"
+    boot_status.innerText = shell.exec('mokutil --sb-state')
+    if (boot_status.innerText.includes('enabled')) {
+        boot_status.style.color = 'greenyellow'
     }
 
     if (existsSync(`${paths.kModule}`)) {
