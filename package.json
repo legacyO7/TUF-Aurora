@@ -29,7 +29,9 @@
         "aurora",
         "tuf",
         "battery manager",
-        "rgb lighting control"
+        "rgb lighting control",
+        "linux",
+        "asus"
     ],
     "author": "legacyO7 <anitsebastian802@gmail.com>",
     "license": "MIT",
