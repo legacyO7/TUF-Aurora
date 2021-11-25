@@ -23,7 +23,6 @@
         "electron-reload": "^2.0.0-alpha.1",
         "rangeslider.js": "^2.3.3",
         "reinvented-color-wheel": "^0.4.0",
-        "sudo-prompt": "^9.2.1",
         "untildify": "^4.0.0"
     },
     "keywords": [
