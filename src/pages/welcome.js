@@ -36,6 +36,8 @@ function animate() {
         pixel.render(ctx);
     });
     requestAnimationFrame(animate);
+
+    navigate();
 }
 
 
@@ -53,4 +55,3 @@ function navigate() {
 }
 
 animate();
-navigate();
