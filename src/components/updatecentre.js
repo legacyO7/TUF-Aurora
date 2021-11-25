@@ -25,7 +25,7 @@ async function updateCentre() {
 
         latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + currentbranch + "/package.json", true)).version;
 
-        if (currentversion == latestversion) {
+        if (currentversion != latestversion) {
             modal.style.display = "block";
             document.getElementById('update-text').innerText = `v${latestversion}`;
         }
