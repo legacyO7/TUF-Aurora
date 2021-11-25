@@ -4,7 +4,7 @@ const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, setkeyboardsett
 const paths = require('../path');
 const { finalizeUpdate } = require('../components/updatecentre');
 const { getPermission } = require('./permshandler');
-const ashell = require('./shell');
+const { ashell } = require('./shell');
 
 // check for faustus modules and load the configs on startup
 

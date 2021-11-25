@@ -1,13 +1,20 @@
-async function ashell(cmd, args) {
+async function sudoshell(cmd) {
+    const Sudoer = require('@nathanielks/electron-sudo').default;
+    const { options } = require('../global')
 
+    var sudoer = new Sudoer(options);
+    await sudoer.spawn(cmd);
+}
+
+async function ashell(cmd, args) {
+    let spawn
+    if (args == undefined) {
+        spawn = require('child_process').exec
+    } else
+        spawn = require('child_process').spawn
 
     return await new Promise((resolve, reject) => {
 
-        var spawn
-        if (args == undefined) {
-            spawn = require('child_process').exec
-        } else
-            spawn = require('child_process').spawn
 
 
         let ls = spawn(cmd, args);
@@ -32,4 +39,4 @@ async function ashell(cmd, args) {
 }
 
 
-module.exports = ashell
+module.exports = { sudoshell, ashell }

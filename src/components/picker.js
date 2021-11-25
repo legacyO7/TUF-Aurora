@@ -1,6 +1,6 @@
 const ReinventedColorWheel = require("reinvented-color-wheel");
 const { saveDef, loc_aurora, fetchData } = require('../global');
-const ashell = require('../utils/shell');
+const { ashell } = require('../utils/shell');
 
 
 const setPicker = async() => {
