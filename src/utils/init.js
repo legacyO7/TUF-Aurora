@@ -1,17 +1,18 @@
 const { existsSync } = require('fs');
-const shell = require('async-shelljs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings, branch, disableSpeed } = require('../global')
+const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, setkeyboardsettings, disableSpeed } = require('../global')
 const paths = require('../path');
 const { finalizeUpdate } = require('../components/updatecentre');
 const { getPermission } = require('./permshandler');
+const ashell = require('./shell');
 
 // check for faustus modules and load the configs on startup
 
 async function initialize() {
 
+
     var boot_status = document.getElementById('boot_status');
-    boot_status.innerText = shell.exec('mokutil --sb-state')
+    boot_status.innerText = await ashell('mokutil', ['--sb-state'])
     if (boot_status.innerText.includes('enabled')) {
         boot_status.style.color = 'greenyellow'
     }
@@ -24,7 +25,6 @@ async function initialize() {
         if (!existsSync(`${loc_aurora}/config`)) {
             await saveDef();
         }
-
 
         await getPermission(paths.path_blue);
         await getPermission(paths.path_green);
@@ -43,10 +43,10 @@ async function initialize() {
             setkeyboardsettings(value.brightness);
             disableSpeed(value.mode)
 
-            shell.exec(`echo "${value.brightness}" > ${paths.brightness}`);
-            shell.exec('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
-            shell.exec('bash ' + __dirname + '/../shell/mode.sh ' + (parseInt(value.mode) - 7));
-            shell.exec('bash ' + __dirname + `/../shell/color.sh ${value.color.substr(1, 2)} ${value.color.substr(3, 2)} ${value.color.substr(5, 2)}`);
+            ashell(`echo "${value.brightness}" > ${paths.brightness}`);
+            ashell('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
+            ashell('bash ' + __dirname + '/../shell/mode.sh ' + (parseInt(value.mode) - 7));
+            ashell('bash ' + __dirname + `/../shell/color.sh ${value.color.substr(1, 2)} ${value.color.substr(3, 2)} ${value.color.substr(5, 2)}`);
         });
 
     } else {
@@ -57,8 +57,8 @@ async function initialize() {
 
     await ipcaction('appversion').then(async(args) => {
         if (existsSync(`${loc_aurora}/v${args[0]}`)) {} else {
-            shell.exec(`rm ${loc_aurora}/v*`);
-            shell.exec(`echo > ${loc_aurora}/v${args[0]}`);
+            ashell(`rm ${loc_aurora}/v*`);
+            ashell(`echo > ${loc_aurora}/v${args[0]}`);
             var modal = document.getElementById("update-modal");
             var button = document.getElementById("btn-close");
             modal.style.display = "block";

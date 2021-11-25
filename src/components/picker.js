@@ -1,8 +1,6 @@
-const paths = require('../path');
-const shell = require('async-shelljs');
-shell.config.execPath = shell.which('node').toString();
 const ReinventedColorWheel = require("reinvented-color-wheel");
 const { saveDef, loc_aurora, fetchData } = require('../global');
+const ashell = require('../utils/shell');
 
 
 const setPicker = async() => {
@@ -22,8 +20,7 @@ const setPicker = async() => {
 
     const saveColor = (color) => {
         try {
-            const splitHex = `${color.hex.substr(1,2)} ${color.hex.substr(3,2)} ${color.hex.substr(5,2)}`;
-            shell.exec('bash ' + __dirname + `/../shell/color.sh ${splitHex}`);
+            ashell("bash", [__dirname + '/../shell/color.sh', color.hex.substr(1, 2), color.hex.substr(3, 2), color.hex.substr(5, 2)]);
             saveDef("color", color.hex)
 
         } catch (e) {
