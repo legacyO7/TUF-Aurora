@@ -1,8 +1,8 @@
 const paths = require('../path');
-const shell = require('async-shelljs');
 const Sudoer = require('@nathanielks/electron-sudo').default;
 const { options, ipcaction } = require('../global');
 const { existsSync } = require('fs');
+const ashell = require('../utils/shell');
 
 
 const setup = () => {
@@ -17,7 +17,7 @@ const setup = () => {
 }
 
 const extermExec = (val) => {
-    shell.asyncExec(`xterm  -e "${__dirname}/../../setup_minimal.sh ${val}"`).then((resp => {
+    ashell(`xterm  -e "${__dirname}/../../setup_minimal.sh ${val}"`).then((resp => {
 
         let buttontext = document.getElementById(val + '-title')
         let butonstatus = document.getElementById(val + '-status')
@@ -94,7 +94,6 @@ async function execShell(val) {
                 butonstatus.innerHTML = "&#10003;";
                 modal.style.display = "none";
                 document.getElementById("fi").style.display = "block";
-
             } else {
                 buttontext.style.color = "red";
                 butonstatus.innerHTML = "&#10005;";
