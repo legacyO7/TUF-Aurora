@@ -32,7 +32,11 @@ async function fetchData(url, changelog = false) {
 
 function getchangelog() {
     fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then(async(r) => {
-        document.getElementById('changelog').innerText = await r.text()
+        let changelog = document.getElementById('changelog')
+        changelog.innerText = await r.text()
+        if (changelog.innerText.includes("404"))
+            document.getElementById('update-modal').style.display = "none"
+
     })
 }
 
