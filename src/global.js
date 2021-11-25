@@ -42,7 +42,7 @@ async function saveDef(key, value) {
         defaults = await fetchData(`${loc_aurora}/config`, false)
     } else {
         await ashell("mkdir", ["-p", loc_aurora])
-        defaults = { color: "#000000", mode: "7", speed: "4", brightness: "0" }
+        defaults = { color: "#ffffff", mode: "7", speed: "4", brightness: "0" }
     }
 
     if (key != undefined)
