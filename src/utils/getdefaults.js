@@ -1,14 +1,11 @@
-const { config, which, exec } = require('async-shelljs');;
-config.execPath = which('node').toString();
+const ashell = require("./shell");
 
 const getdefvalue = async(path) => {
     return await new Promise((resolve, reject) => {
-        exec(`cat ${path}`, function(
-            error,
-            stdout,
-            stderr
-        ) {
-            resolve(stdout.replace(/\s+/g, ''))
+
+        ashell(`cat ${path}`).then(output => {
+            console.log(output)
+            resolve(output.replace(/\s+/g, ''))
         });
     });
 }
