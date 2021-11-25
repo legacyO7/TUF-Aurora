@@ -2,7 +2,7 @@ const paths = require('../path');
 const Sudoer = require('@nathanielks/electron-sudo').default;
 const { options, ipcaction } = require('../global');
 const { existsSync } = require('fs');
-const ashell = require('../utils/shell');
+const { ashell } = require('../utils/shell');
 
 
 const setup = () => {
@@ -72,8 +72,13 @@ async function execShell(val) {
     });
 
     cp.stderr.on('data', function(data) {
-        logcat.style.color = "red";
-        process = false;
+        if (!data.includes('awaiting response')) {
+            logcat.style.color = "red";
+            process = false;
+        } else {
+            logcat.style.color = "green";
+            process = true;
+        }
         logcat.innerText += data.toString();
     });
 
@@ -108,4 +113,4 @@ async function execShell(val) {
 
 setup()
 
-module.exports = { execShell }
+module.exports = execShell

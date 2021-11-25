@@ -125,10 +125,10 @@ download_release(){
                 ARTIFACT_URL="https://github.com/legacyO7/TUF-Aurora/releases/download/$LATEST_VERSION/tuf-aurora-${LATEST_VERSION}-1.amd64.$pkgExt"
         fi
 
-#    wget $ARTIFACT_URL -O /tmp/update.$pkgExt
+   wget $ARTIFACT_URL -O /tmp/update.$pkgExt
 
     sudo $opm -i /tmp/update.$pkgExt 
-    #tuf-aurora
+    
 }
 
 if [ $# -eq 0 ]
