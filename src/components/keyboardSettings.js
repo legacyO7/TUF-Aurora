@@ -1,6 +1,6 @@
 const { saveDef, setkeyboardsettings, disableSpeed } = require('../global');
 const paths = require('../path');
-const ashell = require('../utils/shell');
+const { ashell } = require('../utils/shell');
 
 
 function keyboardSettings() {
