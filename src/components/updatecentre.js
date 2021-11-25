@@ -1,4 +1,3 @@
-var sudo = require('sudo-prompt');
 const { branch, ipcaction, fetchData } = require('../global')
 const execShell = require('../pages/setup');
 
@@ -6,7 +5,7 @@ async function updateCentre() {
 
     var currentversion, latestversion;
 
-    let currentbranch = branch()
+    let currentbranch = await branch()
 
     let closebutton = document.getElementById("btn-close")
     let updatebutton = document.getElementById("btn-update")

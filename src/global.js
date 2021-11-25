@@ -1,14 +1,14 @@
 const { ipcRenderer } = require('electron');
-const shell = require('async-shelljs');
 const { existsSync } = require('fs');
 const untildify = require('untildify');
+const ashell = require('./utils/shell');
 
 var options = {
     name: 'Aurora',
 };
 
-function branch() {
-    return shell.exec("git rev-parse --abbrev-ref HEAD").toString().trim()
+async function branch() {
+    return await ashell("git", ["rev-parse", "--abbrev-ref", "HEAD"])
 }
 
 var loc_aurora = untildify("~/.tuf-aurora");
@@ -41,14 +41,14 @@ async function saveDef(key, value) {
     if (existsSync(`${loc_aurora}/config`)) {
         defaults = await fetchData(`${loc_aurora}/config`, false)
     } else {
-        shell.exec("mkdir -p " + loc_aurora)
+        await ashell("mkdir", ["-p", loc_aurora])
         defaults = { color: "#000000", mode: "7", speed: "4", brightness: "0" }
     }
 
     if (key != undefined)
         defaults[key] = value.toString();
 
-    shell.exec("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
+    ashell("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
 }
 
 function iprint(val) {
