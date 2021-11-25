@@ -1,7 +1,7 @@
 const { ipcRenderer } = require('electron');
 const { existsSync } = require('fs');
 const untildify = require('untildify');
-const ashell = require('./utils/shell');
+const { ashell } = require('./utils/shell');
 
 var options = {
     name: 'Aurora',
@@ -51,10 +51,6 @@ async function saveDef(key, value) {
     ashell("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
 }
 
-function iprint(val) {
-    console.log(val)
-}
-
 const setkeyboardsettings = (input) => {
     if (input == '0')
         state = 'none'
@@ -76,4 +72,4 @@ const disableSpeed = (id) => {
         speed.display = "block"
 }
 
-module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings, disableSpeed }
+module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, setkeyboardsettings, disableSpeed }
