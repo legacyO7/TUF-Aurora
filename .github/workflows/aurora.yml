@@ -28,7 +28,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: export GH_TOKEN="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"
     - run: npm install
     - run: npm run dist
     - run: ls dist/
