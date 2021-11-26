@@ -1,11 +1,10 @@
-const { branch, ipcaction, fetchData } = require('../global')
+const { ipcaction, fetchData } = require('../global')
 const execShell = require('../pages/setup');
 
 async function updateCentre() {
 
     var currentversion, latestversion;
 
-    let currentbranch = await branch()
 
     let closebutton = document.getElementById("btn-close")
     let updatebutton = document.getElementById("btn-update")
@@ -16,14 +15,12 @@ async function updateCentre() {
 
     var uptext = document.getElementById("uptext");
     uptext.innerText = "v" + currentversion;
-    if (currentbranch == "beta")
-        uptext.innerText += '' + currentbranch
 
     if (window.navigator.onLine) {
 
         var modal = document.getElementById("update-modal");
 
-        latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + currentbranch + "/package.json", true)).version;
+        latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/master/package.json", true)).version;
 
         if (currentversion != latestversion) {
             modal.style.display = "block";
