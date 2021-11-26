@@ -7,11 +7,9 @@ var options = {
     name: 'Aurora',
 };
 
-async function branch() {
-    return await ashell("git", ["rev-parse", "--abbrev-ref", "HEAD"])
-}
-
 var loc_aurora = untildify("~/.tuf-aurora");
+
+var accentColor = "#266EF6"
 
 const ipcaction = async(name, options) => {
     ipcRenderer.send(name, options);
@@ -31,7 +29,7 @@ async function fetchData(url, changelog = false) {
 }
 
 function getchangelog() {
-    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then(async(r) => {
+    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/master/changelog.txt").then(async(r) => {
         let changelog = document.getElementById('changelog')
         changelog.innerText = await r.text()
         if (changelog.innerText.includes("404"))
@@ -76,4 +74,4 @@ const disableSpeed = (id) => {
         speed.display = "block"
 }
 
-module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, setkeyboardsettings, disableSpeed }
+module.exports = { options, ipcaction, loc_aurora, accentColor, getchangelog, saveDef, fetchData, setkeyboardsettings, disableSpeed }

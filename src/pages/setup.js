@@ -1,6 +1,6 @@
 const paths = require('../path');
 const Sudoer = require('@nathanielks/electron-sudo').default;
-const { options, ipcaction } = require('../global');
+const { options, ipcaction, accentColor } = require('../global');
 const { existsSync } = require('fs');
 const { ashell } = require('../utils/shell');
 
@@ -54,6 +54,7 @@ async function execShell(val) {
         modal = document.getElementById("update-modal");
         logcat = document.getElementById('changelog');
         btnclose = document.getElementById("btn-close");
+        document.getElementById('modal-scroll').style.flexDirection = "column-reverse"
         btnclose.innerText = "Close";
     } else {
         modal = document.getElementById("log");
@@ -76,7 +77,7 @@ async function execShell(val) {
             logcat.style.color = "red";
             process = false;
         } else {
-            logcat.style.color = "green";
+            logcat.style.color = accentColor;
             process = true;
         }
         logcat.innerText += data.toString();
