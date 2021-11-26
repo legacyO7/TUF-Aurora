@@ -6,7 +6,6 @@ const {
 } = require("electron");
 require('electron-reload')(app.getAppPath());
 const path = require('path');
-const { existsSync } = require('fs');
 const iconPath = path.join(app.getAppPath(), "Icon.png");
 
 function createWindow() {
