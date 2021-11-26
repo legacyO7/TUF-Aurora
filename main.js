@@ -6,6 +6,7 @@ const {
 } = require("electron");
 require('electron-reload')(app.getAppPath());
 const path = require('path');
+const { existsSync } = require('fs');
 const iconPath = path.join(app.getAppPath(), "Icon.png");
 
 function createWindow() {
@@ -44,10 +45,11 @@ function createWindow() {
 
     ipcMain.on('shelldir', function(event, arg) {
         let shellpath
+        if (false)
+            shellpath = path.join(app.getAppPath(), 'src', 'shell').replace(/\s/g, '\\ ')
+        else
+            shellpath = path.join(app.getAppPath(), '..', '..', 'src', 'shell').replace(/\s/g, '\\ ')
 
-        //shellpath = path.join(app.getAppPath(), '..', '..', 'src', 'shell').replace(/\s/g, '\\ ')
-
-        shellpath = path.join(app.getAppPath(), 'src', 'shell').replace(/\s/g, '\\ ')
 
         event.sender.send('shelldir-response', [shellpath]);
     });
