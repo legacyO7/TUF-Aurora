@@ -91,7 +91,7 @@ async function execShell(val) {
         });
 
         cp.stderr.on('data', function(data) {
-            if (!data.includes('awaiting response')) {
+            if (!data.includes('Setting up')) {
                 logcat.style.color = "red";
                 process = false;
             } else {
