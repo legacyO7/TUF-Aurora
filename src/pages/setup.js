@@ -102,13 +102,11 @@ async function execShell(val) {
 
         cp.on('close', () => {
             actionCompleted = true
-            downicon.style.display = "none"
+
             if (val == "update") {
+                downicon.style.display = "none"
                 if (process) {
                     ipcaction("restart");
-                } else {
-
-                    downicon.style.display = "none";
                 }
             } else {
                 butonstatus.style.display = "block";
