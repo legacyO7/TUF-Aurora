@@ -1,7 +1,6 @@
-const { saveDef, setkeyboardsettings, disableSpeed } = require('../global');
+const { saveDef, setkeyboardsettings, disableSpeed, shelldir } = require('../global');
 const paths = require('../path');
 const { ashell } = require('../utils/shell');
-
 
 function keyboardSettings() {
 
@@ -17,7 +16,7 @@ function keyboardSettings() {
 
 }
 
-function writeKeyboardConfig(name, id, offset) {
+async function writeKeyboardConfig(name, id, offset) {
     for (i = 0; i < 11; i++)
         if (!document.getElementById(`k_${i}`).checked)
             document.getElementById(`l_${i}`).classList.remove("card")
@@ -28,7 +27,7 @@ function writeKeyboardConfig(name, id, offset) {
         ashell(`echo "${id}" > ${paths.brightness}`);
         setkeyboardsettings(id)
     } else
-        ashell('bash ' + __dirname + '/../shell/' + name + '.sh ' + (parseInt(id) - offset));
+        ashell('bash ' + await shelldir() + '/' + name + '.sh ' + (parseInt(id) - offset));
     saveDef(name, id)
 }
 
