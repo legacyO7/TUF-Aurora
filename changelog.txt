@@ -1,32 +1,11 @@
 ChangeLog : 
 ~~~~~~~~~
 
-v1.1.3
-redesign battery manager widget
-secureboot status
-fixed App Icon
-fixed versioning issues
+v2.0.0
 
-v1.1.2
-rpm support
-Fixed startup settings
-Cleaned up code
-
-
-v1.1.1
-Fixed incorrect settings layout on startup 
-Update center
-minor bug fixes
-
-
-v1.1.0
-Bump to electron 14.0.1
-Updated modules
-Refactor code
-Color wheel picker
-
-
-v1.0.0
-Bring up TUF-Aurora
-FA706IH compatibilty
-Redesigned UI
+now available as packages and AppImage
+bump to electron 16.0.0
+ui enhancement
+uses electron builder for packaging
+updatecenter bugfixes
+many underthehood changes

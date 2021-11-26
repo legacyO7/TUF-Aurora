@@ -4,10 +4,9 @@ const {
     dialog,
     ipcMain
 } = require("electron");
-require('electron-reload')(__dirname);
+require('electron-reload')(app.getAppPath());
 const path = require('path');
-const iconPath = path.join(__dirname, "src", "images", "appicon.png");
-
+const iconPath = path.join(app.getAppPath(), "Icon.png");
 
 function createWindow() {
     // Create the browser window.
@@ -22,15 +21,11 @@ function createWindow() {
         },
         resizable: false,
         title: "TUF Aurora",
-
-        preload: path.join(__dirname, "preload.js"),
         icon: iconPath
     });
 
     // and load the index.html of the app.
     win.loadFile('./src/index.html');
-
-    console.log(app.getVersion())
 
     ipcMain.on('resize', (event, arg) => {
         win.setResizable(true);
@@ -38,8 +33,24 @@ function createWindow() {
         win.setResizable(false);
     })
 
+    ipcMain.on('restart', (event, arg) => {
+        app.relaunch()
+        app.exit()
+    })
+
     ipcMain.on('appversion', function(event, arg) {
         event.sender.send('appversion-response', [app.getVersion()]);
+    });
+
+    ipcMain.on('shelldir', function(event, arg) {
+        let shellpath
+        if (false)
+            shellpath = path.join(app.getAppPath(), 'src', 'shell').replace(/\s/g, '\\ ')
+        else
+            shellpath = path.join(app.getAppPath(), '..', '..', 'src', 'shell').replace(/\s/g, '\\ ')
+
+
+        event.sender.send('shelldir-response', [shellpath]);
     });
 
     ipcMain.on('showdialog', async function(event, arg) {

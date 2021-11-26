@@ -2,36 +2,39 @@
     "name": "tuf-aurora",
     "displayName": "TUF Aurora",
     "productName": "TUF Aurora",
-    "version": "1.1.3",
+    "version": "2.0.0",
     "description": "TUF Keyboard & Battery Manager Based On Faustus Mod",
     "main": "main.js",
     "scripts": {
         "test": "test",
         "start": "export ELECTRON_ENABLE_LOGGING=1 && electron .",
         "clean-build": "rm -rf ./dist",
-        "build": "electron-packager . tuf-aurora --platform linux --arch x64 --overwrite --out dist/",
-        "deb64": "electron-installer-debian --src dist/tuf-aurora-linux-x64/ --config config.json --arch amd64",
-        "rpm64": "electron-installer-redhat --src dist/tuf-aurora-linux-x64/ --config config.json --arch amd64"
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder --publish=never"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/legacyO7/TUF-Aurora.git"
     },
     "dependencies": {
-        "async-shelljs": "^0.1.4",
+        "@nathanielks/electron-sudo": "^4.0.15",
         "electron-packager": "^15.4.0",
-        "electron-prompt": "^1.7.0",
         "electron-reload": "^2.0.0-alpha.1",
-        "electron-sudo": "^4.0.12",
         "rangeslider.js": "^2.3.3",
         "reinvented-color-wheel": "^0.4.0",
-        "sudo-js": "^1.0.2",
-        "sudo-prompt": "^9.2.1",
         "untildify": "^4.0.0"
+    },
+    "devDependencies": {
+        "electron": "^16.0.0",
+        "electron-builder": "^22.14.5"
     },
     "keywords": [
         "aurora",
-        "tuf"
+        "tuf",
+        "battery manager",
+        "rgb lighting control",
+        "linux",
+        "asus"
     ],
     "author": "legacyO7 <anitsebastian802@gmail.com>",
     "license": "MIT",
@@ -39,9 +42,6 @@
         "url": "https://github.com/legacyO7/TUF-Aurora/issues"
     },
     "homepage": "https://github.com/legacyO7/TUF-Aurora#readme",
-    "devDependencies": {
-        "electron": "^14.0.1"
-    },
     "extraResources": [{
         "from": "./images/",
         "to": "images",
@@ -51,10 +51,15 @@
     }],
     "build": {
         "appId": "com.legacy07.aurora",
+        "extraFiles": [
+            "src/shell",
+            "Icon.png",
+            "setup_minimal.sh"
+        ],
         "linux": {
             "icon": "Icon.png",
             "category": "Utility",
-            "target": "deb"
+            "target": ["AppImage", "deb", "rpm"]
         },
         "files": [
             "**/*",
