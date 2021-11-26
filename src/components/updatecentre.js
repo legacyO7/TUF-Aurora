@@ -19,6 +19,7 @@ async function updateCentre() {
     if (window.navigator.onLine) {
 
         var modal = document.getElementById("update-modal");
+        let upbar = document.getElementById('upbar')
 
         latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/master/package.json", true)).version;
 
@@ -30,14 +31,17 @@ async function updateCentre() {
         closebutton.onclick = function() {
             modal.style.display = "none";
         };
-        updatebutton.onclick = function() {
+        updatebutton.onclick = async function() {
             document.getElementById('appheader').style.marginLeft = "70px";
-            document.getElementById('upbar').style.visibility = "visible";
+            upbar.style.visibility = "visible";
             uptext.innerText = "Updating";
             closebutton.style.display = "none"
             updatebutton.style.display = "none"
 
-            execShell("update");
+            await execShell("update").then(resp => {
+                upbar.style.visibility = "hidden"
+                uptext.innerText = "v" + currentversion;
+            });
         };
 
 

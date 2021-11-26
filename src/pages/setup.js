@@ -40,76 +40,92 @@ const extermExec = (val) => {
 
 
 async function execShell(val) {
-
     var sudoer = new Sudoer(options);
     let process = true;
 
-    let modal, logcat, butonstatus, buttontext, btnclose;
+
+    let modal, logcat, butonstatus, buttontext, btnclose, downicon, actionCompleted = false;
 
     let cp = await sudoer.spawn(
         __dirname + '/../../setup_minimal.sh ' + val
     );
 
-    if (val == "update") {
-        modal = document.getElementById("update-modal");
-        logcat = document.getElementById('changelog');
-        btnclose = document.getElementById("btn-close");
-        document.getElementById('modal-scroll').style.flexDirection = "column-reverse"
-        btnclose.innerText = "Close";
-    } else {
-        modal = document.getElementById("log");
-        logcat = document.getElementById('log-text');
-        buttontext = document.getElementById(val + '-title');
-        butonstatus = document.getElementById(val + '-status');
-        btnclose = document.getElementById("log-close");
-        modal.style.display = "block";
-    }
+    return new Promise((resolve, reject) => {
 
-    logcat.innerText = "";
-
-    cp.stdout.on('data', function(data) {
-        logcat.innerText += data.toString();
-
-    });
-
-    cp.stderr.on('data', function(data) {
-        if (!data.includes('awaiting response')) {
-            logcat.style.color = "red";
-            process = false;
-        } else {
-            logcat.style.color = accentColor;
-            process = true;
-        }
-        logcat.innerText += data.toString();
-    });
-
-    cp.on('close', () => {
-        btnclose.style.display = "block";
         if (val == "update") {
-            if (process) {
-                ipcaction("restart");
-            } else {
-                btnclose.onclick = function() {
-                    modal.style.display = "none";
-                };
-            }
-        } else {
-            butonstatus.style.display = "block";
-            if (process) {
-                buttontext.style.color = "#266EF6";
-                butonstatus.innerHTML = "&#10003;";
+            downicon = document.getElementById("downicon")
+            modal = document.getElementById("update-modal");
+            logcat = document.getElementById('changelog');
+            btnclose = document.getElementById("btn-close");
+            document.getElementById('modal-scroll').style.flexDirection = "column-reverse"
+            btnclose.innerText = "Close";
+            btnclose.style.display = "block";
+            btnclose.onclick = function() {
                 modal.style.display = "none";
-                document.getElementById("fi").style.display = "block";
-            } else {
-                buttontext.style.color = "red";
-                butonstatus.innerHTML = "&#10005;";
-                btnclose.onclick = function() {
-                    modal.style.display = "none";
-                };
-            }
+                if (!actionCompleted)
+                    downicon.style.display = "block"
+
+            };
+            downicon.onclick = function() {
+                modal.style.display = "block";
+                downicon.style.display = "none"
+            };
+        } else {
+            modal = document.getElementById("log");
+            logcat = document.getElementById('log-text');
+            buttontext = document.getElementById(val + '-title');
+            butonstatus = document.getElementById(val + '-status');
+            btnclose = document.getElementById("log-close");
+            modal.style.display = "block";
         }
 
-    });
+        logcat.innerText = "";
+
+        cp.stdout.on('data', function(data) {
+            logcat.innerText += data.toString();
+
+        });
+
+        cp.stderr.on('data', function(data) {
+            if (!data.includes('awaiting response')) {
+                logcat.style.color = "red";
+                process = false;
+            } else {
+                logcat.style.color = accentColor;
+                process = true;
+            }
+            logcat.innerText += data.toString();
+        });
+
+        cp.on('close', () => {
+            actionCompleted = true
+            downicon.style.display = "none"
+            if (val == "update") {
+                if (process) {
+                    ipcaction("restart");
+                } else {
+
+                    downicon.style.display = "none";
+                }
+            } else {
+                butonstatus.style.display = "block";
+                if (process) {
+                    buttontext.style.color = "#266EF6";
+                    butonstatus.innerHTML = "&#10003;";
+                    modal.style.display = "none";
+                    document.getElementById("fi").style.display = "block";
+                } else {
+                    buttontext.style.color = "red";
+                    butonstatus.innerHTML = "&#10005;";
+                    btnclose.onclick = function() {
+                        modal.style.display = "none";
+                    };
+                }
+            }
+            resolve("done")
+        });
+
+    })
 }
 
 setup()
