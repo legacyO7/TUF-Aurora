@@ -1,13 +1,12 @@
-var sudo = require('sudo-prompt');
-const { branch, loc_aurora, ipcaction, fetchData } = require('../global')
-const { existsSync } = require('fs');
-const shell = require('async-shelljs');
-
+const { ipcaction, fetchData, shelldir } = require('../global')
+const execShell = require('../pages/setup');
 
 async function updateCentre() {
+
     var currentversion, latestversion;
 
-    let currentbranch = branch()
+    let closebutton = document.getElementById("btn-close")
+    let updatebutton = document.getElementById("btn-update")
 
     await ipcaction('appversion').then((args) => {
         currentversion = args[0];
@@ -15,71 +14,46 @@ async function updateCentre() {
 
     var uptext = document.getElementById("uptext");
     uptext.innerText = "v" + currentversion;
-    if (currentbranch == "beta")
-        uptext.innerText += '' + currentbranch
 
     if (window.navigator.onLine) {
 
-        var modal = document.getElementById("update-modal");
+        let dir = (await shelldir()).toString()
 
-        latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + currentbranch + "/package.json", true)).version;
+        if (!dir.includes("/tmp/") && !dir.includes("/snap/")) {
+            var modal = document.getElementById("update-modal");
+            let upbar = document.getElementById('upbar')
 
-        if (currentversion != latestversion) {
-            modal.style.display = "block";
-            document.getElementById('update-text').innerText = `v${latestversion}`;
+            latestversion = (await fetchData("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/master/package.json", true)).version;
+
+            if (currentversion != latestversion) {
+                modal.style.display = "block";
+                document.getElementById('update-text').innerText = `v${latestversion}`;
+            }
+
+            closebutton.onclick = function() {
+                modal.style.display = "none";
+            };
+            updatebutton.onclick = async function() {
+                document.getElementById('appheader').style.marginLeft = "70px";
+                upbar.style.visibility = "visible";
+                uptext.innerText = "Updating";
+                closebutton.style.display = "none"
+                updatebutton.style.display = "none"
+
+                await execShell("update").then(resp => {
+                    upbar.style.visibility = "hidden"
+                    uptext.innerText = "v" + currentversion;
+                });
+            };
+
         }
 
-        document.getElementById("btn-close").onclick = function() {
-            modal.style.display = "none";
-        };
-        document.getElementById("btn-update").onclick = function() {
-            modal.style.display = "none";
-            document.getElementById('appheader').style.marginLeft = "70px";
-            document.getElementById('upbar').style.visibility = "visible";
-            uptext.innerText = "Updating";
-
-            doUpdate();
-        };
 
 
-        function doUpdate() {
 
-            shell.asyncExec(`mkdir -p ${loc_aurora} && cd ${loc_aurora} && rm -rf temp && mkdir temp && cd temp && git clone --depth=1 https://github.com/legacyO7/TUF-Aurora.git -b ${currentbranch} `).then(val => {
-
-                const dialogoptions = {
-                    type: 'question',
-                    buttons: ['Yes, please', 'No, thanks'],
-                    defaultId: 2,
-                    title: 'Download Completed',
-                    message: 'Download Completed',
-                    detail: 'Update Now?',
-                    checkboxChecked: false,
-                };
-
-                ipcaction('showdialog', [dialogoptions]).then((args) => {
-                    if (args[0].response == 0) {
-                        uptext.innerText = "Installing";
-                        finalizeUpdate()
-                    } else {
-                        shell.exec(`echo > ${loc_aurora}/.update`)
-                        document.getElementById('appheader').style.marginLeft = "30px"
-                        document.getElementById('upbar').style.visibility = "hidden"
-                        uptext.innerText = "v" + currentversion
-                    }
-                })
-
-            })
-        }
 
     }
 
 }
 
-function finalizeUpdate() {
-    shell.asyncExec(`xterm -maximized -e "cd ${loc_aurora}/temp/TUF-Aurora && echo > ../../.update && ./setup.sh && rm ../../.update "`).then(v => {
-        if (!existsSync(`${loc_aurora}/.update`))
-            window.close()
-    })
-}
-
-module.exports = { updateCentre, finalizeUpdate }
+module.exports = { updateCentre }

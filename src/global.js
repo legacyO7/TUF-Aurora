@@ -1,17 +1,16 @@
 const { ipcRenderer } = require('electron');
-const shell = require('async-shelljs');
 const { existsSync } = require('fs');
 const untildify = require('untildify');
+const { ashell } = require('./utils/shell');
 
 var options = {
     name: 'Aurora',
 };
 
-function branch() {
-    return shell.exec("git rev-parse --abbrev-ref HEAD").toString().trim()
-}
-
 var loc_aurora = untildify("~/.tuf-aurora");
+
+var accentColor = "#266EF6"
+
 
 const ipcaction = async(name, options) => {
     ipcRenderer.send(name, options);
@@ -22,7 +21,7 @@ const ipcaction = async(name, options) => {
     });
 }
 
-async function fetchData(url, changelog) {
+async function fetchData(url, changelog = false) {
     let response = await fetch(url);
     let data = await response.json();
     if (changelog)
@@ -31,8 +30,12 @@ async function fetchData(url, changelog) {
 }
 
 function getchangelog() {
-    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/" + branch + "/changelog.txt").then(async(r) => {
-        document.getElementById('changelog').innerText = await r.text()
+    fetch("https://raw.githubusercontent.com/legacyO7/TUF-Aurora/master/changelog.txt").then(async(r) => {
+        let changelog = document.getElementById('changelog')
+        changelog.innerText = await r.text()
+        if (changelog.innerText.includes("404"))
+            document.getElementById('update-modal').style.display = "none"
+
     })
 }
 
@@ -41,18 +44,14 @@ async function saveDef(key, value) {
     if (existsSync(`${loc_aurora}/config`)) {
         defaults = await fetchData(`${loc_aurora}/config`, false)
     } else {
-        shell.exec("mkdir -p " + loc_aurora)
-        defaults = { color: "#000000", mode: "7", speed: "4", brightness: "0" }
+        await ashell("mkdir", ["-p", loc_aurora])
+        defaults = { color: "#ffffff", mode: "7", speed: "4", brightness: "0" }
     }
 
     if (key != undefined)
         defaults[key] = value.toString();
 
-    shell.exec("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
-}
-
-function iprint(val) {
-    console.log(val)
+    ashell("echo " + JSON.stringify(JSON.stringify(defaults)) + " > " + loc_aurora + "/config")
 }
 
 const setkeyboardsettings = (input) => {
@@ -76,4 +75,10 @@ const disableSpeed = (id) => {
         speed.display = "block"
 }
 
-module.exports = { options, ipcaction, branch, loc_aurora, getchangelog, saveDef, fetchData, iprint, setkeyboardsettings, disableSpeed }
+async function shelldir() {
+    return await ipcaction("shelldir")
+}
+
+
+
+module.exports = { options, ipcaction, loc_aurora, accentColor, getchangelog, saveDef, fetchData, setkeyboardsettings, disableSpeed, shelldir }

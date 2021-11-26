@@ -1,24 +1,23 @@
 const { existsSync } = require('fs');
-const { kModule } = require('../path');
-const shell = require('async-shelljs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, iprint, setkeyboardsettings, branch, disableSpeed } = require('../global')
+const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, setkeyboardsettings, disableSpeed, shelldir } = require('../global')
 const paths = require('../path');
 const { finalizeUpdate } = require('../components/updatecentre');
 const { getPermission } = require('./permshandler');
+const { ashell } = require('./shell');
 
 // check for faustus modules and load the configs on startup
 
 async function initialize() {
 
+
     var boot_status = document.getElementById('boot_status');
-    boot_status.innerText = "SecureBoot disabled";
-    if (shell.exec('mokutil --sb-state').includes('enabled')) {
-        boot_status.style.color = 'greenyellow';
-        boot_status.innerText = " SecureBoot enabled"
+    boot_status.innerText = await ashell('mokutil', ['--sb-state'])
+    if (boot_status.innerText.includes('enabled')) {
+        boot_status.style.color = 'greenyellow'
     }
 
-    if (existsSync(`${kModule}`)) {
+    if (existsSync(`${paths.kModule}`)) {
         document.getElementById('content').style.display = 'block';
         document.getElementById('blockuser').style.display = 'none';
 
@@ -27,24 +26,28 @@ async function initialize() {
             await saveDef();
         }
 
-
         await getPermission(paths.path_blue);
         await getPermission(paths.path_green);
         await getPermission(paths.path_red);
 
         await fetchData(`${loc_aurora}/config`, false).then(async(value) => {
 
-            document.getElementById(`k_${value.brightness}`).click();
+            document.getElementById(`k_${value.brightness}`).click();;
             document.getElementById(`k_${value.speed}`).click();
             document.getElementById(`k_${value.mode}`).click();
 
+            document.getElementById(`l_${value.brightness}`).classList.add("card")
+            document.getElementById(`l_${value.speed}`).classList.add("card")
+            document.getElementById(`l_${value.mode}`).classList.add("card")
+
             setkeyboardsettings(value.brightness);
             disableSpeed(value.mode)
+            let dir = await shelldir()
 
-            shell.exec(`echo "${value.brightness}" > ${paths.brightness}`);
-            shell.exec('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
-            shell.exec('bash ' + __dirname + '/../shell/mode.sh ' + (parseInt(value.mode) - 7));
-            shell.exec('bash ' + __dirname + `/../shell/color.sh ${value.color.substr(1, 2)} ${value.color.substr(3, 2)} ${value.color.substr(5, 2)}`);
+            ashell(`echo "${value.brightness}" > ${paths.brightness}`);
+            ashell('bash ' + dir + '/speed.sh ' + (parseInt(value.speed) - 4));
+            ashell('bash ' + dir + '/mode.sh ' + (parseInt(value.mode) - 7));
+            ashell('bash ' + dir + `/color.sh ${value.color.substr(1, 2)} ${value.color.substr(3, 2)} ${value.color.substr(5, 2)}`);
         });
 
     } else {
@@ -55,8 +58,8 @@ async function initialize() {
 
     await ipcaction('appversion').then(async(args) => {
         if (existsSync(`${loc_aurora}/v${args[0]}`)) {} else {
-            shell.exec(`rm ${loc_aurora}/v*`);
-            shell.exec(`echo > ${loc_aurora}/v${args[0]}`);
+            ashell(`rm ${loc_aurora}/v*`);
+            ashell(`echo > ${loc_aurora}/v${args[0]}`);
             var modal = document.getElementById("update-modal");
             var button = document.getElementById("btn-close");
             modal.style.display = "block";

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head class="wrapper">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/setup.css" />
+    <link rel="stylesheet" type="text/css" href="../css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="../css/button.css" />
+    <link rel="stylesheet" type="text/css" href="../node_modules/reinvented-color-wheel/css/reinvented-color-wheel.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/nano.min.css" />
+    <title>TUF Aurora</title>
+</head>
+
+<body>
+    <img class="smallHeader" src="../../src/images/appicon.png"></img>
+
+
+    <div class="row" style="justify-content: center;">
+        <h1 class="appHeader" id=appheader>Setup Aurora</h1>
+    </div>
+
+
+    <div class="setup-main">
+        <div class="card btn btn-fix " id="pi" style=" height: 2rem; width: 300px; padding-left: 20px; padding-right: 20px; ">
+            <div class="btn-card-body row">
+                <h5 class="btn-title " id="pi-title">Install Packages</h5>
+                <h5 class="btn-title " id="pi-status" style="display: none"></h5>
+            </div>
+        </div>
+
+        <p>&ensp;</p>
+
+        <div class="card btn btn-fix " id="fi" style=" height: 2rem; width: 300px; padding-left: 20px;padding-right: 20px; display: none; margin-bottom: 50px;">
+            <div class="btn-card-body row">
+                <h5 class="btn-title " id="fi-title">Install Faustus Module</h5>
+                <h5 class="btn-title " id="fi-status" style="display: none;"></h5>
+            </div>
+        </div>
+
+        <div style="display: none;" id="load">
+            <p style="text-align: center; color: aliceblue;">All set. Lets Go..</p>
+            <div class="loader">
+                <div class="spinner">
+                    <div class="bubble-1"></div>
+                    <div class="bubble-2"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="log" class="modal">
+        <div class="modal-content">
+            <div class="row" style="justify-content: space-between;padding-left: 15px;padding-right: 15px;">
+                <h4 class="modaltext" id="modal-header">Installing...</h4>
+                <div class="card btn btn-fix " id="fi" style=" height: 2rem; width: 30px; ">
+                    <div class="btn-card-body ">
+                        <h5 class="btn-title " id="log-close" style="display: block;">&#10005;</h5>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow-y: scroll; overflow-x: hidden;max-height:100%; margin-bottom: 10px; display: flex;  flex-direction: column-reverse;">
+                <p class="modaltext" id="log-text"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="./setup.js"></script>
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <script src="jquery.min.js "></script>
+    <script type="module" src="rangeslider.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../assets/bootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        if (window.module) module = window.module;
+    </script>
+</body>
+
+</html>
