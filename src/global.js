@@ -11,6 +11,7 @@ var loc_aurora = untildify("~/.tuf-aurora");
 
 var accentColor = "#266EF6"
 
+
 const ipcaction = async(name, options) => {
     ipcRenderer.send(name, options);
     return await new Promise((resolve, reject) => {
@@ -74,4 +75,10 @@ const disableSpeed = (id) => {
         speed.display = "block"
 }
 
-module.exports = { options, ipcaction, loc_aurora, accentColor, getchangelog, saveDef, fetchData, setkeyboardsettings, disableSpeed }
+async function shelldir() {
+    return await ipcaction("shelldir")
+}
+
+
+
+module.exports = { options, ipcaction, loc_aurora, accentColor, getchangelog, saveDef, fetchData, setkeyboardsettings, disableSpeed, shelldir }

@@ -1,11 +1,14 @@
 const paths = require('../path');
 const Sudoer = require('@nathanielks/electron-sudo').default;
-const { options, ipcaction, accentColor } = require('../global');
+const { options, ipcaction, accentColor, shelldir } = require('../global');
 const { existsSync } = require('fs');
 const { ashell } = require('../utils/shell');
 
+let dir
 
-const setup = () => {
+const setup = async() => {
+
+    dir = await shelldir()
 
     $('#pi').on('click', () => {
         execShell('pi')
@@ -17,7 +20,7 @@ const setup = () => {
 }
 
 const extermExec = (val) => {
-    ashell(`xterm  -e "${__dirname}/../../setup_minimal.sh ${val}"`).then((resp => {
+    ashell(`xterm  -e "${dir}/../../setup_minimal.sh ${val}"`).then((resp => {
 
         let buttontext = document.getElementById(val + '-title')
         let butonstatus = document.getElementById(val + '-status')
@@ -47,7 +50,7 @@ async function execShell(val) {
     let modal, logcat, butonstatus, buttontext, btnclose, downicon, actionCompleted = false;
 
     let cp = await sudoer.spawn(
-        __dirname + '/../../setup_minimal.sh ' + val
+        dir + '/../../setup_minimal.sh ' + val
     );
 
     return new Promise((resolve, reject) => {

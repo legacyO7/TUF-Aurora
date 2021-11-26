@@ -1,6 +1,6 @@
 const { existsSync } = require('fs');
 const { ipcRenderer } = require('electron')
-const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, setkeyboardsettings, disableSpeed } = require('../global')
+const { loc_aurora, ipcaction, getchangelog, fetchData, saveDef, setkeyboardsettings, disableSpeed, shelldir } = require('../global')
 const paths = require('../path');
 const { finalizeUpdate } = require('../components/updatecentre');
 const { getPermission } = require('./permshandler');
@@ -42,11 +42,12 @@ async function initialize() {
 
             setkeyboardsettings(value.brightness);
             disableSpeed(value.mode)
+            let dir = await shelldir()
 
             ashell(`echo "${value.brightness}" > ${paths.brightness}`);
-            ashell('bash ' + __dirname + '/../shell/speed.sh ' + (parseInt(value.speed) - 4));
-            ashell('bash ' + __dirname + '/../shell/mode.sh ' + (parseInt(value.mode) - 7));
-            ashell('bash ' + __dirname + `/../shell/color.sh ${value.color.substr(1, 2)} ${value.color.substr(3, 2)} ${value.color.substr(5, 2)}`);
+            ashell('bash ' + dir + '/speed.sh ' + (parseInt(value.speed) - 4));
+            ashell('bash ' + dir + '/mode.sh ' + (parseInt(value.mode) - 7));
+            ashell('bash ' + dir + `/color.sh ${value.color.substr(1, 2)} ${value.color.substr(3, 2)} ${value.color.substr(5, 2)}`);
         });
 
     } else {
