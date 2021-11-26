@@ -27,7 +27,7 @@ async function ashell(cmd, args) {
         });
 
         ls.stderr.on('data', function(data) {
-            //    console.log('stderr: ' + data.toString());
+            //   console.log('stderr: ' + data.toString());
             output = data.toString()
         });
 
