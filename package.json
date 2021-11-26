@@ -10,7 +10,7 @@
         "start": "export ELECTRON_ENABLE_LOGGING=1 && electron .",
         "clean-build": "rm -rf ./dist",
         "pack": "electron-builder --dir",
-        "dist": "DEBUG=electron-builder && electron-builder"
+        "dist": "electron-builder"
     },
     "repository": {
         "type": "git",
