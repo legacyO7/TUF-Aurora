@@ -62,7 +62,7 @@
         "linux": {
             "icon": "Icon.png",
             "category": "Utility",
-            "target": "deb"
+            "target": ["AppImage", "snap", "deb", "rpm", "pacman", "apk"]
         },
         "files": [
             "**/*",

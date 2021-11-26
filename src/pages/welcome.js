@@ -44,7 +44,7 @@ function animate() {
 function navigate() {
 
     setTimeout(function() {
-        if (existsSync(`${paths.kModule}`)) {
+        if (existsSync(`1${paths.kModule}`)) {
             window.location.href = './pages/home.html';
         } else {
             document.getElementById("go").style.display = "block"
