@@ -5,7 +5,6 @@ async function updateCentre() {
 
     var currentversion, latestversion;
 
-
     let closebutton = document.getElementById("btn-close")
     let updatebutton = document.getElementById("btn-update")
 
