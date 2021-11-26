@@ -2,7 +2,7 @@ const paths = require('../path');
 const Sudoer = require('@nathanielks/electron-sudo').default;
 const { options, ipcaction, accentColor, shelldir } = require('../global');
 const { existsSync } = require('fs');
-const { ashell } = require('../utils/shell');
+const { ashell, sudoshell } = require('../utils/shell');
 
 let dir
 
@@ -50,7 +50,7 @@ async function execShell(val) {
     let modal, logcat, butonstatus, buttontext, btnclose, downicon, actionCompleted = false;
 
     let cp = await sudoer.spawn(
-        dir + '/../../setup_minimal.sh ' + val
+        '/home/legacy07/.tuf-aurora/setup_minimal.sh ' + val
     );
 
     return new Promise((resolve, reject) => {
@@ -64,6 +64,7 @@ async function execShell(val) {
             btnclose.innerText = "Close";
             btnclose.style.display = "block";
             btnclose.onclick = function() {
+
                 modal.style.display = "none";
                 if (!actionCompleted)
                     downicon.style.display = "block"
@@ -103,6 +104,8 @@ async function execShell(val) {
         cp.on('close', () => {
             actionCompleted = true
 
+            logcat.innerText += "cp " + dir + '/../../* ~/.tuf-aurora'
+
             if (val == "update") {
                 downicon.style.display = "none"
                 if (process) {
@@ -116,6 +119,7 @@ async function execShell(val) {
                     modal.style.display = "none";
                     document.getElementById("fi").style.display = "block";
                 } else {
+                    btnclose.style.display = "block";
                     buttontext.style.color = "red";
                     butonstatus.innerHTML = "&#10005;";
                     btnclose.onclick = function() {
