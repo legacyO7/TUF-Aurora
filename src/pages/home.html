@@ -14,8 +14,16 @@
 </head>
 
 <body>
-    <header style="position: absolute;margin-left: 20px;">
-        <p id="boot_status" style="color:red; font-weight: bolder;font-size: medium;"></p>
+    <header style="position: absolute;margin-left: 20px; width: 90%;">
+        <div class="row" style="justify-content: space-between; padding-top: 10px;">
+            <p id="boot_status" style="color:red; font-weight: bolder;font-size: medium;"></p>
+            <div class="card btn btn-fix " id="downicon" style=" padding-left: 20px;padding-right: 10px; display: none; margin-top: 20px;">
+                <div class="btn-card-body row">
+                    <img src="../images/download.svg" style="width:50px;height:50px;">
+                </div>
+            </div>
+
+        </div>
     </header>
 
     <img class="smallHeader" src="../../src/images/appicon.png"></img>
