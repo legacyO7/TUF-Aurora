@@ -28,6 +28,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - run: export GH_TOKEN="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"
     - run: npm install
     - run: npm run dist
     - run: ls dist/
@@ -47,5 +48,6 @@ jobs:
        files: |
             ./dist/tuf-aurora_${{ steps.extract_version.outputs.version }}_amd64.deb
             ./dist/tuf-aurora-${{ steps.extract_version.outputs.version }}.x86_64.rpm
+            ./dist/TUF\ Aurora-${{ steps.extract_version.outputs.version }}.AppImage
               
         
