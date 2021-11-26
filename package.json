@@ -9,9 +9,6 @@
         "test": "test",
         "start": "export ELECTRON_ENABLE_LOGGING=1 && electron .",
         "clean-build": "rm -rf ./dist",
-        "build": "electron-packager . tuf-aurora --platform linux --arch x64 --overwrite --out dist/",
-        "deb64": "electron-installer-debian --src dist/tuf-aurora-linux-x64/ --config config.json --arch amd64",
-        "rpm64": "electron-installer-redhat --src dist/tuf-aurora-linux-x64/ --config config.json --arch amd64",
         "pack": "electron-builder --dir",
         "dist": "DEBUG=electron-builder && electron-builder"
     },
@@ -62,7 +59,7 @@
         "linux": {
             "icon": "Icon.png",
             "category": "Utility",
-            "target": ["AppImage", "snap"]
+            "target": ["AppImage", "deb", "rpm"]
         },
         "files": [
             "**/*",

@@ -50,7 +50,7 @@ async function execShell(val) {
     let modal, logcat, butonstatus, buttontext, btnclose, downicon, actionCompleted = false;
 
     let cp = await sudoer.spawn(
-        '/home/legacy07/.tuf-aurora/setup_minimal.sh ' + val
+        dir + '/../../setup_minimal.sh ' + val
     );
 
     return new Promise((resolve, reject) => {

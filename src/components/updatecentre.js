@@ -17,7 +17,7 @@ async function updateCentre() {
 
     if (window.navigator.onLine) {
 
-        let dir = await shelldir()
+        let dir = (await shelldir()).toString()
 
         if (!dir.includes("/tmp/") && !dir.includes("/snap/")) {
             var modal = document.getElementById("update-modal");
