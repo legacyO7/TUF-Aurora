@@ -4,7 +4,7 @@ signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
 packages_to_install="dkms openssl nodejs npm mokutil xterm"
 pkg="tuf-aurora"
-dest_file_location="dist/installers/$pkg*."
+dest_file_location="dist/$pkg*."
 filename_key="signing_key"
 checkparam=""
 pkgExt="unknown"
@@ -109,10 +109,8 @@ else
             fi
 
     npm install
-    sudo npm install electron-packager electron-installer-$distro -g
     npm run clean-build
-    npm run-script build
-    npm run-script ${pkgExt}64
+    npm run-script dist
 
     if $opm -$checkparam | grep $pkg
     then
