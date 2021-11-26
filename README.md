@@ -25,11 +25,9 @@ This is a fork of the discontinued project [TUF-Control](https://github.com/icod
   <li><code>git clone https://github.com/legacyO7/TUF-Aurora.git</code></li>
   <li><code>cd TUF-Aurora/</code></li>
   <li><code>npm install</code></li>
-  <li><code>sudo npm install electron-packager electron-installer-debian -g</code></li>
   <li><code>npm run clean-build</code></li>
-  <li><code>npm run-script build</code></li>
-  <li><code>npm run-script deb64</code></li>
-  <li><code>sudo dpkg -i dist/installers/tuf-aurora_*.deb</code></li>
+  <li><code>npm run dist</code></li>
+  <li><code>sudo dpkg -i dist/tuf-aurora_*.deb</code></li>
 </ol>
 
 ## How to compile .rpm package
@@ -38,11 +36,9 @@ This is a fork of the discontinued project [TUF-Control](https://github.com/icod
   <li><code>git clone https://github.com/legacyO7/TUF-Aurora.git</code></li>
   <li><code>cd TUF-Aurora/</code></li>
   <li><code>npm install</code></li>
-  <li><code>sudo npm install electron-packager electron-installer-redhat -g</code></li>
   <li><code>npm run clean-build</code></li>
-  <li><code>npm run-script build</code></li>
-  <li><code>npm run-script deb64</code></li>
-  <li><code>sudo rpm -i dist/installers/tuf-aurora_*.rpm</code></li>
+  <li><code>npm run dist</code></li>
+  <li><code>sudo rpm -i dist/tuf-aurora_*.rpm</code></li>
 </ol>
 
 ## How to install faustus module

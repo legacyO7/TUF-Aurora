@@ -1,9 +1,9 @@
 const fs = require('fs');
 const paths = require('../path');
-const sudoPrompt = require('./sudoprompt');
+const { sudoshell } = require('./shell');
 
-// check for read or write perms in module directory and 
-// request for sudo perms if it doesnt have perms
+// check for read or write permissions in module directory and 
+// request for sudo permission if it doesnt have permission
 
 async function permsHandler() {
 
@@ -15,9 +15,8 @@ async function getPermission(path) {
     return new Promise(function(resolve, reject) {
         fs.access(path, fs.constants.R_OK | fs.constants.W_OK, (err) => {
             if (err != null)
-                sudoPrompt(path);
+                sudoshell(`chmod -R o+rwx ${path}`)
             resolve(err != null);
-
         });
     });
 }

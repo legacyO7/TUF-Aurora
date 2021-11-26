@@ -1,168 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head class="wrapper">
-    <div class="base one"></div>
-    <div class="base three"></div>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="./assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="app.css" />
-    <link rel="stylesheet" type="text/css" href="/node_modules/reinvented-color-wheel/css/reinvented-color-wheel.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/nano.min.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100,300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/welcome.css">
     <title>TUF Aurora</title>
 </head>
 
 <body>
-    <header style="position: absolute;margin-left: 20px;">
-        <p id="boot_status" style="color:red; font-weight: bolder;font-size: medium;"></p>
-    </header>
-
-    <img class="smallHeader" src="../src/images/appicon.png"></img>
-
-
-    <div class="row" style="justify-content: center;align-items: baseline;">
-        <h1 class="appHeader" id=appheader>Aurora</h1>
-        <p id="uptext"></p>
-    </div>
-
-
-    <ul class="progress" style="position: relative; visibility: hidden;" id="upbar">
-        <div class="progress-bar progress-bar-striped indeterminate"></div>
-    </ul>
-
-    <div class="container" id="blockuser" style="display:none">
-        <h3>Nah Bruh!</h3>
-        <h4>Faustus Module is missing</h4>
-        <h6>run ./setup.sh or install it manually</h6>
-    </div>
-    <div class="container" id="content" style="display:none">
-        <div class="battery-manager">
-            <h3>Battery Manager</h3>
-            <div class="row" style="justify-content: space-between;">
-                <div class="row">
-                    <h4>Battery charge limit :&nbsp;</h4>
-                    <h4 id="charge"></h4>
-                    <h4>%</h4>
-                </div>
-                <div>
-                    <div class="card btn btn-fix" id="applylimit" style="width: 4.5rem; height: 2rem;">
-                        <div class="btn-card-body">
-                            <h5 class="btn-title" id="normal-title">Apply</h5>
-                        </div>
-                    </div>
-
+    <canvas width="2" height="2"></canvas>
+    <div class="welcome-gradient">
+        <div class="welcome-container">
+            <h2 class="app-subtitle">Welcome</h2>
+            <h1 class="app-title">AURORA Nitrile</h1>
+            <div class="loader" id="loader">
+                <div class="spinner">
+                    <div class="bubble-1"></div>
+                    <div class="bubble-2"></div>
                 </div>
             </div>
-            <input id="batterymanager-input" class="sliderRange" type="range" min="53" max="100" step="1" value="20" style="width:100%;margin-left: 5px;margin-right: 5px;"> <output></output>
+            <div id="fail" style="display: none;">
+                <h2 id="failtext"></h2>
+                <h2> Please install Faustus Module to proceed</h2>
+            </div>
+            <div id="go" style="display: none;">
+                <A style="color: whitesmoke; font-size: 18px;" HREF="pages/setup.html">Lets Go</A>
+            </div>
 
         </div>
-        <div class="rgb-settings">
-            <h3>Keyboard Settings</h3>
-            <div class="row">
-                <div class="maincol">
-                    <div class="col">
-                        <h4>Adjust Brightness</h4>
-                        <div class=" col-sm btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-secondary active">
-								<input type="radio" name="brightness" id="k_0" autocomplete="off" /> Off
-							</label>
-                            <label class="btn btn-secondary active">
-								<input type="radio" name="brightness" id="k_1" autocomplete="off" /> Low
-							</label>
-                            <label class="btn btn-secondary">
-								<input type="radio" name="brightness" id="k_2" autocomplete="off" /> Medium
-							</label>
-                            <label class="btn btn-secondary">
-								<input type="radio" name="brightness" id="k_3" autocomplete="off" /> High
-							
-                    </div></label>
-
-                        </div>
-                        <div class="col" style="display:none" id="effects">
-                            <h4>Keyboard Effects</h4>
-                            <div class="col-sm btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary active">
-                                    <input type="radio" name="mode" id="k_7" autocomplete="off" /> Static Color
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="mode" id="k_8" autocomplete="off" /> Breathing
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="mode" id="k_9" autocomplete="off" /> Color Cycle
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="mode" id="k_10" autocomplete="off" /> Strobing
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col" style="display:none" id="speed">
-                            <h4>Speed</h4>
-                            <div class="col-sm btn-group btn-group-toggle" id="btn-speed" data-toggle="buttons">
-                                <label class="btn btn-secondary active">
-                                    <input type="radio" name="speed" id="k_4" autocomplete="off" /> Slow
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="speed" id="k_5" autocomplete="off" /> Medium
-                                </label>
-                                <label class="btn btn-secondary">
-                                    <input type="radio" name="speed" id="k_6" autocomplete="off" /> Fast
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col" style="display:none" id="colorpicker">
-                        <div class="cp">
-                            <h4>Color Picker</h4>
-                            <div id='picker' class="color-picker"></div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div id="update-modal" class="modal">
-                <div class="modal-content">
-                    <h4 class="modaltext" id="modal-header">Update Available</h4>
-                    <p class="modaltext" id="update-text"></p>
-                    <div style="overflow-y: scroll; overflow-x: hidden;max-height:300px; margin-bottom: 10px;">
-                        <p class="modaltext" id="changelog"></p>
-                    </div>
-                    <div class="row" style="justify-content:space-around;">
-                        <div class="card btn btn-fix modal-btn" id="btn-update">
-                            <div class="btn-card-body">
-                                <h6 class="btn-title" id="normal-title">Yes, Please</h6>
-                            </div>
-                        </div>
-                        <div class="card btn btn-fix modal-btn" id="btn-close">
-                            <div class="btn-card-body">
-                                <h6 class="btn-title" id="normal-title">God! NO</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <script type="module" src="./app.js"></script>
-        <script>
-            if (typeof module === 'object') {
-                window.module = module;
-                module = undefined;
-            }
-        </script>
-        <script src="jquery.min.js"></script>
-        <script type="module" src="rangeslider.min.js"></script>
-        <script type="text/javascript" src="./assets/jquery-3.5.1.min.js"></script>
-        <script type="text/javascript" src="./assets/bootstrap/js/popper.min.js"></script>
-        <script type="text/javascript" src="./assets/pickr.min.js"></script>
-        <script type="text/javascript" src="./assets/bootstrap/js/bootstrap.min.js"></script>
-        <!-- Insert this line after script imports -->
-        <script>
-            if (window.module) module = window.module;
-        </script>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/design.js"></script>
+    <script src="pages/welcome.js"></script>
 </body>
 
 </html>

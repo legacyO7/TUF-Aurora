@@ -4,9 +4,11 @@
 name: Aurora CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
+
+ push:
+    branches: [ master beta ]
+
+ pull_request:
     branches: [ master ]
 
 jobs:
@@ -17,7 +19,6 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
@@ -27,12 +28,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm i electron-installer-debian
-    - run: npm i electron-installer-redhat
-    - run: npm run build --if-present
-    - run: npm run deb64
-    - run: npm run rpm64
-    - run: ls dist/installers/
+    - run: npm install
+    - run: npm run dist
+    - run: ls dist/
       
     - name: Get package version
       id: extract_version
@@ -44,10 +42,11 @@ jobs:
     - name: Create Release 
       uses: softprops/action-gh-release@v1
       with:      
-       tag_name: ver${{ steps.extract_version.outputs.version }}  
+       tag_name: ${{ steps.extract_version.outputs.version }}  
        body_path: ./changelog.txt
        files: |
-            ./dist/installers/tuf-aurora_${{ steps.extract_version.outputs.version }}_amd64.deb
-            ./dist/installers/tuf-aurora-${{ steps.extract_version.outputs.version }}-1.amd64.rpm
+            ./dist/tuf-aurora_${{ steps.extract_version.outputs.version }}_amd64.deb
+            ./dist/tuf-aurora-${{ steps.extract_version.outputs.version }}.x86_64.rpm
+            ./dist/TUF\ Aurora-${{ steps.extract_version.outputs.version }}.AppImage
               
         

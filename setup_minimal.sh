@@ -2,16 +2,13 @@
 
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
-packages_to_install="dkms openssl nodejs npm mokutil xterm"
-pkg="tuf-aurora"
-dest_file_location="dist/$pkg*."
+packages_to_install="dkms openssl mokutil xterm wget"
 filename_key="signing_key"
-checkparam=""
 pkgExt="unknown"
-distro="unknown"
 pm="unknown"
 opm="unknown"
 require_reboot=false
+
 
 declare -A osInfo;
 osInfo[/etc/redhat-release]="rmp"
@@ -24,28 +21,32 @@ do
     fi
 done
 
-if [ $pkgExt == "unknown" ] 
-then
-echo Sorry dude, Incompatible Operating System
-else
 
-        if [ $pkgExt == "rpm" ] 
-        then
-            pm="yum"
-            opm="rpm"
-            distro="redhat"
-            checkparam="qa"
-        elif [ $pkgExt == "deb" ] 
-            then
-            pm="apt"
-            opm="dpkg"
-            distro="debian"        
-            checkparam="l"
-        fi
+if [ $pkgExt == "rpm" ] 
+    then
+    pm="yum"
+    opm="rpm"
+elif [ $pkgExt == "deb" ] 
+    then
+    pm="apt-get"
+    opm="dpkg"
+fi
+
+
+install_packages ()
+{
+    echo "Installing packages"
 
         sudo $pm install $packages_to_install -y
+    
+}
 
-            if [ -d "$faustusDir" ]; then
+
+install_faustus()
+{
+    echo "Installing faustus"
+
+        if [ -d "$faustusDir" ]; then
             echo faustus module found
             else
             echo installing faustus module
@@ -106,29 +107,55 @@ else
 
             cd ..
             rm -rf faustus
-            fi
+        fi
 
-    npm install
-    npm run clean-build
-    npm run-script dist
+}
 
-    if $opm -$checkparam | grep $pkg
-    then
-        sudo $pm remove $pkg -y
-    fi
-    sudo $opm -i $dest_file_location$pkgExt
+download_release(){
+    echo downloading update...
+
+    LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/legacyO7/TUF-Aurora/releases/latest)
+    LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+
+        if [ $pkgExt == "deb" ] 
+            then
+                ARTIFACT_URL="https://github.com/legacyO7/TUF-Aurora/releases/download/$LATEST_VERSION/tuf-aurora_${LATEST_VERSION}_amd64.$pkgExt"
+        elif [ $pkgExt == "rpm" ] 
+            then
+                ARTIFACT_URL="https://github.com/legacyO7/TUF-Aurora/releases/download/$LATEST_VERSION/tuf-aurora-${LATEST_VERSION}.x86_64.$pkgExt"
+        fi
+
+    wget $ARTIFACT_URL -O /tmp/update.$pkgExt
+
+    sudo $opm -i /tmp/update.$pkgExt 
     
-    if [ -d "$faustusDir" ]; then
-        echo Success
-        nohup $pkg &  disown 
-        echo launched aurora
-        ps aux | grep sleep
-        rm nohup.out
-        exit 
-    elif [ "$require_reboot" = true ] 
-    then
-        echo Please reboot to enroll MOK
-    else
-        echo Nah bruh. Things didnt go as planned. Install faustus module manually
+}
+
+if [ $# -eq 0 ]
+  then
+    ./setup.sh
+else
+    if [ $pkgExt == "unknown" ] 
+        then
+            echo Sorry dude, Incompatible Operating System
+            else
+
+            if [ $# -eq 0 ]
+            then
+                echo "No arguments supplied"
+
+                elif [ $1 == "pi" ]
+                then
+                install_packages
+
+                elif [ $1 == "fi" ]
+                then
+                install_faustus       
+
+                elif [ $1 == "update" ]
+                then
+                download_release           
+            fi
     fi
+
 fi
