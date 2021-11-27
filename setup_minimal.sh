@@ -47,7 +47,7 @@ install_faustus()
 {
     echo "Installing faustus"
 
-        if [ -d "$faustusDir" ]; then
+        if [ -d "1$faustusDir" ]; then
             echo faustus module found
             else
             echo installing faustus module
