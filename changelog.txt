@@ -5,7 +5,7 @@ v2.0.0
 
 now available as packages and AppImage
 bump to electron 16.0.0
-ui enhancement
+ui enhancements
 uses electron builder for packaging
-updatecenter bugfixes
+new updatecenter for package handling
 many underthehood changes
