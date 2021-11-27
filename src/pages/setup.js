@@ -91,7 +91,8 @@ async function execShell(val) {
         });
 
         cp.stderr.on('data', function(data) {
-            if (!data.includes('Setting up')) {
+            console.log(data.toString())
+            if (!data.includes('100%')) {
                 logcat.style.color = "red";
                 process = false;
             } else {
@@ -103,8 +104,6 @@ async function execShell(val) {
 
         cp.on('close', () => {
             actionCompleted = true
-
-            logcat.innerText += "cp " + dir + '/../../* ~/.tuf-aurora'
 
             if (val == "update") {
                 downicon.style.display = "none"

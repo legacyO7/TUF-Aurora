@@ -2,7 +2,7 @@
 
 signingfileloc="/lib/modules/$(uname -r)/build/certs"
 faustusDir="/sys/devices/platform/faustus/"
-packages_to_install="dkms openssl mokutil xterm wget"
+packages_to_install="dkms openssl mokutil xterm wget git"
 filename_key="signing_key"
 pkgExt="unknown"
 pm="unknown"
