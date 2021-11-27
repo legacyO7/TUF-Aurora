@@ -6,7 +6,7 @@ name: Aurora CI
 on:
 
  push:
-    branches: [ master beta ]
+    branches: [ master ]
 
  pull_request:
     branches: [ master ]
@@ -35,9 +35,6 @@ jobs:
     - name: Get package version
       id: extract_version
       uses: Saionaro/extract-package-version@v1.0.6
-      
-    - name: Print version
-      run: echo ${{ steps.extract_version.outputs.version }}   
         
     - name: Create Release 
       uses: softprops/action-gh-release@v1
