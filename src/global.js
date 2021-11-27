@@ -55,21 +55,30 @@ async function saveDef(key, value) {
 }
 
 const setkeyboardsettings = (input) => {
-    if (input == '0')
+    if (input == '0') {
         state = 'none'
-    else
+    } else {
         state = 'block'
-
-    document.getElementById('speed').style.display = state
+    }
     document.getElementById('effects').style.display = state
     document.getElementById('colorpicker').style.display = state
 
     ipcRenderer.send('resize', [995, state == 'block' ? 710 : 500])
 }
 
-const disableSpeed = (id) => {
+const disableSpeed = async(id) => {
+    let speedid
+    if (id > 4 || id == 0)
+        speedid = id;
+
+    if (speedid == undefined) {
+        await fetchData(`${loc_aurora}/config`, false).then(async(value) => {
+            speedid = value.mode
+        })
+    }
+
     let speed = document.getElementById("speed").style
-    if (id === '7' || id === '10')
+    if (speedid === '7' || speedid === '10' || speedid === '0')
         speed.display = "none"
     else
         speed.display = "block"
