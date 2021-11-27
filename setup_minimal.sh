@@ -7,6 +7,7 @@ filename_key="signing_key"
 pkgExt="unknown"
 pm="unknown"
 opm="unknown"
+tmpdir="/tmp"
 require_reboot=false
 
 
@@ -46,14 +47,16 @@ install_faustus()
 {
     echo "Installing faustus"
 
-        if [ -d "$faustusDir" ]; then
+        if [ -d "1$faustusDir" ]; then
             echo faustus module found
             else
             echo installing faustus module
 
-                git clone --depth=1 https://github.com/legacyO7/faustus.git
+            mkdir -p $tmpdir
 
-                cd faustus
+                git clone --depth=1 https://github.com/legacyO7/faustus.git $tmpdir/faustus
+
+                cd $tmpdir/faustus
 
                     if mokutil --sb-state | grep -q 'enabled'; then
 
