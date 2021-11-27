@@ -22,13 +22,16 @@ async function writeKeyboardConfig(name, id, offset) {
             document.getElementById(`l_${i}`).classList.remove("card")
 
     document.getElementById(`l_${id}`).classList.add("card")
-    disableSpeed(id)
+
     if (offset == 0) {
         ashell(`echo "${id}" > ${paths.brightness}`);
         setkeyboardsettings(id)
-    } else
+    } else {
         ashell('bash ' + await shelldir() + '/' + name + '.sh ' + (parseInt(id) - offset));
-    saveDef(name, id)
+    }
+    await saveDef(name, id)
+    disableSpeed(id)
+
 }
 
 module.exports = { keyboardSettings }
