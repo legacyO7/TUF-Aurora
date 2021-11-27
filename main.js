@@ -43,12 +43,11 @@ function createWindow() {
     });
 
     ipcMain.on('shelldir', function(event, arg) {
-        let shellpath
-        if (false)
-            shellpath = path.join(app.getAppPath(), 'src', 'shell').replace(/\s/g, '\\ ')
+        let shellpath = app.getAppPath()
+        if (shellpath.includes("resources"))
+            shellpath = path.join(shellpath, '..', '..', 'src', 'shell').replace(/\s/g, '\\ ')
         else
-            shellpath = path.join(app.getAppPath(), '..', '..', 'src', 'shell').replace(/\s/g, '\\ ')
-
+            shellpath = path.join(shellpath, 'src', 'shell').replace(/\s/g, '\\ ')
 
         event.sender.send('shelldir-response', [shellpath]);
     });
