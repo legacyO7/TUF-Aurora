@@ -44,7 +44,7 @@ function createWindow() {
 
     ipcMain.on('shelldir', function(event, arg) {
         let shellpath = app.getAppPath()
-        if (shellpath.includes("resources"))
+        if (shellpath.includes("/resources/app.asar"))
             shellpath = path.join(shellpath, '..', '..', 'src', 'shell').replace(/\s/g, '\\ ')
         else
             shellpath = path.join(shellpath, 'src', 'shell').replace(/\s/g, '\\ ')

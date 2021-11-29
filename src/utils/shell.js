@@ -3,7 +3,16 @@ async function sudoshell(cmd) {
     const { options } = require('../global')
 
     var sudoer = new Sudoer(options);
-    await sudoer.spawn(cmd);
+    let ls = await sudoer.spawn(cmd);
+    ls.stdout.on('data', function(data) {
+        //    console.log('stdout: ' + data.toString());
+
+    });
+
+    ls.stderr.on('data', function(data) {
+        //    console.log('stderr: ' + data.toString());
+
+    });
 }
 
 async function ashell(cmd, args) {
@@ -14,8 +23,6 @@ async function ashell(cmd, args) {
         spawn = require('child_process').spawn
 
     return await new Promise((resolve, reject) => {
-
-
 
         let ls = spawn(cmd, args);
 
