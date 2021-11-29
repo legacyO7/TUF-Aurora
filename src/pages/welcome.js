@@ -51,15 +51,8 @@ async function navigate() {
 
         if (existsSync(`${paths.kModule}`)) {
             window.location.href = './pages/home.html';
-        } else if (dir.toString().includes("/tmp/")) {
-            failtext.innerText = "AppImage detected!"
-            fail.style.display = "block"
-        } else if (dir.toString().includes("/snap/")) {
-            failtext.innerText = "snap detected!"
-            fail.style.display = "block"
-        } else {
-            document.getElementById("go").style.display = "block"
         }
+        document.getElementById("go").style.display = "block"
         document.getElementById("loader").style.display = "none"
     }, 3000);
 }

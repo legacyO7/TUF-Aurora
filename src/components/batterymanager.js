@@ -1,6 +1,6 @@
 const getdefvalue = require('../utils/getdefaults');
 const paths = require('../path');
-const { sudoshell } = require('../utils/shell');
+const { sudoshell, ashell } = require('../utils/shell');
 const { shelldir } = require('../global');
 
 const batterymanager = async() => {
@@ -17,7 +17,12 @@ const batterymanager = async() => {
 
 
     rangeslider.onchange = async function() {
-        sudoshell('bash ' + await shelldir() + `/battery-manager.sh ${rangeslider.value}`)
+        let dir = await shelldir()
+        if (dir.toString().startsWith("/tmp"))
+            ashell('xterm -e "' + dir + `/battery-manager.sh ${rangeslider.value}"`)
+        else
+            sudoshell('bash ' + dir + `/battery-manager.sh ${rangeslider.value}`)
+
     }
 
 
