@@ -4,6 +4,8 @@ const { ashell } = require('../utils/shell');
 
 const setPicker = async() => {
 
+    let dir = await shelldir()
+
     const colorPicker = new ReinventedColorWheel({
         hex: (await fetchData(`${loc_aurora}/config`, false)).color,
         appendTo: document.getElementById('picker'),
@@ -20,7 +22,7 @@ const setPicker = async() => {
     const saveColor = async(color) => {
         try {
             const splitHex = `${color.hex.substr(1,2)} ${color.hex.substr(3,2)} ${color.hex.substr(5,2)}`;
-            ashell('bash ' + await shelldir() + `/color.sh ${splitHex}`);
+            ashell('bash ' + dir + `/color.sh ${splitHex}`);
             saveDef("color", color.hex)
 
         } catch (e) {
