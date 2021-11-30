@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo Setting battery charge threshold to $1 %...
 echo $1 | sudo tee /sys/class/power_supply/BAT1/charge_control_end_threshold > /dev/null
 cd /etc/systemd/system/
 sudo systemctl disable tuf-controller.service
