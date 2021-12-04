@@ -6,7 +6,7 @@ const {
 } = require("electron");
 require('electron-reload')(app.getAppPath());
 const path = require('path');
-const iconPath = path.join(app.getAppPath(), "Icon.png");
+const iconPath = path.join(app.getAppPath(), "..", "..", "icon.png");
 
 function createWindow() {
     // Create the browser window.
