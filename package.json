@@ -43,22 +43,18 @@
         "url": "https://github.com/legacyO7/TUF-Aurora/issues"
     },
     "homepage": "https://github.com/legacyO7/TUF-Aurora#readme",
-    "extraResources": [{
-        "from": "./images/",
-        "to": "images",
-        "filter": [
-            "**/*"
-        ]
-    }],
     "build": {
         "appId": "com.legacy07.aurora",
         "extraFiles": [
             "src/shell",
-            "Icon.png",
+            "icon.png",
             "setup_minimal.sh"
         ],
+        "directories": {
+            "buildResources": "build",
+            "output": "dist"
+        },
         "linux": {
-            "icon": "Icon.png",
             "category": "Utility",
             "target": ["AppImage", "deb", "rpm"]
         },
