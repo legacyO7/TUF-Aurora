@@ -41,6 +41,6 @@ jobs:
        files: |
             ./dist/tuf-aurora_${{ steps.extract_version.outputs.version }}_amd64.deb
             ./dist/tuf-aurora-${{ steps.extract_version.outputs.version }}.x86_64.rpm
-            ./dist/TUF\ Aurora-${{ steps.extract_version.outputs.version }}.AppImage
+            ./dist/Aurora-${{ steps.extract_version.outputs.version }}.AppImage
               
         
