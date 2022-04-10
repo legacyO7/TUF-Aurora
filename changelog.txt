@@ -1,11 +1,6 @@
 ChangeLog : 
 ~~~~~~~~~
 
-v2.0.0
+v2.0.1
 
-now available as packages and AppImage
-bump to electron 16.0.0
-ui enhancements
-uses electron builder for packaging
-new updatecenter for package handling
-many underthehood changes
+update packages
