@@ -18,7 +18,7 @@
     },
     "dependencies": {
         "@nathanielks/electron-sudo": "^4.0.15",
-        "@nexssp/os": "^2.0.25",
+        "@nexssp/os": "^2.0.28",
         "electron-packager": "^15.4.0",
         "electron-reload": "^2.0.0-alpha.1",
         "rangeslider.js": "^2.3.3",
