@@ -27,7 +27,7 @@
     },
     "devDependencies": {
         "electron": "^19.0.7",
-        "electron-builder": "^22.14.13"
+        "electron-builder": "^23.1.0"
     },
     "keywords": [
         "aurora",
