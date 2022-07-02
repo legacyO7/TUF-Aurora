@@ -22,6 +22,14 @@ This is a fork of the discontinued project [TUF-Control](https://github.com/icod
   <li><code>./setup.sh</code></li>
 </ol>
 
+## Uninstall 
+<ol>
+  <li><code>./setup_minimal.sh uninstall 3</code></li>
+  where,  3 - complete uninstallation <br/>
+          2 - disables faustus module and uninstalls the app <br/>
+          1 - removes battery manager and uninstalls the app <br/>
+</ol>
+
 ## Having issues with v2 installation? try legacy
 <ol>
   <li><code>git clone https://github.com/legacyO7/TUF-Aurora.git -b legacy</code></li>
