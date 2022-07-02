@@ -38,6 +38,10 @@ function createWindow() {
         app.exit()
     })
 
+    ipcMain.on('halt', (event, arg) => {
+        app.exit()
+    })
+
     ipcMain.on('appversion', function(event, arg) {
         event.sender.send('appversion-response', [app.getVersion()]);
     });
