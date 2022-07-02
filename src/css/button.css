@@ -37,6 +37,12 @@
     color: #266EF6;
 }
 
+.btn-normal-title {
+    padding-top: 4px;
+    padding-left: 5px;
+    color: #266EF6;
+}
+
 .card-title {
     color: black;
     font-weight: 600;
