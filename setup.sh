@@ -77,8 +77,7 @@ else
                                                     
                     fi    
 
-                sudo echo "blacklist asus_wmi
-                    blacklist asus_nb_wmi" > /etc/modprobe.d/faustus.conf
+                printf "blacklist asus_wmi \nblacklist asus_nb_wmi" | sudo tee /etc/modprobe.d/faustus.conf
 
                 sudo rmmod asus_nb_wmi
                 sudo rmmod asus_wmi
