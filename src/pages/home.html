@@ -10,11 +10,11 @@
     <link rel="stylesheet" type="text/css" href="../css/button.css" />
     <link rel="stylesheet" type="text/css" href="../node_modules/reinvented-color-wheel/css/reinvented-color-wheel.min.css" />
     <link rel="stylesheet" type="text/css" href="../assets/nano.min.css" />
-    <title>TUF Aurora</title>
+    <title>Aurora</title>
 </head>
 
 <body>
-    <header style="position: absolute;margin-left: 20px; width: 90%;">
+    <header style="position: absolute;margin-left: 20px; width: 95%;">
         <div class="row" style="justify-content: space-between; padding-top: 10px;">
             <p id="boot_status" style="color:red; font-weight: bolder;font-size: medium;"></p>
             <div class="card btn btn-fix " id="downicon" style=" padding-left: 20px;padding-right: 10px; display: none; margin-top: 20px;">
@@ -22,7 +22,11 @@
                     <img src="../images/download.svg" style="width:50px;height:50px;">
                 </div>
             </div>
-
+            <div class="card btn btn-fix " id="uninstall" style=" height: 2rem; width: 90px; padding-left: 20px;padding-right: 20px; margin-bottom: 50px;">
+                <div class="btn-card-body row">
+                    <b class="btn-title ">uninstall</b>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -140,6 +144,31 @@
                     <div class="card btn btn-fix modal-btn" id="btn-close">
                         <div class="btn-card-body">
                             <h6 class="btn-title" id="normal-title">God! NO</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="uninstall-modal" class="modal">
+            <div class="modal-content">
+                <h4 class="modaltext" id="modal-header">Uninstall Aurora</h4>
+                <div class="modaltext" id="modal-scroll" style="max-height:300px; margin-bottom: 30px; margin-top: 30px; ">
+                    <input type="checkbox" id="bm" value="1">
+                    <label for="html">remove Battery Manager *</label><br>
+
+                    <input type="checkbox" id="fm" value="2">
+                    <label for="css">disable faustus  module *</label><br>
+                </div>
+
+                <div style="align-self: flex-end;">
+                    <i class="btn-normal-title" style="margin-bottom: 20px; font-size: 13px;" id="normal-title">* Reboot Recommended</i>
+                </div>
+
+                <div class="row" style="justify-content:space-around;">
+                    <div class="card btn btn-fix modal-btn" id="finalized_uninstall">
+                        <div class="btn-card-body">
+                            <h6 class="btn-title" id="normal-title">Uninstall</h6>
                         </div>
                     </div>
                 </div>

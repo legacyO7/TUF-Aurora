@@ -18,16 +18,16 @@
     },
     "dependencies": {
         "@nathanielks/electron-sudo": "^4.0.15",
-        "@nexssp/os": "^2.0.25",
-        "electron-packager": "^15.4.0",
+        "@nexssp/os": "^2.0.30",
+        "electron-packager": "^15.5.1",
         "electron-reload": "^2.0.0-alpha.1",
         "rangeslider.js": "^2.3.3",
         "reinvented-color-wheel": "^0.4.0",
         "untildify": "^4.0.0"
     },
     "devDependencies": {
-        "electron": "^18.0.3",
-        "electron-builder": "^22.14.13"
+        "electron": "^19.0.7",
+        "electron-builder": "^23.1.0"
     },
     "keywords": [
         "aurora",
