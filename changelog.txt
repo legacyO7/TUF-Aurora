@@ -1,6 +1,9 @@
 ChangeLog : 
 ~~~~~~~~~
 
-v2.0.1
+v2.0.2
 
-update packages
+updated packages
+added uninstall button
+optimized installation procedure
+added license
