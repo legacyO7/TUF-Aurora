@@ -81,8 +81,7 @@ install_faustus()
                                                     
                     fi    
 
-                sudo echo "blacklist asus_wmi
-                    blacklist asus_nb_wmi" > /etc/modprobe.d/faustus.conf
+                printf "blacklist asus_wmi \nblacklist asus_nb_wmi" | sudo tee /etc/modprobe.d/faustus.conf
 
                 sudo rmmod asus_nb_wmi
                 sudo rmmod asus_wmi
@@ -134,6 +133,36 @@ download_release(){
     
 }
 
+
+remove_battery_man(){
+    #uninstall battery manager
+    echo -e "\033[1;34m Removing battery manager\033[0m"
+    sudo systemctl disable tuf-controller.service
+    sudo rm  /etc/systemd/system/tuf-controller.service
+}
+
+
+disable_faustus(){
+    #disable faustus
+    echo -e "\033[1;34m Halting faustus\033[0m"
+    sudo modprobe -r faustus
+    printf "blacklist faustus\n" | sudo tee /etc/modprobe.d/faustus.conf
+    sudo modprobe asus_nb_wmi
+    sudo modprobe asus_wmi
+}
+
+uninstall_app(){   
+    
+    #uninstall aurora
+    echo -e "\033[1;34m Uninstalling aurora\033[0m"
+    rm -f ~/.tuf-aurora
+    sudo $pm remove tuf-aurora -y
+    echo -e "\033[0;31mbye.. bye.."
+
+}
+
+
+
 if [ $# -eq 0 ]
   then
     ./setup.sh
@@ -157,7 +186,24 @@ else
 
                 elif [ $1 == "update" ]
                 then
-                download_release           
+                download_release        
+
+                elif [ $1 == "uninstall" ]
+                then
+
+                        if [ $2 == "1" ]
+                        then
+                        remove_battery_man  
+                        elif [ $2 == "2" ]
+                        then
+                        disable_faustus
+                        elif [ $2 == "3" ]    
+                        then 
+                        remove_battery_man
+                        disable_faustus
+                        fi  
+                uninstall_app  
+                        
             fi
     fi
 
