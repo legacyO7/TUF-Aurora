@@ -155,7 +155,7 @@ uninstall_app(){
     
     #uninstall aurora
     echo -e "\033[1;34m Uninstalling aurora\033[0m"
-    rm -f ~/.tuf-aurora
+    rm -r ~/.tuf-aurora
     sudo $pm remove tuf-aurora -y
     echo -e "\033[0;31mbye.. bye.."
 
