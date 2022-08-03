@@ -3,11 +3,16 @@ const { shelldir } = require('../global');
 const { ipcRenderer } = require('electron');
 
 
+$('#btnclose').on('click', () => {
+    document.getElementById("uninstall-modal").style.display = "none";
+
+})
+
 $('#uninstall').on('click', () => {
-    console.log("uninstall");
     document.getElementById("uninstall-modal").style.display = "block";
 
 })
+
 
 $('#finalized_uninstall').on('click', async() => {
         var count = 0;
