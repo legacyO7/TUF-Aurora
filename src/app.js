@@ -4,7 +4,7 @@ const { setPicker } = require('../components/picker');
 const batterymanager = require('../components/batterymanager');
 const { updateCentre } = require('../components/updatecentre');
 const { keyboardSettings } = require('../components/keyboardSettings');
-const { uninstall } = require('../utils/uninstall');
+require('../utils/uninstall');
 
 await permsHandler();
 await initialize();
