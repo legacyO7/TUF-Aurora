@@ -1,9 +1,8 @@
 ChangeLog : 
 ~~~~~~~~~
 
-v2.0.2
+v2.0.3
 
+Final Update ( development will continue in https://github.com/legacyO7/Aurora)
+fixed uninstall dialog
 updated packages
-added uninstall button
-optimized installation procedure
-added license
