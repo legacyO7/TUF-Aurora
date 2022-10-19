@@ -2,7 +2,7 @@
     "name": "tuf-aurora",
     "displayName": "Aurora",
     "productName": "Aurora",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "TUF Keyboard & Battery Manager Based On Faustus Mod",
     "main": "main.js",
     "scripts": {
